@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -25,8 +25,13 @@ function Navbar() {
         <div className="navbar-container-right">
           <ul className='nav-menu'>
             <li className='nav-item'>
-              <Link to='/' className='nav-links'>
-                Sign In or Join
+              <Link to='/sign-in' className='nav-links'>
+                Sign In
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to='/join' className='nav-links'>
+                Join
               </Link>
             </li>
           </ul>

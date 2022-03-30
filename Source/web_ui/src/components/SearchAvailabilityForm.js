@@ -1,5 +1,5 @@
-import React from 'react'
-import './SearchAvailabilityForm.css'
+import React from 'react';
+import './SearchAvailabilityForm.css';
 
 function SearchAvailabilityForm() {
   return (
@@ -25,7 +25,7 @@ function SearchAvailabilityForm() {
             <label for='check-out'>Check Out</label>
             <input id='check-out' type='date'></input>
           </div>
-          <input class='button' type='submit' value='Find Hotels'></input>
+          <input class='orange-button' type='submit' value='Find Hotels'></input>
         </form>
       </div>
     </>

@@ -7,7 +7,7 @@
 .form-container {
   position: absolute;
   left: 0;
-  margin: 5rem;
+  margin: 4rem;
   max-width: 25%;
   padding: 20px;
   background-color: white;
@@ -30,7 +30,7 @@ label {
 
 input, select{ 
   border-radius: 2px;
-  border: 2px solid gray;
+  border: 1px solid gray;
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
@@ -38,7 +38,7 @@ input, select{
   padding: 10px;
 }
 
-.button {
+.orange-button {
   height: 50px;
   margin: 15px 0px;
   background: orange;
@@ -46,6 +46,7 @@ input, select{
   color: black;
   font-size: 1rem;
   font-family: 'Helvetica';
+  font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
   width: 100%;

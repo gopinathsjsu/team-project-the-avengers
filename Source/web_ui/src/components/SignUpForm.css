@@ -1,0 +1,11 @@
+.sign-up-form-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  max-width: 25%;
+  padding: 20px;
+  font-family: 'Helvetica';
+  background-color: white;
+  border-radius: 5px;
+}
