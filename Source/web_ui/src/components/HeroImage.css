@@ -1,4 +1,4 @@
-img {
+.hero-image {
   object-fit: cover;
   width: 100%;
   z-index: -1;
