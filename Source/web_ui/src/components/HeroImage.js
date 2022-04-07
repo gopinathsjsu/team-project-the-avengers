@@ -4,7 +4,7 @@ import './HeroImage.css';
 function HeroImage() {
   return (
     <div>
-      <img src='/Beach.jpg' class='hero-image' alt='Beach' />
+      <img src='/Beach.jpg' className='hero-image' alt='Beach' />
     </div>
   )
 }
