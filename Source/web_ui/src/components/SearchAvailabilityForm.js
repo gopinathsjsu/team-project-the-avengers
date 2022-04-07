@@ -4,10 +4,10 @@ import './SearchAvailabilityForm.css';
 function SearchAvailabilityForm() {
   return (
     <>
-      <div class='form-container'>
+      <div className='form-container'>
         <form>
-          <div class='form-input'>
-            <label for='destination'>Destination</label>
+          <div className='form-input'>
+            <label htmlFor='destination'>Destination</label>
             <select id='destination'>
               <option value="Bangkok">Bangkok</option>
               <option value="Chicago">Chicago</option>
@@ -17,15 +17,15 @@ function SearchAvailabilityForm() {
               <option value="Singapore">Singapore</option>
             </select>
           </div>
-          <div class='form-input'>
-            <label for='check-in'>Check In</label>
+          <div className='form-input'>
+            <label htmlFor='check-in'>Check In</label>
             <input id='check-in' type='date'></input>
           </div>
-          <div class='form-input'>
-            <label for='check-out'>Check Out</label>
+          <div className='form-input'>
+            <label htmlFor='check-out'>Check Out</label>
             <input id='check-out' type='date'></input>
           </div>
-          <input class='orange-button' type='submit' value='Find Hotels'></input>
+          <input className='orange-button' type='submit' value='Find Hotels'></input>
         </form>
       </div>
     </>
