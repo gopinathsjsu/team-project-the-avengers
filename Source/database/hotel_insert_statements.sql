@@ -38,3 +38,14 @@ VALUES
 (2	,'Queen Suite',	1, '1 Queen bed',	269,	254),
 (3,	'Junior Suite',	2,	'2 Double beds',	246,	234),
 (4,	'Queen Deluxe',	2,	'2 Queen beds',	259,	244);
+
+INSERT INTO `hotel`.`amenities`
+(`amenity_id`,
+`amenity`,
+`amenity_price`)
+VALUES
+(1,'Daily Continental Breakfast',15),
+(2, 'Access to Fitness Room',32),
+(3, 'Access to Swimming Pool/Jacuzzi',20),
+(4, 'Daily Parking', 5),
+(5, 'All meals included(Breakfast, Lunch, Dinner)',55);
