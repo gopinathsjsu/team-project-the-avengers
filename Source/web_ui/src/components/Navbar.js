@@ -16,8 +16,8 @@ function Navbar() {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/' className='nav-links'>
-                Reserve
+              <Link to='/search' className='nav-links'>
+                Find & Reserve
               </Link>
             </li>
           </ul>

@@ -1,0 +1,22 @@
+.search-bar {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.search-field {
+  width: 80%;
+}
+
+.search-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 20%;
+  padding: 10px;
+  background: orange;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
