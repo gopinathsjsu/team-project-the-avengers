@@ -1,0 +1,58 @@
+
+
+	***hotels***
+	id - pk
+	name
+	address
+	city
+	country
+	phone
+	description
+	costMultiple
+	listOfApartments
+	mediaDirectory
+	
+	
+	***apartments***
+	id - pk
+	name
+	description
+	generalPrice
+	
+	
+	***amenities***
+	id - pk
+	name
+	description
+	generalPrice
+	
+	
+	***user***
+	id - pk
+	timestamp
+	username
+	password
+	firstName
+	lastName
+	email
+	dob
+	phone
+	
+	
+	***bookings***
+	id - pk
+	timestamp
+	userId
+	hotel
+	apartment
+	checkInData
+	checkOutDate
+	totalPice
+	
+	
+	***country***
+	id - pk
+	name
+	tax
+	
+	
