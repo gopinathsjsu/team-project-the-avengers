@@ -45,6 +45,7 @@ CREATE TABLE `bookings_table` (
   `timestamp` datetime NOT NULL,
   `user_id` int NOT NULL,
   `hotel_id` int DEFAULT NULL,
+  `amenity_id` int DEFAULT NULL
   `room_id` int DEFAULT NULL,
   `checkInDate` date DEFAULT NULL,
   `checkOutDate` date DEFAULT NULL,
