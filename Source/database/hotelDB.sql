@@ -25,12 +25,12 @@ DROP TABLE IF EXISTS `amenities_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `amenities_table` (
-  `amenity_id` int NOT NULL,
+  `amenity_id` int NOT NULL AUTO_INCREMENT,
   `amenity_name` varchar(45) DEFAULT NULL,
   `amenity_description` varchar(150) DEFAULT NULL,
   `amenity_price` float DEFAULT NULL,
   PRIMARY KEY (`amenity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,19 +41,22 @@ DROP TABLE IF EXISTS `bookings_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bookings_table` (
-  `bookings_id` int NOT NULL,
+  `bookings_id` int NOT NULL AUTO_INCREMENT,
   `timestamp` datetime NOT NULL,
   `user_id` int NOT NULL,
   `hotel_id` int DEFAULT NULL,
-  `amenity_id` int DEFAULT NULL
   `room_id` int DEFAULT NULL,
+  `amenity_id` int DEFAULT NULL,
+  `room_type` varchar(45) DEFAULT NULL,
   `checkInDate` date DEFAULT NULL,
   `checkOutDate` date DEFAULT NULL,
   `totalPrice` float DEFAULT NULL,
   PRIMARY KEY (`bookings_id`),
-  KEY `user_id_idx` (`user_id`),
+  KEY `amenity_id_idx` (`amenity_id`),
   KEY `hotel_id_idx` (`hotel_id`),
   KEY `room_id_idx` (`room_id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `amenity_id` FOREIGN KEY (`amenity_id`) REFERENCES `amenities_table` (`amenity_id`),
   CONSTRAINT `hotel_id` FOREIGN KEY (`hotel_id`) REFERENCES `hotel_table` (`hotel_id`),
   CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms_table` (`room_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user_table` (`user_id`)
@@ -68,12 +71,12 @@ DROP TABLE IF EXISTS `country_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `country_table` (
-  `country_id` int NOT NULL,
+  `country_id` int NOT NULL AUTO_INCREMENT,
   `country_name` varchar(45) NOT NULL,
   `tax` float DEFAULT NULL,
   PRIMARY KEY (`country_id`),
   KEY `country_name_idx` (`country_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +87,7 @@ DROP TABLE IF EXISTS `hotel_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hotel_table` (
-  `hotel_id` int NOT NULL,
+  `hotel_id` int NOT NULL AUTO_INCREMENT,
   `hotel_name` varchar(100) DEFAULT NULL,
   `address` varchar(150) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
@@ -97,7 +100,7 @@ CREATE TABLE `hotel_table` (
   PRIMARY KEY (`hotel_id`),
   KEY `country_name_idx` (`country_name`),
   CONSTRAINT `country_name` FOREIGN KEY (`country_name`) REFERENCES `country_table` (`country_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,14 +111,14 @@ DROP TABLE IF EXISTS `rooms_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rooms_table` (
-  `room_id` int NOT NULL,
+  `room_id` int NOT NULL AUTO_INCREMENT,
   `room_name` varchar(45) DEFAULT NULL,
   `room_description` varchar(45) DEFAULT NULL,
   `number_of_beds` int DEFAULT NULL,
   `room_rate_guests` float DEFAULT NULL,
   `room_rate_members` float DEFAULT NULL,
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +129,7 @@ DROP TABLE IF EXISTS `user_table`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_table` (
-  `user_id` int NOT NULL,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -136,7 +139,7 @@ CREATE TABLE `user_table` (
   `phone` char(15) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -148,4 +151,4 @@ CREATE TABLE `user_table` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-14 18:46:44
+-- Dump completed on 2022-04-16  9:13:19

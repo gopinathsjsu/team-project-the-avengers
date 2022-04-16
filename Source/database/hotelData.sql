@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `hotel` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `hotel`;
 -- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
 -- Host: localhost    Database: hotel
@@ -21,7 +23,7 @@
 
 LOCK TABLES `amenities_table` WRITE;
 /*!40000 ALTER TABLE `amenities_table` DISABLE KEYS */;
-INSERT INTO `amenities_table` VALUES (1,'Daily Continental Breakfast','daily breakfast included',15),(2,'Access to Fitness Room','full access to fitness room',32),(3,'Access to Swimming Pool/Jacuzzi','full access to jacuzzi and swimming pool',20),(4,'Daily Parking','parking per day',5),(5,'All meals included(Breakfast, Lunch, Dinner)','all meals - breakfast, lunch and dinner included',55);
+INSERT INTO `amenities_table` VALUES (1,'No Amenities','no amenities included',0),(2,'Daily Continental Breakfast','daily breakfast included',15),(3,'Access to Fitness Room','full access to fitness room',32),(4,'Access to Swimming Pool/Jacuzzi','full access to jacuzzi and swimming pool',20),(5,'Daily Parking','parking per day',5),(6,'All meals included(Breakfast, Lunch, Dinner)','all meals - breakfast, lunch and dinner included',55);
 /*!40000 ALTER TABLE `amenities_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-14 18:47:17
+-- Dump completed on 2022-04-16  9:16:01
