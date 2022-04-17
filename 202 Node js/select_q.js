@@ -1,4 +1,5 @@
-const res = require('express/lib/response');
+// const res = require('express/lib/response');
+//const req = require('express/lib/request');
 const config = require('mysql2/promise')
 
 // const mysql = require('mysql');
@@ -11,10 +12,14 @@ exports.query = async (req,res)=>
       password: "password"
   });
 
-  var start_date='2022-04-28';
+  /*var start_date='2022-04-28';
   var end_date='2022-04-30';
   var location='San Jose';
-  var room_type='A';
+  var room_type='A';*/
+  var start_date=req.body.start_date;
+  var end_date=req.body.end_date;
+  var location=req.body.location;
+  var room_type=req.body.room_type;
   const rooms=1;//Make a DB call here to get rooms value for the room_type
   var selected_room=-1;
   for(var no=1;no<=rooms;no++)
