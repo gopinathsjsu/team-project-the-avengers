@@ -3,22 +3,29 @@ const config = require('mysql2/promise')
 
 // const mysql = require('mysql');
 
-async function price_calculate()
+exports.price_calculate = async (req,res)=>
 {
     const con = await config.createConnection({
-      host: "database-1.ca9ddimducmq.us-east-2.rds.amazonaws.com",
+      host: "database-1.cdhjvbwqbfsh.us-east-1.rds.amazonaws.com",
       user: "admin",
       password: "password"
   });
   //the request body should have room_type,room_no,location, amenities, no_of guest, start_date,end_date
-  //
-  var room_type='King Suite';
-  var room_no=1;
+
+  /*var room_type='King_Suite';
+  
   var location='San Jose';
-  var start_date=new Date('4/14/2022');
-  var end_date=new Date('4/16/2022');
-  var no_of_guests=0;
+  var start_date=new Date('2022-04-14');
+
+  console.log(start_date.getDay());
+  var end_date=new Date('2022-04-16');
+  var no_of_guests=0;*/
   //Till this it is from the request body
+  var room_type=req.body.room_type;
+  var location=req.body.location;
+  var start_date=new Date(req.body.start_date);
+  var end_date=new Date(req.body.end_date);
+  var no_of_guests=req.body.no_of_guests;
   var price=0;
   var cost_mul=1.0;
   var weekend_rate=1.0;
@@ -71,6 +78,7 @@ async function price_calculate()
                         while (d1 <= d2) {
                             no_of_days++;
                             var day = d1.getDay();
+                            console.log(day);
                             isWeekend = (day === 6) || (day === 0); 
                             if (isWeekend) { no_of_weekend++; } // return immediately if weekend found
                             d1.setDate(d1.getDate() + 1);
@@ -98,8 +106,9 @@ async function price_calculate()
 
  
 con.close();
-console.log("PRICE IS"+price);    
+console.log("PRICE IS"+price); 
+res.json({'price'  : price });   
    
 }
 
-price_calculate();
+//price_calculate();
