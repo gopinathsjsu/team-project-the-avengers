@@ -1,20 +1,16 @@
-// return homepage
-app.get('/',function(req,res){
-    res.render('index');
-});
-
-// search function    
+// search for hotels using city    
 app.post('/search',function(req,res){
-    var str = {
-        stringPart:req.body.typeahead
-    }
+    var searchCity = req.body.search;
 
-    db.query('SELECT city FROM hotel.hotel_table WHERE city LIKE "%'+str.stringPart+'%"',function(err, rows, fields) {
-        if (err) throw err;
+        let query= 'select city from hotel.hotel_table where city like "%'+searchCity+'%"';
+
+    db.query(query, function(err,rows, fields) {
+        if (err)
+            throw "Error occured " + err;
         var data=[];
         for(i=0;i<rows.length;i++)
         {
-            data.push(rows[i].songTitle);
+            data.push(rows[i].city);
         }
         res.send(JSON.stringify(data));
     });
