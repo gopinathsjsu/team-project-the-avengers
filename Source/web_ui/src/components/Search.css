@@ -4,7 +4,7 @@
 }
 
 .search-field {
-  width: 80%;
+  width: 40%;
 }
 
 .search-button {
@@ -19,4 +19,8 @@
   color: black;
   font-weight: bold;
   cursor: pointer;
+}
+
+.date-field {
+  width: 20%;
 }
