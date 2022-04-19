@@ -10,7 +10,6 @@ function SignUpForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const info = {
@@ -29,6 +28,7 @@ function SignUpForm() {
       console.log(error);
     })
   }
+
   return (
     <>
       <div className='sign-up-form-container'>

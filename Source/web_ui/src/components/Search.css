@@ -1,10 +1,22 @@
 .search-bar {
-  width: 80%;
+  width: 90%;
   margin: 1rem auto;
+  text-align: center;
 }
 
-.search-field {
-  width: 40%;
+.location-field {
+  width: 18%;
+  margin: 0 5px;
+}
+
+.date-field {
+  width: 18%;
+  margin: 0 5px;
+}
+
+.room-field {
+  width: 15%;
+  margin: 0 5px;
 }
 
 .search-button {
@@ -19,8 +31,5 @@
   color: black;
   font-weight: bold;
   cursor: pointer;
-}
-
-.date-field {
-  width: 20%;
+  margin: 0 5px;
 }
