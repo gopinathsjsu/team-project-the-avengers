@@ -1,0 +1,28 @@
+.booking-form-container {
+  margin: 2rem auto;
+  padding: 20px;
+  font-family: 'Helvetica';
+  background-color: white;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.amenity-option {
+  display: flex;
+}
+
+.amenity-checkbox {
+  width: 5%;
+}
+
+.amenity-label {
+  display: flex;
+  font-weight: normal;
+}
+
+.date-container {
+    display: flex;
+}
+.check-in-input, .check-out-input {
+    width: 50%;
+}
