@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import SignIn from './pages/SignIn';
 import Join from './pages/Join';
 import Find from './pages/Find';
+import Booking from './pages/Booking';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='search' element={<Find/>} />
           <Route path='/join' element={<Join/>} />
           <Route path='/sign-in' element={<SignIn/>} />
+          <Route path='/booking' element={<Booking/>} />
         </Routes>
       </Router>
     </>
