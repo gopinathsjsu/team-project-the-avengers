@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './BookingForm.css';
 
 function BookingForm() {
   const [location, setLocation] = useState('');
+  const [roomType, setRoomType] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [roomID, setRoomID] = useState('');
   const [guests, setGuests] = useState(1);
+
+  const loc = useLocation();
+
+  useEffect(() => {
+    /* get data entered on search page */
+    const data = loc.state;
+    console.log(data);
+    setLocation(data.location);
+    setRoomType(data.roomType);
+    setCheckIn(data.checkIn);
+    setCheckOut(data.checkOut);
+    setRoomID(data.roomID)
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,16 +31,23 @@ function BookingForm() {
   return (
     <>
       <div className='booking-form-container'>
-        <form onSubmit>
+        <form onSubmit={handleSubmit}>
           <div className='form-input'>
-            <label>Location</label>This is where the location will go
+            <label>Location</label>
+            {location}
+          </div>
+          <div className='form-input'>
+            <label>Room Type</label>
+            {roomType}
           </div>
           <div className='date-container'>
             <div className='form-input check-in-input'>
-                <label>Check-In Date</label>YYYY-MM-DD
+                <label>Check-In Date</label>
+                {checkIn}
             </div>
             <div className='form-input check-out-input'>
-                <label>Check-Out Date</label>YYYY-MM-DD
+                <label>Check-Out Date</label>
+                {checkOut}
             </div>
           </div>
           <div className='form-input'>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import './Search.css';
@@ -9,7 +10,7 @@ function Search() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [roomType, setRoomType] = useState('');
-  const [results, setResults] = useState([]);
+  const [result, setResult] = useState('');
 
   useEffect(() => {
     axios.get('').then(response => {
@@ -43,12 +44,25 @@ function Search() {
 
       axios.post('', info).then(response => {
         console.log(response);
-        setResults(response.data);
+        setResult(response.data);
       }).catch(error => {
         console.log(error);
       })
-      console.log(results);
+      console.log(result);
     }
+  }
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    const data = {
+      location: location,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      roomType: roomType,
+      roomID: result,
+    };
+
+    navigate('/booking', {state: data})
   }
 
   return (
@@ -60,6 +74,7 @@ function Search() {
             {locations.map((location) => (
               <option value={location.city}>{location.city}</option>
             ))}
+            <option value='San Jose'>San Jose</option>
           </select>
           <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} required></input>
           <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} required></input>
@@ -74,10 +89,8 @@ function Search() {
         </form>
       </div>
       <div>
-        {results ? (
-          results.map((result) => (
-            <div></div>
-          ))
+        {result ? (
+          <button className='orange-button'onClick={handleClick}>Continue to Booking page</button>
         ) : (
           <> </>
         )}
