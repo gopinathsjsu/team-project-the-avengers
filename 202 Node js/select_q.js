@@ -21,7 +21,7 @@ exports.query = async (req,res)=>
   var location=req.body.location;
   var room_type=req.body.room_type;
   var rooms=-1;
-  let room_res = await con.execute(`SELECT * from main.Location where location='${location}' `)
+  let room_res = await con.execute(`SELECT * from main.location where location='${location}' `)
                  .then((res)=>{
                    var RES=res[0][0];
                    for(var key in RES)
