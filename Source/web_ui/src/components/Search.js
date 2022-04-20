@@ -10,7 +10,8 @@ function Search() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [roomType, setRoomType] = useState('');
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState(0);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axios.get('').then(response => {
@@ -36,15 +37,21 @@ function Search() {
       alert("You can only book a room for stay up to 1 week.");
     } else {
       const info = {
-        city: location,
-        checkIn: checkIn,
-        checkOut: checkOut,
-        room: roomType,
+        start_date: checkIn,
+        end_date: checkOut,
+        location: location,
+        room_type: roomType,
       };
 
       axios.post('', info).then(response => {
         console.log(response);
-        setResult(response.data);
+        if (response.data.room_no === -1) {
+          setResult(0)
+          setMessage('No availability found.');
+        } else {
+          setResult(response.data.room_no);
+          setMessage('There is a room available.');
+        }
       }).catch(error => {
         console.log(error);
       })
@@ -75,22 +82,24 @@ function Search() {
               <option value={location.city}>{location.city}</option>
             ))}
             <option value='San Jose'>San Jose</option>
+            <option value='San Francisco'>San Francisco</option>
           </select>
           <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} required></input>
           <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} required></input>
           <select className='room-field' onChange={(e) => setRoomType(e.target.value)} required>
             <option value='' disabled selected>Select a Room Type</option>
-            <option value='King Suite'>King Suite</option>
-            <option value='Queen Suite'>Queen Suite</option>
-            <option value='Junior Suite'>Junior Suite</option>
-            <option value='Queen Deluxe'>Queen Deluxe</option>
+            <option value='King_Suite'>King Suite</option>
+            <option value='Queen_Suite'>Queen Suite</option>
+            <option value='Junior_Suite'>Junior Suite</option>
+            <option value='Queen_Deluxe'>Queen Deluxe</option>
           </select>
-          <input className='search-button' type='submit' value='Find Hotels'></input>
+          <button className='search-button' type='submit'>Find Hotels</button>
         </form>
       </div>
-      <div>
+      <div className='result-container'>
+        <div>{message}</div>
         {result ? (
-          <button className='orange-button'onClick={handleClick}>Continue to Booking page</button>
+          <button className='orange-button continue-button' onClick={handleClick}>Continue to Booking page</button>
         ) : (
           <> </>
         )}

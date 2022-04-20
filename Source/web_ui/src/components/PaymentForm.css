@@ -1,4 +1,4 @@
-.booking-form-container {
+.payment-form-container {
   margin: 2rem auto;
   padding: 20px;
   font-family: 'Helvetica';
@@ -7,19 +7,14 @@
   width: 30%;
 }
 
-.amenity-option {
+.total-container {
   display: flex;
 }
 
-.amenity-checkbox {
-  width: 5%;
-}
-
-.amenity-label {
+.name-container {
   display: flex;
-  font-weight: normal;
 }
 
-.date-container {
+.expiry-cvc-container {
   display: flex;
 }
