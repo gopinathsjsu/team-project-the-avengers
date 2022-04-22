@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import './Search.css';
@@ -12,7 +12,7 @@ function Search() {
   const [roomType, setRoomType] = useState('');
   const [result, setResult] = useState(0);
   const [message, setMessage] = useState('');
-
+  // const loc = useLocation();
   useEffect(() => {
     axios.get('').then(response => {
       console.log(response);
@@ -20,6 +20,7 @@ function Search() {
     }).catch(error => {
       console.log(error);
     })
+    // const l = new URLSearchParams(loc.search).get("l");
   }, []);
 
   const handleSubmit = (e) => {
@@ -76,8 +77,8 @@ function Search() {
     <>
       <div className='search-bar'>
         <form onSubmit={handleSubmit}>
-          <select className='location-field' onChange={(e) => setLocation(e.target.value)} required>
-            <option value='' disabled selected>Select a Location</option>
+          <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue=''>
+            <option value='' disabled>Select a Location</option>
             {locations.map((location) => (
               <option value={location.city}>{location.city}</option>
             ))}
