@@ -1,18 +1,21 @@
 const serverConfig = require('./../serverConfig/serverConfig');
+const path = require('path');
 
 const express = require('express');
 const app = express()
 
-var createUser = require('./../userSignup/createUser');
-var dbConnection = require('./../dbConfig/dbConnection');
+var userSignup = require('./../userSignup/router');
+global.dbPool = require('./../dbConfig/dbConnection');
 
-app.get('/', (req, res)=>{
-    res.send('Index');
-});
+// app.get('/', (req, res)=>{
+//     res.send('Index');
+// });
+
+app.use('/', express.static(path.join(__dirname, '..', '..', '..', 'web_ui', 'build')));
 
 //#### ROUTES DEFINED STARTS ####
 
-app.use('/createUser', createUser);
+app.use('/userSignup', userSignup);
 
 //#### ROUTES DEFINED ENDS ####
 
