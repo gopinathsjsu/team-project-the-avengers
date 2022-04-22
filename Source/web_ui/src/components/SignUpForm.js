@@ -21,7 +21,7 @@ function SignUpForm() {
       password: password
     };
 
-    axios.post('', info).then(response => {
+    axios.post('/userSignup/createUser', info).then(response => {
       console.log(response);
       alert("Account successfully created");
     }).catch(error => {
