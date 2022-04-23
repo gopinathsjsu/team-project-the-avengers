@@ -5,6 +5,7 @@ import Join from './pages/Join';
 import Find from './pages/Find';
 import Booking from './pages/Booking';
 import Payment from './pages/Payment';
+import Reservations from './components/Reservations';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/sign-in' element={<SignIn/>} />
           <Route path='/booking' element={<Booking/>} />
           <Route path='/payment' element={<Payment/>} />
+          <Route path='/reservations' element={<Reservations/>} />
         </Routes>
       </Router>
     </>
