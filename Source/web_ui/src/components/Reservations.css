@@ -1,0 +1,25 @@
+.reservations-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-family: 'Helvetica';
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 5px 20px;
+  font-family: 'Helvetica';
+  font-weight: bold;
+}
+
+.column-header {
+  width: 17%;
+}
+
+.button-column {
+  width: 15%;
+}
