@@ -3,6 +3,7 @@ var express = require('Express');
 const { get_Rooms } = require('./getRooms');
 const { price_calculate } = require('./price_calculate');
 const { changeRoomno } = require('./changeRoomno');
+const { createBooking } = require('./createBooking');
 var app = express();
 var {query} = require("./select_q")
 var things = require('./things.js');
@@ -14,4 +15,5 @@ app.post('/search', query);
 app.post('/price', price_calculate);
 app.post('/getRooms', get_Rooms);
 app.post('/changeRoomno',changeRoomno);
+app.post('/createBooking',createBooking);
 app.listen(3000);
