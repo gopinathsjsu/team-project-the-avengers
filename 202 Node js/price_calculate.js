@@ -25,6 +25,7 @@ exports.price_calculate = async (req,res)=>
   var location=req.body.location;
   var start_date=new Date(req.body.start_date);
   var end_date=new Date(req.body.end_date);
+  var amenities_id=req.body.amenities;
   var no_of_guests=req.body.no_of_guests;
   var price=0;
   var cost_mul=1.0;
@@ -93,19 +94,24 @@ exports.price_calculate = async (req,res)=>
                     console.log(err);
                   })
 
-    /*let result = await con.execute(` SELECT * FROM main.Amenities  `)
+    let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                   .then((res)=>{
-                    var RES=res[0][0];
-                    
+                    var RES=res[0];
+                    //console.log(RES[0])
                     //write code for getting the amount of each kind of amenties.
+                    for(var id=0;id<amenities_id.length;id++)
+                    {
+                      amemities+=RES[amenities_id[id]-1].amenity_price;
+                    }
 
                   })
                   .catch((err)=>{
                     console.log(err);
-                  })*/
+                  })
 
  
 con.close();
+price+=amemities;
 console.log("PRICE IS"+price); 
 res.json({'price'  : price });   
    

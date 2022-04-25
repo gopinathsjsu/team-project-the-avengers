@@ -4,6 +4,7 @@ const { get_Rooms } = require('./getRooms');
 const { price_calculate } = require('./price_calculate');
 const { changeRoomno } = require('./changeRoomno');
 const { createBooking } = require('./createBooking');
+const { getLocation} = require('./getLocation');
 var app = express();
 var {query} = require("./select_q")
 var things = require('./things.js');
@@ -16,4 +17,5 @@ app.post('/price', price_calculate);
 app.post('/getRooms', get_Rooms);
 app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking',createBooking);
+app.post('/getLocation',getLocation);
 app.listen(3000);
