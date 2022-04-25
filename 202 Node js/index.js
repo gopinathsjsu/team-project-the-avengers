@@ -20,7 +20,7 @@ app.post('/price', price_calculate);
 app.post('/getRooms', get_Rooms);
 app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking',createBooking);
-app.post('/getLocation',getLocation);
+app.get('/getLocation',getLocation);
 app.post('/viewBookings',viewBookings);
 app.post('/deleteBookings',deleteBookings);
 app.listen(3000);
