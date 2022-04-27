@@ -9,3 +9,8 @@
   background-color: white;
   border-radius: 5px;
 }
+
+.error-message {
+  font-family: 'Helvetica';
+  color: red;
+}
