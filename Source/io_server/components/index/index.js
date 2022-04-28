@@ -5,6 +5,8 @@ const app = express()
 
 var createUser = require('./../userSignup/createUser');
 var dbConnection = require('./../dbConfig/dbConnection');
+var addLocation = require('./../adminStuff/addLocation');
+
 
 app.get('/', (req, res)=>{
     res.send('Index');
@@ -13,6 +15,7 @@ app.get('/', (req, res)=>{
 //#### ROUTES DEFINED STARTS ####
 
 app.use('/createUser', createUser);
+app.use('/addLocation', addLocation);
 
 //#### ROUTES DEFINED ENDS ####
 
