@@ -1,0 +1,8 @@
+.location-form-container {
+    margin: 2rem auto;
+    padding: 20px;
+    font-family: 'Helvetica';
+    background-color: white;
+    border-radius: 5px;
+    width: 30%;
+  }
