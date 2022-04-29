@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <br><br><br>
+
+    <form action="/admin/uploadFiles" method="post" enctype="multipart/form-data">
+        <select name="fileType">
+            <option value="ammenities">Ammenities</option>
+            <option value="hotels">Hotels</option>
+            <option value="location">Location</option>
+        </select>
+        <br><br>
+        <input type="file" name="dataFile" />
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
