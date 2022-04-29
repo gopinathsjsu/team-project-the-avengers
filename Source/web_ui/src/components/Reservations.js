@@ -1,30 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ReservationCard from './ReservationCard';
 import './Reservations.css';
 
 function Reservations() {
-  // const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const reservations = [
-    {
-      id: 1,
-      roomNumber: 1,
-      roomType: "Queen_Deluxe",
-      location: "San Jose",
-      checkIn: "2022-04-21",
-      checkOut: "2022-04-21",
-      price: "300",
-    },
-    {
-      id: 2,
-      roomNumber: 3,
-      roomType: "Queen_Deluxe",
-      location: "San Jose",
-      checkIn: "2022-04-29",
-      checkOut: "2022-05-01",
-      price: "500",
-    },
-  ];  /* test data, will delete later */
+  useEffect(() => {
+    async function fetchReservations() {
+      await axios.post('http://localhost:3000/viewBookings', {user_id: 1}).then(response => {
+        setReservations(response.data);
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      })
+      setIsLoading(false);
+    }
+
+    fetchReservations();
+  }, []);
 
   return (
     <>
@@ -33,28 +28,33 @@ function Reservations() {
         {reservations.length > 0 ? (
           <div>
             <div className='header'>
-              <div className='column-header'>Room Number</div>
+              <div className='room-number-column-header'>Room #</div>
               <div className='column-header'>Room Type</div>
               <div className='column-header'>Location</div>
               <div className='column-header'>Check-in Date</div>
               <div className='column-header'>Check-out Date</div>
-              <div className='column-header'>Price</div>
+              <div className='price-column-header'>Price</div>
               <div className='button-column'></div>
             </div>
             {reservations.map((reservation) => (
               <ReservationCard
                 id={reservation.id}
-                roomNumber={reservation.roomNumber}
-                roomType={reservation.roomType}
+                roomNumber={reservation.room_no}
+                roomType={reservation.room_type.replace('_', ' ')}
                 location={reservation.location}
-                checkIn={reservation.checkIn}
-                checkOut={reservation.checkOut}
+                checkIn={reservation.start_date.split("T")[0]}
+                checkOut={reservation.end_date.split("T")[0]}
                 price={reservation.price}
               />
             ))}
           </div>
         ) : (
-          <div>You do not have any reservations.</div>
+          <div>
+            {!isLoading
+              ? <div>You do not have any reservations.</div>
+              : <> </>
+            }
+          </div>
         )}
       </div>
     </>

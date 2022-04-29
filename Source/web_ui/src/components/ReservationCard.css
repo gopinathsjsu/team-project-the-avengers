@@ -12,7 +12,7 @@
 }
 
 .reservation-info {
-  width: 17%;
+  width: 15%;
 }
 
 .cancel-button {
@@ -20,11 +20,15 @@
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 15%;
+  width: 20%;
   padding: 10px;
   background: #d11a2a;
   border: none;
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.reservation-room-number, .reservation-price {
+  width: 10%;
 }
