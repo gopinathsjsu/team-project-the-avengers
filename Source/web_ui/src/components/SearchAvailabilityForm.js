@@ -74,7 +74,7 @@ function SearchAvailabilityForm() {
 
   return (
     <>
-      <div className='form-container'>
+      <div className='search-form-container'>
         <form onSubmit={handleSubmit}>
           <div className='form-input'>
             <label htmlFor='destination'>Destination</label>
