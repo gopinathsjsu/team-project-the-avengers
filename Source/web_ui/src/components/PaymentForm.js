@@ -64,12 +64,16 @@ function PaymentForm() {
         <form onSubmit={handleSubmit}>
           <div className='name-container'>
             <div className='form-input'>
-              <label htmlFor='first-name'>First Name</label>
-              <input id='first-name' type='text' required></input>
+              <div className='left-input'>
+                <label htmlFor='first-name'>First Name</label>
+                <input id='first-name' type='text' required></input>
+              </div>
             </div>
             <div className='form-input'>
-              <label htmlFor='last-name'>Last Name</label>
-              <input id='last-name' type='text' required></input>
+              <div className='right-input'>
+                <label htmlFor='last-name'>Last Name</label>
+                <input id='last-name' type='text' required></input>
+              </div>
             </div>
           </div>
           <div className='form-input'>
@@ -78,12 +82,16 @@ function PaymentForm() {
           </div>
           <div className='expiry-cvc-container'>
             <div className='form-input'>
-              <label htmlFor='expiration-date'>Expiration Date</label>
-              <input id='expiration-date' type='text' placeholder='MM/YY' required></input>
+              <div className='left-input'>
+                <label htmlFor='expiration-date'>Expiration Date</label>
+                <input id='expiration-date' type='text' pattern='^(0[1-9]|1[0-2])\/([0-9]{2})$' maxLength='5' placeholder='MM/YY' required></input>
+              </div>
             </div>
             <div className='form-input'>
-              <label htmlFor='cvc'>Security Code</label>
-              <input id='cvc' type='text' maxLength='3' placeholder='CVC' required></input>
+              <div className='right-input'>
+                <label htmlFor='cvc'>Security Code</label>
+                <input id='cvc' type='text' pattern='^[0-9]{3}$' maxLength='3' placeholder='CVC' required></input>
+              </div>
             </div>
           </div>
           <button className='orange-button' type='submit'>Next</button>
