@@ -8,6 +8,9 @@ app.use(express.json());
 var userSignup = require('./../userSignup/router');
 global.dbPool = require('./../dbConfig/dbConnection');
 
+var signup = require('./../userSignup/router');
+
+
 // app.get('/', (req, res)=>{
 //     res.send('Index');
 // });
@@ -20,6 +23,7 @@ app.get('*', function(req, res) {
 //#### ROUTES DEFINED STARTS ####
 
 app.use('/userSignup', userSignup);
+app.use('/signup', userSignup);
 
 //#### ROUTES DEFINED ENDS ####
 
