@@ -1,6 +1,7 @@
 .reservations-container {
   margin-left: 2rem;
   margin-right: 2rem;
+  margin-bottom: 3rem;
   font-family: 'Helvetica';
 }
 
@@ -17,9 +18,13 @@
 }
 
 .column-header {
-  width: 17%;
+  width: 15%;
 }
 
 .button-column {
-  width: 15%;
+  width: 20%;
+}
+
+.room-number-column-header, .price-column-header {
+  width: 10%;
 }
