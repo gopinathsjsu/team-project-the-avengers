@@ -1,6 +1,5 @@
 var uploadFiles = function(req, res){
-    
-    res.send('uploaded man!');
+    res.send('ACKNOWLEDGEMENT');
 }
 
 module.exports = uploadFiles;

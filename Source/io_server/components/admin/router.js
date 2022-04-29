@@ -8,10 +8,10 @@ var uploadFiles = require('./uploadFiles');
 
 let storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, './uploads');
+        cb(null, './storage/admin/adminCSVFiles/');
     },
     filename: function(req, file, cb){
-        cb(null, 'Yo.csv');
+        cb(null, req.body.fileType + '.csv');
     }
 });
 let upload = multer({storage: storage});
