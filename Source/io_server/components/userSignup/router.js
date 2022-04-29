@@ -9,8 +9,8 @@ router.post('/createUser', (req, res) =>{
 });
 
 
-router.post('/signup', (req, res) =>{
-    signup(req, res);
-});
+// router.post('/signup', (req, res) =>{
+//     signup(req, res);
+// });
 
 module.exports = router;
