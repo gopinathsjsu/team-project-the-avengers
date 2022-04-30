@@ -139,19 +139,19 @@ function BookingForm() {
             </div>
             <div className='amenity-option'>
               <input id='fitness-room' name='fitnessRoom' type='checkbox' className='amenity-checkbox' value='Access to fitness room' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='fitness-room'>Access to fitness room</label>
+              <label className='amenity-label' htmlFor='fitness-room'>Access to fitness room</label>
             </div>
             <div className='amenity-option'>
               <input id='swimming-pool-jacuzzi' name='swimmingPoolJacuzzi' type='checkbox' className='amenity-checkbox' value='Access to Swimming Pool/Jacuzzi' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='swimming-pool-jacuzzi'>Access to Swimming Pool/Jacuzzi</label>
+              <label className='amenity-label' htmlFor='swimming-pool-jacuzzi'>Access to Swimming Pool/Jacuzzi</label>
             </div>
             <div className='amenity-option'>
               <input id='daily-parking' name='dailyParking' type='checkbox' className='amenity-checkbox' value='Daily Parking' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='daily-parking'>Daily Parking</label>
+              <label className='amenity-label' htmlFor='daily-parking'>Daily Parking</label>
             </div>
             <div className='amenity-option'>
               <input id='all-meals' name='allMeals' type='checkbox' className='amenity-checkbox' value='All meals included' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='all-meals'>All meals included</label>
+              <label className='amenity-label' htmlFor='all-meals'>All meals included</label>
             </div>
           </div>
           <button className='orange-button' type='submit'>Next</button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import './Search.css';
@@ -13,6 +13,9 @@ function Search() {
   const [result, setResult] = useState(0);
   const [message, setMessage] = useState('');
   
+  const loc = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get('http://localhost:3000/getLocation').then(response => {
       console.log(response);
@@ -20,7 +23,21 @@ function Search() {
     }).catch(error => {
       console.log(error);
     })
-  }, []);
+
+    if (loc.state) {
+      /* get data from the search form on home page, if any */
+      const data = loc.state;
+      console.log(data);
+      setLocation(data.location);
+      setRoomType(data.roomType);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setResult(data.result);
+      setMessage(data.message);
+      navigate(loc.pathname, {});   /* clear state */
+      console.log(location + roomType);
+    }
+  }, [loc, navigate,]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +63,7 @@ function Search() {
       axios.post('http://localhost:3000/search', info).then(response => {
         console.log(response);
         if (response.data.room_no === -1) {
-          setResult(0)
+          setResult(0);
           setMessage('No availability found.');
         } else {
           setResult(response.data.room_no);
@@ -59,7 +76,6 @@ function Search() {
     }
   }
 
-  const navigate = useNavigate();
   const handleClick = () => {
     const data = {
       location: location,
@@ -76,15 +92,15 @@ function Search() {
     <>
       <div className='search-bar'>
         <form onSubmit={handleSubmit}>
-          <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue='' required>
+          <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
             <option value='' disabled>Select a Location</option>
             {locations.map((location) => (
               <option value={location}>{location}</option>
             ))}
           </select>
-          <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} required></input>
-          <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} required></input>
-          <select className='room-field' onChange={(e) => setRoomType(e.target.value)} defaultValue='' required>
+          <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
+          <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
+          <select className='room-field' onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
             <option value='' disabled>Select a Room Type</option>
             <option value='King_Suite'>King Suite</option>
             <option value='Queen_Suite'>Queen Suite</option>
