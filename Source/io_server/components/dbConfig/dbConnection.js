@@ -8,6 +8,7 @@ const pool = mysql.createPool({
     // port: mysqlPort,
     password: mysqlPassword,
     database: mysqlDatabase,
+    multipleStatements: true
 });
 
 pool.getConnection((err)=>{

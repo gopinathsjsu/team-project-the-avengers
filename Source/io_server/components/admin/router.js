@@ -17,7 +17,7 @@ let storage = multer.diskStorage({
 let upload = multer({storage: storage});
 
 router.post('/uploadFiles', upload.single('dataFile'), (req, res) =>{
-    uploadFiles(req, res);
+    uploadFiles(req, res, req.body.fileType);
 });
 
 
