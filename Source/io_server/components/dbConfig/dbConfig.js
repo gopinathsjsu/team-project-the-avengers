@@ -7,3 +7,18 @@ const config = {
 }
 // Enter all the above details
 module.exports = config;
+
+
+
+
+
+//  LOCAL TEST CODE - FAIZALI
+// const config = {
+//     mysqlUser: "root",
+//     mysqlPassword: "",
+//     mysqlHost: "localhost",
+//     mysqlDatabase: "main",
+//     mysqlPort: ""
+// }
+// // Enter all the above details
+// module.exports = config;
