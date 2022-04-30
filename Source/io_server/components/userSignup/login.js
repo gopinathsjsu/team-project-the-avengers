@@ -24,7 +24,8 @@ const login = async function(req,res){
                 //console.log(results);              
                 res.send({                
                     "code":200,                
-                    "success":"login successful",                
+                    "success":"login successful",
+                    "user_id":results[0].user_id,                
                     "email": results[0].email,                
                     "user_points": results[0].user_points            
                     })          
