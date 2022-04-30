@@ -14,15 +14,17 @@ const signup = async function(req,res){
         dbPool.query('INSERT INTO user_table SET ?',users, function (error, results, fields) {      
         if (error) {        
         res.send({          
-        "code":400,          
-        "failed":"error occurred",          
-        "error" : error})      
-        } else {        
-        res.send({          
-        "code":200,          
-        "success":"user registered sucessfully"            
-        });        
+            "code":400,          
+            "failed":"error occurred",          
+            "error" : error
+            })      
+        } 
+        else {        
+            res.send({          
+            "code":200,          
+            "success":"user registered sucessfully"            
+            });        
         }    
-        });  
-    }
+    });  
+}
     module.exports=signup;

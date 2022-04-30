@@ -16,32 +16,34 @@ const login = async function(req,res){
             }
             else{        
                 if(results.length>0){  
-                console.log(results);  
+                //console.log(results);  
                 const hashedPassword=results[0].password      
                 const comparison = await bcrypt.compare(password, hashedPassword)          
             
                 if(comparison){ 
-                    console.log(results);              
+                //console.log(results);              
                 res.send({                
-                "code":200,                
-                "success":"login successful",                
-                "email": results[0].email,                
-                "user_points": results[0].user_points            
-                })          
+                    "code":200,                
+                    "success":"login successful",                
+                    "email": results[0].email,                
+                    "user_points": results[0].user_points            
+                    })          
                 }
                 else{
-                console.log(error);
-                res.send({                 
-                "code":204,                 
-                "error":"Email and password does not match"            
-                })          
-                }        
+                //console.log(error);
+                    res.send({                 
+                    "code":204,                 
+                    "failed":"Email and password does not match",
+                    "error":error            
+                    })          
+                    }        
                 } 
-                else{          
-                res.send({            
-                "code":206,            
-                "error":"Email does not exist"              
-                });        
+                else{  
+                    res.send({            
+                    "code":206,            
+                    "failed":"Email does not exist",
+                    "error":error              
+                    });        
                 }      
             }      
         });  
