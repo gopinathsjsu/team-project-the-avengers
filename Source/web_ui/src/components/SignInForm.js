@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './SignInForm.css';
 
 function SignInForm() {
@@ -7,7 +8,17 @@ function SignInForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /* make a post request to backend to authenticate user here */
+    const info = {
+      email: email,
+      password: password
+    };
+
+    axios.post('/userSignup/login', info).then(response => {
+      console.log(response);
+      alert("Credentials are correct");
+    }).catch(error => {
+      console.log(error);
+    })
   }
 
   return (
