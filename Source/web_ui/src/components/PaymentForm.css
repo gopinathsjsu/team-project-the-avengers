@@ -15,6 +15,16 @@
   display: flex;
 }
 
+.left-input {
+  float: left;
+  width: 97%;
+}
+
+.right-input {
+  float: right;
+  width: 97%;
+}
+
 .expiry-cvc-container {
   display: flex;
 }

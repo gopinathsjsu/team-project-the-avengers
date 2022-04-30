@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import HeroImage from '../components/HeroImage';
 import SearchAvailabilityForm from '../components/SearchAvailabilityForm';
 

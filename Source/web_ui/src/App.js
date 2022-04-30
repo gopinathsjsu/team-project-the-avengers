@@ -7,6 +7,7 @@ import Booking from './pages/Booking';
 import Payment from './pages/Payment';
 import BookingDetails from './components/BookingDetails';
 import Reservations from './components/Reservations';
+import Admin from './pages/Admin';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/payment' element={<Payment />} />
           <Route path='/booking-details' element={<BookingDetails />} />
           <Route path='/reservations' element={<Reservations />} />
+          <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>
     </>
