@@ -9,6 +9,7 @@ import BookingDetails from './components/BookingDetails';
 import Reservations from './components/Reservations';
 import Admin from './pages/Admin';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -21,10 +22,10 @@ function App() {
           <Route path='/search' element={<Find />} />
           <Route path='/join' element={<Join />} />
           <Route path='/sign-in' element={<SignIn />} />
-          <Route path='/booking' element={<Booking />} />
-          <Route path='/payment' element={<Payment />} />
-          <Route path='/booking-details' element={<BookingDetails />} />
-          <Route path='/reservations' element={<Reservations />} />
+          <Route path='/booking' element={<ProtectedRoute><Booking /></ProtectedRoute>} />
+          <Route path='/payment' element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+          <Route path='/booking-details' element={<ProtectedRoute><BookingDetails /></ProtectedRoute>} />
+          <Route path='/reservations' element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>

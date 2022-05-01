@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { isAuthenticated } from './auth';
 import './SignInForm.css';
 
 function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/reservations');
+    }
+  }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +26,16 @@ function SignInForm() {
 
     axios.post('/userSignup/login', info).then(response => {
       console.log(response);
-      alert("Credentials are correct");
+      if (response.data.code === 200) {
+        const userInfo = {
+          user_id: response.data.user_id,
+          email: response.data.email
+        }
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        navigate('/reservations');
+      } else {
+        setErrorMessage(response.data.failed);
+      }
     }).catch(error => {
       console.log(error);
     })
@@ -34,7 +54,8 @@ function SignInForm() {
             <label htmlFor='password'>Password</label>
             <input id='password' type='password' onChange={(e) => setPassword(e.target.value)}></input>
           </div>
-          <input className='orange-button' type='submit' value='Sign In'></input>
+          <div className='error-message'>{errorMessage}</div>
+          <button className='orange-button' type='submit'>Sign In</button>
         </form>
         <div>Don't have an account? <a href='/join'>Join</a></div>
       </div>
