@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReservationCard from './ReservationCard';
+import { isAuthenticated } from './auth';
 import './Reservations.css';
 
 function Reservations() {
+  const userInfo = isAuthenticated();
   const [reservations, setReservations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchReservations() {
-      await axios.post('http://localhost:3000/viewBookings', {user_id: 1}).then(response => {
+      await axios.post('/viewBookings', {user_id: userInfo.user_id}).then(response => {
         setReservations(response.data);
         console.log(response);
       }).catch(error => {
@@ -19,7 +21,7 @@ function Reservations() {
     }
 
     fetchReservations();
-  }, []);
+  }, [userInfo.user_id]);
 
   return (
     <>

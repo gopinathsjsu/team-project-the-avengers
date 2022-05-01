@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { isAuthenticated } from './auth';
 import './BookingDetails.css';
 
 function BookingDetails() {
@@ -40,6 +41,7 @@ function BookingDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userInfo = isAuthenticated();
     const info = {
       room_no: roomID,
       room_type: roomType,
@@ -48,11 +50,11 @@ function BookingDetails() {
       end_date: checkOut,
       amenities: selectedAmenities,
       no_of_guests: guests,
-      user_id: 1,
+      user_id: userInfo.user_id,
       price: total
     };
 
-    axios.post('http://localhost:3000/createBooking', info).then(response => {
+    axios.post('/createBooking', info).then(response => {
       console.log(response);
       setErrorMessage('');
       setSuccess(true);

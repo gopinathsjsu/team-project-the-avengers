@@ -17,7 +17,7 @@ function Search() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3000/getLocation').then(response => {
+    axios.post('/getLocation').then(response => {
       console.log(response);
       setLocations(response.data.location);
     }).catch(error => {
@@ -35,7 +35,6 @@ function Search() {
       setResult(data.result);
       setMessage(data.message);
       navigate(loc.pathname, {});   /* clear state */
-      console.log(location + roomType);
     }
   }, [loc, navigate,]);
 
@@ -60,7 +59,7 @@ function Search() {
         room_type: roomType
       };
 
-      axios.post('http://localhost:3000/search', info).then(response => {
+      axios.post('/search', info).then(response => {
         console.log(response);
         if (response.data.room_no === -1) {
           setResult(0);
@@ -94,7 +93,7 @@ function Search() {
         <form onSubmit={handleSubmit}>
           <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
             <option value='' disabled>Select a Location</option>
-            {locations.map((location) => (
+            {locations?.map((location) => (
               <option value={location}>{location}</option>
             ))}
           </select>

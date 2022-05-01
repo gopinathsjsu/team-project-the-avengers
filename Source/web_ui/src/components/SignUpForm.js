@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { isAuthenticated } from './auth';
 import './SignUpForm.css';
 
 function SignUpForm() {
@@ -10,6 +12,14 @@ function SignUpForm() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate('/');
+    }
+  }, [navigate]);
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,8 +46,10 @@ function SignUpForm() {
 
     axios.post('/userSignup/signup', info).then(response => {
       console.log(response);
-      alert("Account successfully created");
+      alert('Account successfully created');
+      navigate('/sign-in');
     }).catch(error => {
+      alert('Sorry, something went wrong. Please try again later.');
       console.log(error);
     })
   }

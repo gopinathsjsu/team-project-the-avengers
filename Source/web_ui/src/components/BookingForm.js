@@ -84,7 +84,7 @@ function BookingForm() {
       amenities: selectedAmenities
     };
 
-    axios.post('http://localhost:3000/price', info).then(response => {
+    axios.post('/price', info).then(response => {
       console.log(response);
       const data = {
         location: location,
