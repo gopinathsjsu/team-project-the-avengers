@@ -11,25 +11,22 @@ function AdminFileUploadForm() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('dataFile', dataFile);
+    formData.append('fileType', fileName);
 
     const config = {
         headers: {
-            'content-type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data'
         }
     };
 
-    const info = {
-      dataFile: dataFile,
-      fileType: fileName
-    }
-
-    // axios.post('http://localhost:3000/admin/uploadFiles', info, config).then(response => {
-    //   console.log(response);
-    //   setErrorMessage('');
-    // }).catch(error => {
-    //   console.log(error);
-    //   setErrorMessage('Sorry, something went wrong. Please try again later.');
-    // })
+    console.log(fileName);
+    axios.post('/admin/uploadFiles', formData, config).then(response => {
+      console.log(response);
+      setErrorMessage('');
+    }).catch(error => {
+      console.log(error);
+      setErrorMessage('Sorry, something went wrong. Please try again later.');
+    })
   }
 
   return (
@@ -40,7 +37,7 @@ function AdminFileUploadForm() {
           <div className='form-input'>
             <select onChange={(e) => setFileName(e.target.value)} defaultValue='' required>
               <option value='' disabled>Select a Data File</option>
-              <option value='hotel'>Hotel</option>
+              <option value='Hotel'>Hotel</option>
               <option value='location'>Location</option>
             </select>
           </div>
