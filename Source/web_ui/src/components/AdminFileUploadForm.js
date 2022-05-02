@@ -10,8 +10,8 @@ function AdminFileUploadForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('dataFile', dataFile);
     formData.append('fileType', fileName);
+    formData.append('dataFile', dataFile);
 
     const config = {
         headers: {
