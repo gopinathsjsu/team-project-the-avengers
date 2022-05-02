@@ -53,9 +53,9 @@ const login1 = async function(req,res){
                 }
                 else{
                     console.log(error);
-                    res.send({                 
-                    "code":204,                 
-                    "failed":"Email and password does not match",
+                    res.status(204).json({                 
+                    //"code":204,                 
+                    "failed":"email and password does not match",
                     "error":error            
                     })          
                     } 
@@ -63,9 +63,9 @@ const login1 = async function(req,res){
                 else{
                     console.log("after length>0");
                     console.log(error);
-                    res.send({
-                        "code":400,
-                        "message":"invalid credentials",
+                    res.status(400).json({
+                        //"code":400,
+                        "failed":"invalid credentials",
                         "error":error
                     });
                 }
