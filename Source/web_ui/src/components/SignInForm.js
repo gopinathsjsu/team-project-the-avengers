@@ -8,6 +8,7 @@ function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  //const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
 
@@ -26,17 +27,20 @@ function SignInForm() {
 
     axios.post('/userSignup/login1', info).then(response => {
       console.log(response);
-      if (response.data.code === 200) {
+      //if (response.data.code === 200) {
         const userInfo = {
           user_id: response.data.user_id,
-          email: response.data.email
+          email: response.data.email,
+          token: response.data.token
         }
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        localStorage.setItem("token", response.token);
+        //localStorage.setItem('userInfo', JSON.stringify(userInfo));
         navigate('/reservations');
-      } else {
+      //} else {
         setErrorMessage(response.data.failed);
-      }
+      //}
     }).catch(error => {
+      //setErrorMessage(response.data.failed);
       console.log(error);
     })
   }

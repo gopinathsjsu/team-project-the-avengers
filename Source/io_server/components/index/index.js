@@ -1,5 +1,6 @@
 const serverConfig = require('./../serverConfig/serverConfig');
 const path = require('path');
+require("dotenv").config();
 
 const express = require('express');
 const app = express()
