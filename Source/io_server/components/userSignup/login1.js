@@ -35,9 +35,10 @@ const login1 = async function(req,res){
                     console.log("comparision");
                     const token=jwt.sign(
                         {
-                        user_id:results[0].user_id,
-                        email:results[0].email,
-                        user_points:results[0].user_points
+                        "user_id":results[0].user_id,
+                        "email":results[0].email,
+                        "user_points":results[0].user_points,
+                        "user_type":results[0].user_type
                         },
                         "" + process.env.JWT_KEY,
                         //`${process.env.TOKEN_KEY}`,
@@ -47,7 +48,8 @@ const login1 = async function(req,res){
                     );
                     res.status(200).json({
                         "message":"user logged in successfully",
-                        token:token
+                        token:token,
+                        "user_type":results[0].user_type
                     });
 
                 }
