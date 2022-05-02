@@ -27,20 +27,14 @@ function SignInForm() {
 
     axios.post('/userSignup/login1', info).then(response => {
       console.log(response);
-      //if (response.data.code === 200) {
-        const userInfo = {
-          user_id: response.data.user_id,
-          email: response.data.email,
-          token: response.data.token
-        }
-        localStorage.setItem("token", response.token);
-        //localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        navigate('/reservations');
-      //} else {
-        setErrorMessage(response.data.failed);
-      //}
+      const userInfo = {
+        token: response.data.token,
+        userRole: response.data.user_type
+      }
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      navigate('/reservations');
     }).catch(error => {
-      //setErrorMessage(response.data.failed);
+      setErrorMessage('Incorrect email or password');
       console.log(error);
     })
   }
