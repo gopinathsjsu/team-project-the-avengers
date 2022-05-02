@@ -24,7 +24,7 @@ function SignInForm() {
       password: password
     };
 
-    axios.post('/userSignup/login', info).then(response => {
+    axios.post('/userSignup/login1', info).then(response => {
       console.log(response);
       if (response.data.code === 200) {
         const userInfo = {
