@@ -5,60 +5,69 @@ import { isAuthenticated } from './auth';
 import './Reservations.css';
 
 function Reservations() {
-  const userInfo = isAuthenticated();
+  const { token } = isAuthenticated();
   const [reservations, setReservations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
+    const headers = {
+      'x-access-token': token
+    }
     async function fetchReservations() {
-      await axios.post('/viewBookings', {user_id: userInfo.user_id}).then(response => {
+      await axios.post('/viewBookings', {token: token}, headers).then(response => {
         setReservations(response.data);
         console.log(response);
       }).catch(error => {
+        setErrorMessage('Unauthorized Access');
         console.log(error);
       })
       setIsLoading(false);
     }
 
     fetchReservations();
-  }, [userInfo.user_id]);
+  }, [token]);
 
   return (
     <>
-      <div className='reservations-container'>
-        <h1>Your Reservations</h1>
-        {reservations.length > 0 ? (
-          <div>
-            <div className='header'>
-              <div className='room-number-column-header'>Room #</div>
-              <div className='column-header'>Room Type</div>
-              <div className='column-header'>Location</div>
-              <div className='column-header'>Check-in Date</div>
-              <div className='column-header'>Check-out Date</div>
-              <div className='price-column-header'>Price</div>
-              <div className='button-column'></div>
+      {!isLoading && !errorMessage ? (
+        <div className='reservations-container'>
+          <h1>Your Reservations</h1>
+          {reservations.length > 0 ? (
+            <div>
+              <div className='header'>
+                <div className='room-number-column-header'>Room #</div>
+                <div className='column-header'>Room Type</div>
+                <div className='column-header'>Location</div>
+                <div className='column-header'>Check-in Date</div>
+                <div className='column-header'>Check-out Date</div>
+                <div className='price-column-header'>Price</div>
+                <div className='button-column'></div>
+              </div>
+              {reservations.map((reservation) => (
+                <ReservationCard
+                  id={reservation.id}
+                  roomNumber={reservation.room_no}
+                  roomType={reservation.room_type.replace('_', ' ')}
+                  location={reservation.location}
+                  checkIn={reservation.start_date.split("T")[0]}
+                  checkOut={reservation.end_date.split("T")[0]}
+                  price={reservation.price}
+                />
+              ))}
             </div>
-            {reservations.map((reservation) => (
-              <ReservationCard
-                id={reservation.id}
-                roomNumber={reservation.room_no}
-                roomType={reservation.room_type.replace('_', ' ')}
-                location={reservation.location}
-                checkIn={reservation.start_date.split("T")[0]}
-                checkOut={reservation.end_date.split("T")[0]}
-                price={reservation.price}
-              />
-            ))}
-          </div>
-        ) : (
-          <div>
-            {!isLoading
-              ? <div>You do not have any reservations.</div>
-              : <> </>
-            }
-          </div>
-        )}
-      </div>
+          ) : (
+            <div>
+              {!isLoading
+                ? <div>You do not have any reservations.</div>
+                : <> </>
+              }
+            </div>
+          )}
+        </div>
+      ) : (
+        <div>{errorMessage}</div>
+      )}
     </>
   )
 }
