@@ -41,7 +41,7 @@ function BookingDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userInfo = isAuthenticated();
+    const { token } = isAuthenticated();
     const info = {
       room_no: roomID,
       room_type: roomType,
@@ -50,11 +50,13 @@ function BookingDetails() {
       end_date: checkOut,
       amenities: selectedAmenities,
       no_of_guests: guests,
-      user_id: userInfo.user_id,
       price: total
     };
 
-    axios.post('/createBooking', info).then(response => {
+    const headers = {
+      'x-access-token': token
+    }
+    axios.post('/createBooking', info, headers).then(response => {
       console.log(response);
       setErrorMessage('');
       setSuccess(true);

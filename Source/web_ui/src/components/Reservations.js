@@ -17,7 +17,7 @@ function Reservations() {
     async function fetchReservations() {
       await axios.post('/viewBookings', {token: token}, headers).then(response => {
         setReservations(response.data);
-        console.log(response);
+        // console.log(response);
       }).catch(error => {
         setErrorMessage('Unauthorized Access');
         console.log(error);
@@ -46,6 +46,7 @@ function Reservations() {
               </div>
               {reservations.map((reservation) => (
                 <ReservationCard
+                  key={reservation.id}
                   id={reservation.id}
                   roomNumber={reservation.room_no}
                   roomType={reservation.room_type.replace('_', ' ')}

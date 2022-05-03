@@ -45,9 +45,13 @@ function SignUpForm() {
     };
 
     axios.post('/userSignup/signup1', info).then(response => {
-      console.log(response);
-      alert('Account successfully created');
-      navigate('/sign-in');
+      // console.log(response);
+      if (response.data.code === 200) {
+        alert('Account successfully created');
+        navigate('/sign-in');
+      } else {
+        alert('Sorry, something went wrong. Please try again later.');
+      }
     }).catch(error => {
       alert('Sorry, something went wrong. Please try again later.');
       console.log(error);

@@ -18,7 +18,7 @@ function Search() {
 
   useEffect(() => {
     axios.post('/getLocation').then(response => {
-      console.log(response);
+      // console.log(response);
       setLocations(response.data.location);
     }).catch(error => {
       console.log(error);
@@ -36,7 +36,7 @@ function Search() {
       setMessage(data.message);
       navigate(loc.pathname, {});   /* clear state */
     }
-  }, [loc, navigate,]);
+  }, [loc, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,7 +94,7 @@ function Search() {
           <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
             <option value='' disabled>Select a Location</option>
             {locations?.map((location) => (
-              <option value={location}>{location}</option>
+              <option key={location} value={location}>{location}</option>
             ))}
           </select>
           <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>

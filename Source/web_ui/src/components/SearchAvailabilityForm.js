@@ -16,7 +16,7 @@ function SearchAvailabilityForm() {
   
   useEffect(() => {
     axios.post('/getLocation').then(response => {
-      console.log(response);
+      // console.log(response);
       setLocations(response.data.location);
     }).catch(error => {
       console.log(error);
@@ -25,11 +25,11 @@ function SearchAvailabilityForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Dates: ' + checkIn + ' ' + checkOut);
+    // console.log('Dates: ' + checkIn + ' ' + checkOut);
     const start = moment(checkIn);
     const end = moment(checkOut);
     const days = end.diff(start, 'days');
-    console.log('Total number of days: ' + days);
+    // console.log('Total number of days: ' + days);
 
     /* validate check in and check out date */
     if (days < 1) {
@@ -46,7 +46,7 @@ function SearchAvailabilityForm() {
       };
 
       axios.post('/search', info).then(response => {
-        console.log(response);
+        // console.log(response);
         const data = {
           location: location,
           checkIn: checkIn,
@@ -81,7 +81,7 @@ function SearchAvailabilityForm() {
             <select id='destination' onChange={(e) => setLocation(e.target.value)} defaultValue='' required>
               <option value='' disabled>Select a Location</option>
               {locations?.map((location) => (
-                <option value={location}>{location}</option>
+                <option key={location} value={location}>{location}</option>
               ))}
           </select>
           </div>

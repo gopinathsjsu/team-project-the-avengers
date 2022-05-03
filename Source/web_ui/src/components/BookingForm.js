@@ -135,7 +135,7 @@ function BookingForm() {
             <label>Amenities</label>
             <div className='amenity-option'>
               <input id='daily-breakfast' name='dailyBreakfast' type='checkbox' className='amenity-checkbox' value='Daily Continental Breakfast' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='daily-breakfast'>Daily Continental Breakfast</label>
+              <label className='amenity-label' htmlFor='daily-breakfast'>Daily Continental Breakfast</label>
             </div>
             <div className='amenity-option'>
               <input id='fitness-room' name='fitnessRoom' type='checkbox' className='amenity-checkbox' value='Access to fitness room' onChange={handleCheckboxChange}></input>
