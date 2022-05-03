@@ -15,13 +15,13 @@ exports.viewBookings = async (req,res)=>
   let ans={};
   let result = await con.execute(` SELECT * FROM main.Bookings where user_id ='${user_id}' order by start_date`)
                   .then((res)=>{
-                    console.log(res[0][0]);
+                    //console.log(res[0][0]);
                     var RES=res[0];
                     ans=RES;
                     
                   })
                   .catch((err)=>{
-                    console.log(err);
+                    //console.log(err);
                   })
                   con.close();
                   res.json(ans);
