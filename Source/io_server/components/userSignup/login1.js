@@ -15,10 +15,10 @@ const login1 = async function(req,res){
     const password = req.body.password;  
         
         dbPool.query('select * from user_table where email= ?',[email], async function (error, results, fields) {      
-            console.log("inside query");
+           //console.log("inside query");
             if(error){
-                console.log("after query 1st error");
-                console.log(error);
+                //console.log("after query 1st error");
+                //console.log(error);
                 res.status(404).json({
                     "failed":"error occured",
                     "error":error
@@ -26,14 +26,14 @@ const login1 = async function(req,res){
             }
             
             else{
-                console.log("inside else before length>0")
+                //console.log("inside else before length>0")
                 if(results.length>0){
                 const hashedPassword=results[0].password     
                 const comparison = await bcrypt.compare(password, hashedPassword)
-                console.log("if results.lenght>0");
+                //console.log("if results.lenght>0");
                 
                 if(comparison){
-                    console.log("comparision")
+                    //console.log("comparision")
                     const token=jwt.sign(
                         {
                         "user_id":results[0].user_id,
@@ -54,7 +54,7 @@ const login1 = async function(req,res){
 
                 }
                 else{
-                    console.log("else inside length>0");
+                    //console.log("else inside length>0");
                     //console.log(error);
                     res.status(401).json({                 
                     //"code":204,                 
@@ -64,7 +64,7 @@ const login1 = async function(req,res){
                     } 
             }
                 else{
-                    console.log("after length>0");
+                    //console.log("after length>0");
                     //console.log(error);
                     res.status(400).json({
                         //"code":400,
