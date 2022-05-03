@@ -16,6 +16,7 @@ cd web_ui
 2. Install dependencies:
 ```
 npm install
+npm install jsonwebtoken
 ```
 
 3. Start frontend:
