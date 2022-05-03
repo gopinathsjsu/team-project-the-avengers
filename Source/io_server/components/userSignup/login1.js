@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 const bcrypt = require('bcrypt');
 //const saltRounds = 10;
@@ -26,13 +26,14 @@ const login1 = async function(req,res){
             }
             
             else{
-                console.log("inside else before length>0");
+                console.log("inside else before length>0")
                 if(results.length>0){
-                const hashedPassword=results[0].password;      
-                const comparison = await bcrypt.compare(password, hashedPassword);
+                const hashedPassword=results[0].password     
+                const comparison = await bcrypt.compare(password, hashedPassword)
                 console.log("if results.lenght>0");
+                
                 if(comparison){
-                    console.log("comparision");
+                    console.log("comparision")
                     const token=jwt.sign(
                         {
                         "user_id":results[0].user_id,
@@ -44,8 +45,7 @@ const login1 = async function(req,res){
                         //`${process.env.TOKEN_KEY}`,
                         {
                         expiresIn:"1h",
-                        }
-                    );
+                        })
                     res.status(200).json({
                         "message":"user logged in successfully",
                         token:token,
@@ -54,17 +54,18 @@ const login1 = async function(req,res){
 
                 }
                 else{
-                    console.log(error);
-                    res.status(204).json({                 
+                    console.log("else inside length>0");
+                    //console.log(error);
+                    res.status(401).json({                 
                     //"code":204,                 
                     "failed":"email and password does not match",
                     "error":error            
-                    })          
+                    });          
                     } 
             }
                 else{
                     console.log("after length>0");
-                    console.log(error);
+                    //console.log(error);
                     res.status(400).json({
                         //"code":400,
                         "failed":"invalid credentials",

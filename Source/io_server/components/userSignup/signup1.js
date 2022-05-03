@@ -23,12 +23,12 @@ const signup1 = async function(req,res){
         else {
             const token = jwt.sign(
                 { email: users.email },
-                process.env.TOKEN_KEY,
+                "" + process.env.JWT_KEY,
                 {
-                  expiresIn: "2h",
+                  expiresIn: "1h",
                 }
               );
-              users.token=token;
+            users.token=token;
             res.send({          
             "code":200,          
             "success":"user registered sucessfully"            

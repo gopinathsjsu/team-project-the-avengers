@@ -6,9 +6,14 @@ const express = require('express');
 const app = express()
 app.use(express.json());
 
+const authMiddleware = require('../middleware/auth')
+
+
 var userSignup = require('./../userSignup/router');
 var admin = require('./../admin/router');
 global.dbPool = require('./../dbConfig/dbConnection');
+const auth = require("./../userSignup/auth");
+
 
 var signup = require('./../userSignup/router');
 const { get_Rooms } = require('./../../202 Node js/getRooms');
