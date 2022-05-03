@@ -41,7 +41,7 @@ const login1 = async function(req,res){
                         "user_points":results[0].user_points,
                         "user_type":results[0].user_type
                         },
-                        "" + process.env.JWT_KEY,
+                        "" + process.env.TOKEN_KEY,
                         //`${process.env.TOKEN_KEY}`,
                         {
                         expiresIn:"1h",

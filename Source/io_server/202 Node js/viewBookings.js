@@ -10,7 +10,8 @@ exports.viewBookings = async (req,res)=>
       user: "admin",
       password: "password"
   });
-  var user_id=req.body.user_id;
+  // var user_id=req.body.user_id;
+  var user_id = req.user;
   let ans={};
   let result = await con.execute(` SELECT * FROM main.Bookings where user_id ='${user_id}' `)
                   .then((res)=>{

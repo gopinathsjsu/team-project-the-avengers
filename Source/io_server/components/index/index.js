@@ -6,13 +6,13 @@ const express = require('express');
 const app = express()
 app.use(express.json());
 
-const authMiddleware = require('../middleware/auth')
+// const authMiddleware = require('../middleware/auth')
 
 
 var userSignup = require('./../userSignup/router');
 var admin = require('./../admin/router');
 global.dbPool = require('./../dbConfig/dbConnection');
-const auth = require("./../userSignup/auth");
+const isAuth = require("./../userSignup/auth");
 
 
 var signup = require('./../userSignup/router');
@@ -47,7 +47,7 @@ app.post('/getRooms', get_Rooms);
 app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking',createBooking);
 app.post('/getLocation',getLocation);
-app.post('/viewBookings',viewBookings);
+app.post('/viewBookings', isAuth, viewBookings);
 app.post('/deleteBookings',deleteBookings);
 
 //#### ROUTES DEFINED ENDS ####
