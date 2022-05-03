@@ -11,11 +11,11 @@ exports.viewBookings = async (req,res)=>
       password: "password"
   });
   // var user_id=req.body.user_id;
-  var user_id = req.user;
+  var user_id = req.body.user_id;
   let ans={};
   let result = await con.execute(` SELECT * FROM main.Bookings where user_id ='${user_id}' order by start_date`)
                   .then((res)=>{
-                    //console.log(res[0][0]);
+                    console.log(res[0][0]);
                     var RES=res[0];
                     ans=RES;
                     
