@@ -8,6 +8,7 @@ function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  //const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
 
@@ -24,19 +25,16 @@ function SignInForm() {
       password: password
     };
 
-    axios.post('/userSignup/login', info).then(response => {
+    axios.post('/userSignup/login1', info).then(response => {
       console.log(response);
-      if (response.data.code === 200) {
-        const userInfo = {
-          user_id: response.data.user_id,
-          email: response.data.email
-        }
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        navigate('/reservations');
-      } else {
-        setErrorMessage(response.data.failed);
+      const userInfo = {
+        token: response.data.token,
+        userRole: response.data.user_type
       }
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      navigate('/reservations');
     }).catch(error => {
+      setErrorMessage('Incorrect email or password');
       console.log(error);
     })
   }
