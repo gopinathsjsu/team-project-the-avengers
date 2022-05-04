@@ -45,6 +45,7 @@ exports.deleteBookings = async (req,res)=>
                     return res.json({"status":"Not possible"}) ;
                     
                   }
+                  //con.close();
                   
  
   let result = await con.execute(` DELETE FROM main.Bookings where id =${transaction_id} `)
@@ -56,6 +57,7 @@ exports.deleteBookings = async (req,res)=>
                     console.log(err);
                     
                   })
+                  //con.close();
     //write code for updatting user point here
     var user_points;
     let result1 = await con.execute(` SELECT user_points from main.user_table where user_id='${user_id}' `)
@@ -69,6 +71,7 @@ exports.deleteBookings = async (req,res)=>
       console.log(err);
       
     })
+    //con.close();
     user_points=user_points-(old_price)/10;
     let result2=await con.execute(` UPDATE  main.user_table set user_points=${user_points} where user_id ='${user_id}' `)
     .then((res)=>{
@@ -83,6 +86,7 @@ exports.deleteBookings = async (req,res)=>
       return "Failure";
       
     })
+    con.close();
       res.status(200);
       res.json({"status":result2});
 }
