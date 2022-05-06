@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './AdminFileUploadForm.css';
+import './AdminPage.css';
 
 function AdminFileUploadForm() {
   const [fileName, setFileName] = useState('');
@@ -46,7 +46,7 @@ function AdminFileUploadForm() {
           </div>
         </div>
         <div className='error-message'>{errorMessage}</div>
-        <button className='upload-button' type='submit'>Upload</button>
+        <button className='blue-button' type='submit'>Upload</button>
       </form>
     </div>
   )
