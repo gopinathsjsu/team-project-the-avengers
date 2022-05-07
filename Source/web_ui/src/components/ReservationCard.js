@@ -1,9 +1,28 @@
 import React from 'react';
+import axios from 'axios';
+import { isAuthenticated } from './auth';
 import './ReservationCard.css';
 
 const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut, price}) => {
-  const cancelReservation = () => {
-    /* make a delete request to backend to cancel reservation here */
+  const cancelReservation = (e) => {
+    const { token } = isAuthenticated();
+    
+    const info = {
+      token: token,
+      transaction_id: id
+    };
+
+    const headers = {
+      'x-access-token': token
+    }
+
+    axios.post('/deleteBookings', info, headers).then(response => {
+      // console.log(response);
+      window.location.reload();
+    }).catch(error => {
+      // console.log(error);
+      alert('Sorry, something went wrong. Please try again later.');
+    })
   }
 
   return (
@@ -14,7 +33,7 @@ const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut,
       <div className='reservation-info'>{checkIn}</div>
       <div className='reservation-info'>{checkOut}</div>
       <div className='reservation-price'>{price}</div>
-      <button className='cancel-button' onClick={cancelReservation}>Cancel Reservation</button>
+      <button className='cancel-reservation-button' onClick={cancelReservation}>Cancel Reservation</button>
     </div>
   )
 }
