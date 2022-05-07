@@ -42,7 +42,9 @@ function BookingDetails() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { token } = isAuthenticated();
+    
     const info = {
+      token: token,
       room_no: roomID,
       room_type: roomType,
       location: location,
@@ -56,6 +58,7 @@ function BookingDetails() {
     const headers = {
       'x-access-token': token
     }
+
     axios.post('/createBooking', info, headers).then(response => {
       console.log(response);
       setErrorMessage('');

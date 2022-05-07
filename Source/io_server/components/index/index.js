@@ -50,7 +50,7 @@ app.post('/price', isAuth,price_calculate);
 app.post('/getRooms', get_Rooms);
 app.post('/getHotel', get_Hotels);
 app.post('/changeRoomno',changeRoomno);
-app.post('/createBooking',createBooking);
+app.post('/createBooking', isAuth, createBooking);
 app.post('/changeHotel',changeHotel);
 app.post('/insertLocation',insertLocation);
 app.post('/getLocation',getLocation);
