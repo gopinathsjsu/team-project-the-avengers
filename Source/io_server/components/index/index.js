@@ -20,7 +20,9 @@ const { get_Rooms } = require('./../../202 Node js/getRooms');
 const { get_Hotels } = require('./../../202 Node js/getHotels');
 const { price_calculate } = require('./../../202 Node js/price_calculate');
 const { changeHotel } = require('./../../202 Node js/changeHotel');
+const { insertLocation } = require('./../../202 Node js/insertLocation');
 const { changeRoomno } = require('./../../202 Node js/changeRoomno');
+const { deleteLocation } = require('./../../202 Node js/deleteLocation');
 const { createBooking } = require('./../../202 Node js/createBooking');
 const { getLocation} = require('./../../202 Node js/getLocation');
 const { viewBookings} = require('./../../202 Node js/viewBookings');
@@ -50,9 +52,11 @@ app.post('/getHotel', get_Hotels);
 app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking',createBooking);
 app.post('/changeHotel',changeHotel);
+app.post('/insertLocation',insertLocation);
 app.post('/getLocation',getLocation);
+app.post('/deleteLocation',deleteLocation);
 app.post('/viewBookings', isAuth, viewBookings);
-app.post('/deleteBookings',deleteBookings);
+app.post('/deleteBookings',isAuth,deleteBookings);
 
 //#### ROUTES DEFINED ENDS ####
 
