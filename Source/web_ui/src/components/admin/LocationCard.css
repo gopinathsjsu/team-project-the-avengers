@@ -15,7 +15,7 @@
   width: 17%;
 }
 
-.edit-button {
+.edit-location-button {
   border-radius: 2px;
   box-sizing: border-box;
   font-size: 1rem;
@@ -27,4 +27,19 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.edit-location-modal-form-input {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.edit-location-modal-form-input label {
+  width: 70%;
+}
+
+.edit-location-modal-form-input input {
+  width: 30%;
 }

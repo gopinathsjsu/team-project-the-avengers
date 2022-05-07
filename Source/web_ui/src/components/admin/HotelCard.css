@@ -1,4 +1,4 @@
-.reservation-card {
+.hotel-card {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -11,24 +11,35 @@
   border-radius: 5px;
 }
 
-.reservation-info {
+.hotel-info {
   width: 15%;
 }
 
-.cancel-reservation-button {
+.edit-hotel-button {
   border-radius: 2px;
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 20%;
+  width: 10%;
   padding: 10px;
-  background: #d11a2a;
+  background: #24a0ed;
   border: none;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 
-.reservation-room-number, .reservation-price {
-  width: 10%;
+.edit-hotel-modal-form-input {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.edit-hotel-modal-form-input label {
+  width: 50%;
+}
+
+.edit-hotel-modal-form-input input {
+  width: 50%;
 }
