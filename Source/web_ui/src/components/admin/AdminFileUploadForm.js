@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './AdminFileUploadForm.css';
+import './AdminPage.css';
 
 function AdminFileUploadForm() {
   const [fileName, setFileName] = useState('');
@@ -10,8 +10,8 @@ function AdminFileUploadForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('dataFile', dataFile);
     formData.append('fileType', fileName);
+    formData.append('dataFile', dataFile);
 
     const config = {
         headers: {
@@ -46,7 +46,7 @@ function AdminFileUploadForm() {
           </div>
         </div>
         <div className='error-message'>{errorMessage}</div>
-        <button className='upload-button' type='submit'>Upload</button>
+        <button className='blue-button' type='submit'>Upload</button>
       </form>
     </div>
   )

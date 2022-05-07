@@ -1,0 +1,30 @@
+.location-card {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 20px;
+  font-family: 'Helvetica';
+  background-color: white;
+  border-radius: 5px;
+}
+
+.location-info {
+  width: 17%;
+}
+
+.edit-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 15%;
+  padding: 10px;
+  background: #24a0ed;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

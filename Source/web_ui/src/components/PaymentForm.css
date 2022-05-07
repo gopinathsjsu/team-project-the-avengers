@@ -28,3 +28,7 @@
 .expiry-cvc-container {
   display: flex;
 }
+
+.points-applied {
+  color: darkblue;
+}

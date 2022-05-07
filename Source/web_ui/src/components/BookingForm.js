@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { isAuthenticated } from './auth';
 import './BookingForm.css';
 
 function BookingForm() {
@@ -17,6 +18,7 @@ function BookingForm() {
     dailyParking: '',
     allMeals: ''
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const loc = useLocation();
   const navigate = useNavigate();
@@ -75,7 +77,10 @@ function BookingForm() {
       selectedAmenities.push(1);
     }
 
+    const { token } = isAuthenticated();
+    
     const info = {
+      token: token,
       start_date: checkIn,
       end_date: checkOut,
       location: location,
@@ -84,7 +89,11 @@ function BookingForm() {
       amenities: selectedAmenities
     };
 
-    axios.post('/price', info).then(response => {
+    const headers = {
+      'x-access-token': token
+    };
+
+    axios.post('/price', info, headers).then(response => {
       console.log(response);
       const data = {
         location: location,
@@ -95,12 +104,14 @@ function BookingForm() {
         guests: guests,
         selectedAmenities: selectedAmenities,
         amenitiesInfo: amenities,
-        total: response.data.price
+        total: response.data.price,
+        pointsApplied: response.data.user_points
       };
-
-      navigate('/payment', {state: data})
+      setErrorMessage('');
+      navigate('/payment', {state: data});
     }).catch(error => {
-      console.log(error);
+      setErrorMessage('Something went wrong. Please try again later.');
+      // console.log(error);
     })
   }
 
@@ -135,7 +146,7 @@ function BookingForm() {
             <label>Amenities</label>
             <div className='amenity-option'>
               <input id='daily-breakfast' name='dailyBreakfast' type='checkbox' className='amenity-checkbox' value='Daily Continental Breakfast' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' for='daily-breakfast'>Daily Continental Breakfast</label>
+              <label className='amenity-label' htmlFor='daily-breakfast'>Daily Continental Breakfast</label>
             </div>
             <div className='amenity-option'>
               <input id='fitness-room' name='fitnessRoom' type='checkbox' className='amenity-checkbox' value='Access to fitness room' onChange={handleCheckboxChange}></input>
@@ -154,6 +165,7 @@ function BookingForm() {
               <label className='amenity-label' htmlFor='all-meals'>All meals included</label>
             </div>
           </div>
+          <div className='error-message'>{errorMessage}</div>
           <button className='orange-button' type='submit'>Next</button>
         </form>
       </div>

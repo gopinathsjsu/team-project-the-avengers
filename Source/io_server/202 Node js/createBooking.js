@@ -18,7 +18,7 @@ var start_date=req.body.start_date;
 var end_date=req.body.end_date;
 var amenities_id=req.body.amenities;
 var no_of_guests=req.body.no_of_guests;
-var user_id=req.body.user_id;
+var user_id=req.user;
 var price=req.body.price;
 
 var am='';
