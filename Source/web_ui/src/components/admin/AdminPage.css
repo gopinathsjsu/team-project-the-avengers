@@ -7,18 +7,6 @@
   width: 30%;
 }
 
-.admin-edit-form {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  max-width: 30%;
-  padding: 20px;
-  font-family: 'Helvetica';
-  background-color: white;
-  border-radius: 5px;
-}
-  
 .blue-button {
   height: 50px;
   margin: 15px 0px;
@@ -28,7 +16,7 @@
   font-size: 1rem;
   font-family: 'Helvetica';
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 2px;
   cursor: pointer;
   width: 100%;
 }
@@ -42,7 +30,7 @@
   font-size: 1rem;
   font-family: 'Helvetica';
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 2px;
   cursor: pointer;
   width: 100%;
 }
@@ -61,6 +49,8 @@
   float: right;
 }
 
+/* location table */
+
 .location-table {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -74,4 +64,27 @@
 
 .location-table-button-column {
   width: 15%;
+}
+
+/* modal form */
+
+.modal-form {
+  padding: 10px;
+  font-family: 'Helvetica';
+  background-color: white;
+}
+
+.modal-form-input {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.modal-form-input label {
+  width: 70%;
+}
+
+.modal-form-input input {
+  width: 30%;
 }
