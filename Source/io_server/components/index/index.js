@@ -42,7 +42,7 @@ app.use('/signup', userSignup);
 app.use('/admin', admin);
 
 app.post('/search', query);
-app.post('/price', price_calculate);
+app.post('/price', isAuth,price_calculate);
 app.post('/getRooms', get_Rooms);
 app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking',createBooking);
