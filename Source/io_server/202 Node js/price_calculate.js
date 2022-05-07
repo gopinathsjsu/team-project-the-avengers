@@ -34,6 +34,10 @@ exports.price_calculate = async (req,res)=>
   var from_date;
   var to_date;
   var amemities=0.0;
+  console.log("HERE!!")
+  console.log(""+req.user);
+  var user_id=req.user;
+  var user_points=0;
   let result = await con.execute(` SELECT * FROM main.Hotel where location ='${location}' `)
                   .then((res)=>{
                     //console.log(res[0][0]);
@@ -52,13 +56,14 @@ exports.price_calculate = async (req,res)=>
                     }*/
                   })
                   .catch((err)=>{
+                    console.log("ERROR");
                     console.log(err);
                   })
     
     //con.close();
     
-   console.log(from_date);
-   console.log(cost_mul);
+   //console.log(from_date);
+   //console.log(cost_mul);
 
    let result1 = await con.execute(` SELECT * FROM main.Room where room_type ='${room_type}' `)
                   .then((res)=>{
@@ -108,12 +113,29 @@ exports.price_calculate = async (req,res)=>
                   .catch((err)=>{
                     console.log(err);
                   })
+  
+    let result3 = await con.execute(` SELECT user_points FROM main.user_table where user_id='${user_id}' `)
+                  .then((res)=>{
+                    var RES=res[0][0];
+                    //console.log(RES[0])
+                    //write code for getting the amount of each kind of amenties.
+                    user_points=RES.user_points;
+                  })
+                  .catch((err)=>{
+                    console.log(err);
+                  })
 
- 
+      
+var is_up=false;
+if(user_points!=0 && (user_points%50==0))
+{
+  price=price-(price%10);
+  is_up=true;
+} 
 con.close();
 price+=amemities;
 console.log("PRICE IS"+price); 
-res.json({'price'  : price });   
+res.json({'price'  : price ,'user_points':is_up});   
    
 }
 

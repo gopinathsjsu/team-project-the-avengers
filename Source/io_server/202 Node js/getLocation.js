@@ -29,5 +29,6 @@ exports.getLocation = async (req,res)=>
                     console.log(err);
                   })
                   //console.log(ans);
+                  con.close();
                   res.json({"location":ans});
 }
