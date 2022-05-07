@@ -1,4 +1,4 @@
-.location-card {
+.hotel-card {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -11,16 +11,16 @@
   border-radius: 5px;
 }
 
-.location-info {
-  width: 17%;
+.hotel-info {
+  width: 15%;
 }
 
-.edit-location-button {
+.edit-hotel-button {
   border-radius: 2px;
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 15%;
+  width: 10%;
   padding: 10px;
   background: #24a0ed;
   border: none;
@@ -29,17 +29,17 @@
   cursor: pointer;
 }
 
-.edit-location-modal-form-input {
+.edit-hotel-modal-form-input {
   display: flex;
   align-items: center;
   margin: 10px 0px;
   width: 100%;
 }
 
-.edit-location-modal-form-input label {
-  width: 70%;
+.edit-hotel-modal-form-input label {
+  width: 50%;
 }
 
-.edit-location-modal-form-input input {
-  width: 30%;
+.edit-hotel-modal-form-input input {
+  width: 50%;
 }

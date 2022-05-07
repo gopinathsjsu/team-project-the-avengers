@@ -60,7 +60,7 @@ const LocationCard = ({location, kingSuite, queenSuite, juniorSuite, queenDeluxe
         <div className='location-info'>{queenSuite}</div>
         <div className='location-info'>{juniorSuite}</div>
         <div className='location-info'>{queenDeluxe}</div>
-        <button className='edit-button' onClick={openModal}>Edit</button>
+        <button className='edit-location-button' onClick={openModal}>Edit</button>
       </div>
 
       <Modal
@@ -76,19 +76,19 @@ const LocationCard = ({location, kingSuite, queenSuite, juniorSuite, queenDeluxe
               <label>Location</label>
               {location}
             </div>
-            <div className='modal-form-input'>
+            <div className='edit-location-modal-form-input'>
               <label>Number of King Suite rooms</label>
               <input type='number' min='0' defaultValue={kingSuite} onChange={(e) => setKingSuiteRooms(e.target.value)} required></input>
             </div>
-            <div className='modal-form-input'>
+            <div className='edit-location-modal-form-input'>
               <label>Number of Queen Suite rooms</label>
               <input type='number' min='0' defaultValue={queenSuite} onChange={(e) => setQueenSuiteRooms(e.target.value)} required></input>
             </div>
-            <div className='modal-form-input'>
+            <div className='edit-location-modal-form-input'>
               <label>Number of Junior Suite rooms</label>
               <input type='number' min='0' defaultValue={juniorSuite} onChange={(e) => setJuniorSuiteRooms(e.target.value)} required></input>
             </div>
-            <div className='modal-form-input'>
+            <div className='edit-location-modal-form-input'>
               <label>Number of Queen Deluxe rooms</label>
               <input type='number' min='0' defaultValue={queenDeluxe} onChange={(e) => setQueenDeluxeRooms(e.target.value)} required></input>
             </div>
