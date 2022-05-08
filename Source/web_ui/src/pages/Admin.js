@@ -7,8 +7,8 @@ function Admin() {
   return (
     <>
       {/* <AdminFileUploadForm /> */}
-      <AdminLocationTable />
       <AdminHotelTable />
+      <AdminLocationTable />
     </>
   )
 }

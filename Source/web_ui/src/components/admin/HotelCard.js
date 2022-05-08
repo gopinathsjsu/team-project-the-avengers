@@ -42,6 +42,20 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
     })
   }
 
+  const deleteHotel = async(e) => {
+    e.preventDefault();
+    const info = {
+      location: location
+    }
+
+    await axios.post('/deleteLocation', info).then(response => {
+      window.location.reload();
+    }).catch(error => {
+      alert('Something went wrong. Please try again later.');
+      // console.log(error);
+    })
+  }
+
   const customStyles = {
     content: {
       top: '55%',
@@ -63,7 +77,10 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         <div className='hotel-info'>{seasonRate}</div>
         <div className='hotel-info'>{fromDate}</div>
         <div className='hotel-info'>{toDate}</div>
-        <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+        <div className='edit-delete-container'>
+          <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+          <button className='delete-hotel-button' onClick={deleteHotel}>Delete</button>
+        </div>
       </div>
 
       <Modal
@@ -81,15 +98,15 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Multiplier</label>
-              <input type='number' step='0.01' min='0' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Weekend Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Season Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>From Date</label>
