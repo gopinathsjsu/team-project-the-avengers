@@ -22,6 +22,7 @@ exports.changeHotel = async (req,res)=>
                     //console.log(res[0][0]);
                     var RES=res[0][0];
                     ans=RES;
+                    console.log("HERE")
                     return "success";
                     
                   })
