@@ -33,7 +33,8 @@ const { getPriceTable} = require('./../../202 Node js/getPriceTable');
 const { changePriceTable} = require('./../../202 Node js/changePriceTable');
 const { getAmenities} = require('./../../202 Node js/getAmenities');
 const { changeAmenities} = require('./../../202 Node js/changeAmenities');
-var {query} = require("./../../202 Node js/select_q")
+var {query} = require("./../../202 Node js/select_q");
+const res = require('express/lib/response');
 
 
 // app.get('/', (req, res)=>{
