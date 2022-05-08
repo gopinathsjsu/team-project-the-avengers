@@ -1,0 +1,40 @@
+.amenity-card {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 10px 20px;
+  font-family: 'Helvetica';
+  background-color: white;
+}
+
+.amenity-info-1 {
+  width: 35%;
+}
+
+.amenity-info-2 {
+  width: 50%;
+}
+
+.edit-amenity-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 15%;
+  padding: 5px;
+  background: #24a0ed;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+  
+.edit-amenity-modal-form-input {
+  display: block;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
+}
