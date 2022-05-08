@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import './AmenityCard.css';
+import './RoomCard.css';
 
-const AmenityCard = ({id, description, price}) => {
+const RoomCard = ({roomType, member, guest}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [newPrice, setPrice] = useState(price);
+  const [memberPrice, setMemberPrice] = useState(member);
+  const [guestPrice, setGuestPrice] = useState(guest);
   const [errorMessage, setErrorMessage] = useState('');
 
   function openModal() {
@@ -20,12 +21,12 @@ const AmenityCard = ({id, description, price}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const info = {
-      amenity_id: id,
-      amenity_description: description,
-      amenity_price: newPrice
+      room_type: roomType,
+      member: memberPrice,
+      guest: guestPrice
     }
 
-    axios.post('/changeAmenities', info).then(response => {
+    axios.post('/changePriceTable', info).then(response => {
       setErrorMessage('');
       closeModal();
       window.location.reload();
@@ -49,10 +50,11 @@ const AmenityCard = ({id, description, price}) => {
 
   return (
     <>
-      <div className='amenity-card'>
-        <div className='amenity-info-2'>{description}</div>
-        <div className='amenity-info-1'>{price}</div>
-        <button className='edit-amenity-button' onClick={openModal}>Edit</button>
+      <div className='room-card'>
+        <div className='room-info-2'>{roomType.replace('_', ' ')}</div>
+        <div className='room-info-1'>{member}</div>
+        <div className='room-info-1'>{guest}</div>
+        <button className='edit-room-button' onClick={openModal}>Edit</button>
       </div>
 
       <Modal
@@ -63,14 +65,18 @@ const AmenityCard = ({id, description, price}) => {
       >
         <div className='modal-form'>
           <form onSubmit={handleSubmit}>
-            <h2>Edit Amenity Price</h2>
+            <h2>Edit Room Price</h2>
             <div className='form-input'>
-              <label>Description</label>
-              {description}
+              <label>Room Type</label>
+              {roomType}
             </div>
-            <div className='edit-amenity-modal-form-input'>
-              <label>Price</label>
-              <input type='number' min='0' step='0.01' defaultValue={price} onChange={(e) => setPrice(e.target.value)} required></input>
+            <div className='edit-room-modal-form-input'>
+              <label>Member Price</label>
+              <input type='number' min='1' step='0.01' defaultValue={member} onChange={(e) => setMemberPrice(e.target.value)} required></input>
+            </div>
+            <div className='edit-room-modal-form-input'>
+              <label>Guest Price</label>
+              <input type='number' min='1' step='0.01' defaultValue={guest} onChange={(e) => setGuestPrice(e.target.value)} required></input>
             </div>
             <div className='error-message'>{errorMessage}</div>
             <div className="cancel-save-container">
@@ -84,4 +90,4 @@ const AmenityCard = ({id, description, price}) => {
   )
 }
 
-export default AmenityCard
+export default RoomCard

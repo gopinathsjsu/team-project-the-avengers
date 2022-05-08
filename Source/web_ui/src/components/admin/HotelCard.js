@@ -32,10 +32,18 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
       to_date: td
     };
 
+    if (fd === '') {
+      info.from_date = null;
+    }
+
+    if (td === '') {
+      info.to_date = null;
+    }
+
     axios.post('/changeHotel', info).then(response => {
       setErrorMessage('');
       closeModal();
-      window.location.reload();
+      // window.location.reload();
     }).catch(error => {
       setErrorMessage('Something went wrong. Please try again later.');
       // console.log(error);
@@ -110,11 +118,11 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>From Date</label>
-              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)} required></input>
+              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)}></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>To Date</label>
-              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)} required></input>
+              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)}></input>
             </div>
             <div className='error-message'>{errorMessage}</div>
             <div className="cancel-save-container">
