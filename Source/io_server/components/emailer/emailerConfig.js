@@ -9,3 +9,5 @@ const emailerConfig = {
         rejectUnauthorized: false
     }
   };
+
+  module.exports = emailerConfig;
