@@ -1,25 +1,26 @@
 const res = require('express/lib/response');
 var nodemailer = require('nodemailer');
+const emailerConfig = require('./emailerConfig');
 
 const sendAccountCreatedEmail = function(req, res){
     var transporter = nodemailer.createTransport({
-        host: "sg3plcpnl0015.prod.sin3.secureserver.net", //TBC
-        port: 587,
-        secure: false, // upgrade later with STARTTLS
+        host: emailerConfig.host,
+        port: emailerConfig.port,
+        secure: emailerConfig.secure,
         auth: {
-          user: "faizali@justopensourceit.com", //TBC
-          pass: "E[Hxj1_5_Z-C", //TBC
+          user: emailerConfig.auth.user,
+          pass: emailerConfig.auth.pass
         },
         tls:{
-            rejectUnauthorized: false
+            rejectUnauthorized: emailerConfig.tls.rejectUnauthorized
         }
       });
       
       var message = {
         from: "faizali@justopensourceit.com",
         to: "faizalimulla@gmail.com",
-        subject: "Test Message",
-        text: "Hey"
+        subject: "Email Config",
+        text: "Set correctly"
       };
       
     
