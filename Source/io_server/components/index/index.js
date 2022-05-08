@@ -11,6 +11,8 @@ app.use(express.json());
 
 var userSignup = require('./../userSignup/router');
 var admin = require('./../admin/router');
+const hotelPromo = require("./../hotelPromo/router");
+
 global.dbPool = require('./../dbConfig/dbConnection');
 const isAuth = require("./../userSignup/auth");
 
@@ -40,14 +42,16 @@ var {query} = require("./../../202 Node js/select_q")
 
 // app.use('/', express.static(path.join(__dirname, '..', '..', '..', 'web_ui', 'build'))); // -Faizali
 app.use(express.static(path.join(__dirname, '..', '..', '..', 'web_ui', 'build')));  // -Amy
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '..', '..', '..', 'web_ui', 'build', 'index.html'));
-});
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, '..', '..', '..', 'web_ui', 'build', 'index.html'));
+// });
 //#### ROUTES DEFINED STARTS ####
 
 app.use('/userSignup', userSignup);
 app.use('/signup', userSignup);
 app.use('/admin', admin);
+app.use('/hotelPromo', hotelPromo);
+
 
 app.post('/search', query);
 app.post('/price', isAuth,price_calculate);
