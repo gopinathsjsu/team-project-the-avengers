@@ -1,33 +1,40 @@
-.reservation-card {
+.amenity-card {
   display: flex;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 20px;
+  padding: 10px 20px;
   font-family: 'Helvetica';
   background-color: white;
 }
 
-.reservation-info {
-  width: 15%;
+.amenity-info-1 {
+  width: 35%;
 }
 
-.cancel-reservation-button {
+.amenity-info-2 {
+  width: 50%;
+}
+
+.edit-amenity-button {
   border-radius: 2px;
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 20%;
-  padding: 10px;
-  background: #d11a2a;
+  width: 15%;
+  padding: 5px;
+  background: #24a0ed;
   border: none;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
-
-.reservation-room-number, .reservation-price {
-  width: 10%;
+  
+.edit-amenity-modal-form-input {
+  display: block;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
 }

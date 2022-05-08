@@ -49,7 +49,7 @@
   float: right;
 }
 
-.location-table, .hotel-table {
+.location-table, .hotel-table, .amenities-table, .room-table {
   margin-left: 2rem;
   margin-right: 2rem;
   margin-bottom: 4rem;
@@ -69,11 +69,53 @@
 /* hotel table */
 
 .hotel-table-column-header {
-  width: 15%
+  width: 14%;
 }
 
 .hotel-table-button-column {
   width: 10%;
+}
+
+.add-location-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 15%;
+  padding: 5px;
+  background: #24a0ed;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Amenities table */
+
+.amenities-table-column-header-1 {
+  width: 35%;
+}
+
+.amenities-table-column-header-2 {
+  width: 50%;
+}
+
+.amenities-table-button-column {
+  width: 15%;
+}
+
+/* Room table */
+
+.room-table-column-header-1 {
+  width: 25%;
+}
+
+.room-table-column-header-2 {
+  width: 35%;
+}
+
+.room-table-button-column {
+  width: 15%;
 }
 
 /* modal form */

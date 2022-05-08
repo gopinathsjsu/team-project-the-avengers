@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import HotelCard from './HotelCard';
 import './AdminPage.css';
+import AdminAddLocationButton from './AdminAddLocationButton';
 
 function AdminHotelTable() {
   const [hotels, setHotels] = useState([]);
@@ -26,6 +27,7 @@ function AdminHotelTable() {
       {!loading ? (
         <div className='hotel-table'>
           <h1>Hotel</h1>
+          <AdminAddLocationButton />
           <div className='header'>
             <div className='hotel-table-column-header'>Location</div>
             <div className='hotel-table-column-header'>Multiplier</div>

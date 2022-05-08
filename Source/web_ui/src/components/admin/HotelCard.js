@@ -32,12 +32,34 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
       to_date: td
     };
 
+    if (fd === '') {
+      info.from_date = null;
+    }
+
+    if (td === '') {
+      info.to_date = null;
+    }
+
     axios.post('/changeHotel', info).then(response => {
       setErrorMessage('');
       closeModal();
-      window.location.reload();
+      // window.location.reload();
     }).catch(error => {
       setErrorMessage('Something went wrong. Please try again later.');
+      // console.log(error);
+    })
+  }
+
+  const deleteHotel = async(e) => {
+    e.preventDefault();
+    const info = {
+      location: location
+    }
+
+    await axios.post('/deleteLocation', info).then(response => {
+      window.location.reload();
+    }).catch(error => {
+      alert('Something went wrong. Please try again later.');
       // console.log(error);
     })
   }
@@ -63,7 +85,10 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         <div className='hotel-info'>{seasonRate}</div>
         <div className='hotel-info'>{fromDate}</div>
         <div className='hotel-info'>{toDate}</div>
-        <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+        <div className='edit-delete-container'>
+          <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+          <button className='delete-hotel-button' onClick={deleteHotel}>Delete</button>
+        </div>
       </div>
 
       <Modal
@@ -81,23 +106,23 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Multiplier</label>
-              <input type='number' step='0.01' min='0' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Weekend Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Season Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>From Date</label>
-              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)} required></input>
+              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)}></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>To Date</label>
-              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)} required></input>
+              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)}></input>
             </div>
             <div className='error-message'>{errorMessage}</div>
             <div className="cancel-save-container">
