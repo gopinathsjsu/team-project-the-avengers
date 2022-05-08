@@ -22,5 +22,6 @@ exports.get_Hotels = async (req,res)=>
                   .catch((err)=>{
                     console.log(err);
                   })
+                  con.close();
                   res.json(ans);
 }

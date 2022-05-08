@@ -45,6 +45,7 @@ exports.deleteLocation = async (req,res)=>
           {
             res.status(400);
           }
+          con.close();
          res.json({"status":result1});
                  
 }
