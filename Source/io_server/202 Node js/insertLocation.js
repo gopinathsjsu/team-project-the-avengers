@@ -26,7 +26,8 @@ exports.insertLocation = async (req,res)=>
                     return "failure";
                   })
     if(result=="failure")
-    {
+    {    
+      res.status(400);
         return res.json({"status":result});
     }
     let result1 = await con.execute(` INSERT into  main.location (location,King_Suite,Junior_Suite,Queen_Suite,Queen_Deluxe) values ( '${location}',10,10,10,10) `)
@@ -41,6 +42,12 @@ exports.insertLocation = async (req,res)=>
                     console.log(err);
                     return "failure";
                   })
+        if(result1=="failure")
+        {    
+              res.status(400);
+              
+          }
+          con.close();
          res.json({"status":result1});
                  
 }

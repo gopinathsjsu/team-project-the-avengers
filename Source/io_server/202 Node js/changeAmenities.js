@@ -3,29 +3,32 @@ const config = require('mysql2/promise')
 
 // const mysql = require('mysql');
 //CHANGE THE NUMBER OF ROOMS GIVEN A LOCATION
-exports.changeRoomno = async (req,res)=>
+exports.changeAmenities = async (req,res)=>
 {
     const con = await config.createConnection({
       host: "database-1.cdhjvbwqbfsh.us-east-1.rds.amazonaws.com",
       user: "admin",
       password: "password"
   });
-  var location=req.body.location;
-  //let ans={};
-  var KS= req.body.King_Suite;
-  var QS=req.body.Queen_Suite;
-  var JS= req.body.Junior_Suite;
-  var QD=req.body.Queen_Deluxe;
-  let result = await con.execute(` UPDATE  main.location SET King_Suite='${KS}', Queen_Suite='${QS}', Junior_Suite='${JS}',Queen_Deluxe='${QD}' where location ='${location}' `)
+ 
+  var amenity_price= req.body.amenity_price;
+  var amenity_id=req.body.amenity_id;
+ 
+  
+  let result = await con.execute(` UPDATE  main.Amenities SET amenity_price='${amenity_price}' where amenity_id ='${amenity_id}' `)
                   .then((res)=>{
                     //console.log(res[0][0]);
                     var RES=res[0][0];
                     ans=RES;
+                    return "success";
                     
                   })
                   .catch((err)=>{
                     console.log(err);
+                    return "failure";
                   })
                   con.close();
-                  res.json({"status":"success"});
+                  res.json({"status":result});
+    
+
 }

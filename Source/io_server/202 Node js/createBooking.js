@@ -50,7 +50,7 @@ let result = await con.execute(` INSERT INTO main.Bookings (room_no,room_type,lo
                     return "failure"
                     //res.json({"status":"failure"});
                   })
-
+                  con.close();
                  res.json({"status":result});
 
 }

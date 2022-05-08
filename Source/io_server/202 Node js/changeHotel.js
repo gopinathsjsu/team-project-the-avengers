@@ -29,5 +29,6 @@ exports.changeHotel = async (req,res)=>
                     console.log(err);
                     return "failure";
                   })
+                  con.close();
                   res.json({"status":result});
 }

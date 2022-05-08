@@ -27,6 +27,10 @@ const { createBooking } = require('./../../202 Node js/createBooking');
 const { getLocation} = require('./../../202 Node js/getLocation');
 const { viewBookings} = require('./../../202 Node js/viewBookings');
 const { deleteBookings} = require('./../../202 Node js/deleteBookings');
+const { getPriceTable} = require('./../../202 Node js/getPriceTable');
+const { changePriceTable} = require('./../../202 Node js/changePriceTable');
+const { getAmenities} = require('./../../202 Node js/getAmenities');
+const { changeAmenities} = require('./../../202 Node js/changeAmenities');
 var {query} = require("./../../202 Node js/select_q")
 
 
@@ -57,7 +61,10 @@ app.post('/getLocation',getLocation);
 app.post('/deleteLocation',deleteLocation);
 app.post('/viewBookings', isAuth, viewBookings);
 app.post('/deleteBookings',isAuth,deleteBookings);
-
+app.post('/getPriceTable',getPriceTable);
+app.post('/changePriceTable',changePriceTable);
+app.post('/getAmenities',getAmenities);
+app.post('/changeAmenities',changeAmenities);
 //#### ROUTES DEFINED ENDS ####
 
 app.listen(serverConfig.ioServer.port, ()=>{
