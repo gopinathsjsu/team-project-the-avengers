@@ -127,15 +127,16 @@ exports.price_calculate = async (req,res)=>
 
       
 var is_up=false;
-if(user_points!=0 && (user_points%50==0))
+var new_user_points=0;
+if(user_points>100)
 {
   price=price-(price%10);
-  is_up=true;
+  new_user_points=user_points-100;
 } 
 con.close();
 price+=amemities;
 console.log("PRICE IS"+price); 
-res.json({'price'  : price ,'user_points':is_up});   
+res.json({'price'  : price ,'new_user_points':new_user_points});   
    
 }
 
