@@ -74,6 +74,18 @@ exports.price_calculate = async (req,res)=>
                     if(from_date!=null)
                     {
                          console.log("Festival season is here!!");
+                         var d1 =  start_date;
+                        var d2 = end_date;
+                        //var no_of_weekend=0;
+                        var no_of_days=0;
+                        while (d1 <= d2) {
+                            no_of_days++;
+                            var day = d1.getDay();
+                            console.log(day);
+                             // return immediately if weekend found
+                            d1.setDate(d1.getDate() + 1);
+                        }
+                        price=price*no_of_days*season_rate;
                     }
                     else
                     {
