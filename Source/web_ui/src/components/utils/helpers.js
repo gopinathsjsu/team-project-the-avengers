@@ -1,6 +1,6 @@
+import moment from 'moment';
+
 export const getTomorrowDate = () => {
-  let currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() + 1);
-  currentDate = currentDate.toISOString().split('T')[0];
+  var currentDate = currentDate = moment(moment(), 'YYYY-MM-DD').add(1, 'd').format('YYYY-MM-DD');
   return currentDate;
 };

@@ -28,7 +28,7 @@ function Search() {
     if (loc.state) {
       /* get data from the search form on home page, if any */
       const data = loc.state;
-      console.log(data);
+      // console.log(data);
       setLocation(data.location);
       setRoomType(data.roomType);
       setCheckIn(data.checkIn);
@@ -41,11 +41,11 @@ function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Dates: ' + checkIn + ' ' + checkOut);
+    // console.log('Dates: ' + checkIn + ' ' + checkOut);
     const start = moment(checkIn);
     const end = moment(checkOut);
     const days = end.diff(start, 'days');
-    console.log('Total number of days: ' + days);
+    // console.log('Total number of days: ' + days);
 
     /* validate check in and check out date */
     if (days < 1) {
