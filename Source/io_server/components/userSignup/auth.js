@@ -9,6 +9,26 @@ const verifyToken = (req, res, next) => {
   if (!token) {
     return res.status(403).send("A token is required for authentication");
   }
+  else{
+    jwt.verify(token, "" + process.env.TOKEN_KEY, (req, err)=>{
+      if(err){
+        res.json({
+          message:"invalid token"
+        });
+      }
+      else{
+        const role=req.user.user_type;
+        if(role==="admin"){
+          next();
+        }else{
+          return res.json({
+            message:"access denied - not an admin"
+          });
+        }
+      }
+    })
+  }
+  /*
   try {
     const decoded = jwt.verify(token, "" + process.env.TOKEN_KEY);
     req.user = decoded.user_id;
@@ -16,6 +36,8 @@ const verifyToken = (req, res, next) => {
     return res.status(401).send("Invalid Token");
   }
   return next();
+  */
 };
+
 
 module.exports = verifyToken;
