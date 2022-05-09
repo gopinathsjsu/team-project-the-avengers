@@ -32,7 +32,11 @@ function SignInForm() {
         userRole: response.data.user_type
       }
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
-      navigate('/reservations');
+      if (userInfo.userRole === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/reservations');
+      }
     }).catch(error => {
       setErrorMessage('Incorrect email or password');
       console.log(error);
