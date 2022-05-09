@@ -68,6 +68,11 @@
 
 /* hotel table */
 
+.hotel-table-heading {
+  display: flex;
+  align-items: center;
+}
+
 .hotel-table-column-header {
   width: 14%;
 }
@@ -78,16 +83,24 @@
 
 .add-location-button {
   border-radius: 2px;
-  box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 15%;
+  width: 200px;
   padding: 5px;
   background: #24a0ed;
   border: none;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  height: 30px;
+  float: right;
+}
+
+.add-hotel-modal-form-input {
+  display: block;
+  align-items: center;
+  margin: 10px 0px;
+  width: 100%;
 }
 
 /* Amenities table */

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import HotelCard from './HotelCard';
-import './AdminPage.css';
 import AdminAddLocationButton from './AdminAddLocationButton';
+import './AdminPage.css';
 
 function AdminHotelTable() {
   const [hotels, setHotels] = useState([]);
@@ -10,7 +11,8 @@ function AdminHotelTable() {
 
   useEffect(() => {
     async function fetchHotelTable() {
-      await axios.post('/getHotel').then(response => {
+      const { token } = isAdmin();
+      await axios.post('/getHotel', {token: token}).then(response => {
         // console.log(response);
         setHotels(response.data);
       }).catch(error => {
@@ -26,8 +28,11 @@ function AdminHotelTable() {
     <>
       {!loading ? (
         <div className='hotel-table'>
-          <h1>Hotel</h1>
-          <AdminAddLocationButton />
+          <div className='hotel-table-heading'>
+            <h1>Hotel</h1>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <AdminAddLocationButton />
+          </div>
           <div className='header'>
             <div className='hotel-table-column-header'>Location</div>
             <div className='hotel-table-column-header'>Multiplier</div>
@@ -44,8 +49,8 @@ function AdminHotelTable() {
               multiplier={hotel.multiplier}
               weekendRate={hotel.weekend_rate}
               seasonRate={hotel.season_rate}
-              fromDate={hotel.from_date.split("T")[0]}
-              toDate={hotel.to_date.split("T")[0]}
+              fromDate={hotel.from_date?.split("T")[0]}
+              toDate={hotel.to_date?.split("T")[0]}
             />
           ))}
         </div>

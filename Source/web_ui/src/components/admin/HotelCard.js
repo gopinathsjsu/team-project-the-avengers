@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import Modal from 'react-modal';
 import './HotelCard.css';
 
@@ -21,38 +22,58 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
     setIsOpen(false);
   }
 
+  function resetErrorMessage() {
+    setErrorMessage('');
+  }
+
+  /* from and to date has to both be provided or not provided at all */
+  const validDates = (from, to) => {
+    if (!from && !to) {
+      return true;
+    } else if (!from || !to) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const info = {
-      location: location,
-      multiplier: m,
-      weekend_rate: wr,
-      season_rate: sr,
-      from_date: fd,
-      to_date: td
-    };
+    if (validDates(fd, td)) {
+      const { token } = isAdmin();
+      const info = {
+        token: token,
+        location: location,
+        multiplier: m,
+        weekend_rate: wr,
+        season_rate: sr,
+        from_date: fd,
+        to_date: td
+      };
 
-    if (fd === '') {
-      info.from_date = null;
+      if (!fd && !td) {
+        info.from_date = null;
+        info.to_date = null;
+      }
+
+      axios.post('/changeHotel', info).then(response => {
+        setErrorMessage('');
+        closeModal();
+        window.location.reload();
+      }).catch(error => {
+        setErrorMessage('Something went wrong. Please try again later.');
+        // console.log(error);
+      })
+    } else {
+      setErrorMessage('Invalid from and to date combination.');
     }
-
-    if (td === '') {
-      info.to_date = null;
-    }
-
-    axios.post('/changeHotel', info).then(response => {
-      setErrorMessage('');
-      closeModal();
-      // window.location.reload();
-    }).catch(error => {
-      setErrorMessage('Something went wrong. Please try again later.');
-      // console.log(error);
-    })
   }
 
   const deleteHotel = async(e) => {
     e.preventDefault();
+    const { token } = isAdmin();
     const info = {
+      token: token,
       location: location
     }
 
@@ -98,7 +119,7 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         ariaHideApp={false}
       >
         <div className='modal-form'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={resetErrorMessage}>
             <h2>Edit Hotel Information</h2>
             <div className='form-input'>
               <label>Location</label>

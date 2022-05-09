@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AmenityCard from './AmenityCard';
+import { isAdmin } from '../auth';
 import './AdminPage.css';
 
 function AdminAmenitiesTable() {
@@ -9,7 +10,8 @@ function AdminAmenitiesTable() {
 
   useEffect(() => {
     async function fetchAmenitiesTable() {
-      await axios.post('/getAmenities').then(response => {
+      const { token } = isAdmin();
+      await axios.post('/getAmenities', {token: token}).then(response => {
         console.log(response);
         setAmenities(response.data);
       }).catch(error => {

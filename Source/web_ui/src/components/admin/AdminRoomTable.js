@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import RoomCard from './RoomCard';
 import './AdminPage.css';
 
@@ -9,7 +10,8 @@ function AdminRoomTable() {
 
   useEffect(() => {
     async function fetchRoomTable() {
-      await axios.post('/getPriceTable').then(response => {
+      const { token } = isAdmin();
+      await axios.post('/getPriceTable', {token: token}).then(response => {
         console.log(response);
         setRooms(response.data);
       }).catch(error => {
