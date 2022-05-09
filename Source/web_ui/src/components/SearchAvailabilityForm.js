@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import { getTomorrowDate } from './utils/helpers';
 import './SearchAvailabilityForm.css';
 
 function SearchAvailabilityForm() {
@@ -87,7 +88,7 @@ function SearchAvailabilityForm() {
           </div>
           <div className='form-input'>
             <label htmlFor='check-in'>Check In</label>
-            <input id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} required></input>
+            <input id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} required></input>
           </div>
           <div className='form-input'>
             <label htmlFor='check-out'>Check Out</label>

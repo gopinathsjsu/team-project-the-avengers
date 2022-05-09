@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import { getTomorrowDate } from './utils/helpers';
 import './Search.css';
 
 function Search() {
@@ -97,7 +98,7 @@ function Search() {
               <option key={location} value={location}>{location}</option>
             ))}
           </select>
-          <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
+          <input className='date-field' id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
           <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
           <select className='room-field' onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
             <option value='' disabled>Select a Room Type</option>
