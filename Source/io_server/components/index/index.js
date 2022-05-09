@@ -12,6 +12,8 @@ app.use(express.json());
 var userSignup = require('./../userSignup/router');
 var admin = require('./../admin/router');
 const hotelPromo = require("./../hotelPromo/router");
+var requiresAdmin=require('./../userSignup/router');
+
 
 global.dbPool = require('./../dbConfig/dbConnection');
 const isAuth = require("./../userSignup/auth");
@@ -35,6 +37,7 @@ const { getAmenities} = require('./../../202 Node js/getAmenities');
 const { changeAmenities} = require('./../../202 Node js/changeAmenities');
 var {query} = require("./../../202 Node js/select_q");
 const res = require('express/lib/response');
+const router = require('./../userSignup/router');
 
 
 // app.get('/', (req, res)=>{
@@ -53,7 +56,7 @@ app.use('/signup', userSignup);
 app.use('/admin', admin);
 app.use('/hotelPromo', hotelPromo);
 
-
+app.post('/requiresAdmin', userSignup);
 app.post('/search', query);
 app.post('/price', isAuth,price_calculate);
 app.post('/getRooms', get_Rooms);
