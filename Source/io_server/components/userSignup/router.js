@@ -8,6 +8,11 @@ var login1=require('./login1');
 var signup1=require('./signup1');
 //var auth=require('./verifyToken');
 const verifyToken = require("./auth");
+const requiresAdmin=require("./admin_auth");
+
+router.post('./requiresAdmin', (req,res, next)=>{
+    requiresAdmin(req,res, next);
+});
 
 router.post('./verifyToken', (req,res)=>{
     verifyToken(req,res);

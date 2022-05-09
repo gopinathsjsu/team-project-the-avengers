@@ -16,6 +16,8 @@ const hotelPromo = require("./../hotelPromo/router");
 global.dbPool = require('./../dbConfig/dbConnection');
 const isAuth = require("./../userSignup/auth");
 
+app.post('/requiresAdmin', userSignup);
+
 
 var signup = require('./../userSignup/router');
 const { get_Rooms } = require('./../../202 Node js/getRooms');
