@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import Modal from 'react-modal';
 import './RoomCard.css';
 
@@ -20,7 +21,9 @@ const RoomCard = ({roomType, member, guest}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { token } = isAdmin();
     const info = {
+      token: token,
       room_type: roomType,
       member: memberPrice,
       guest: guestPrice

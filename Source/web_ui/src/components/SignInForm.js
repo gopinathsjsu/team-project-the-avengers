@@ -14,7 +14,7 @@ function SignInForm() {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate('/reservations');
+      navigate('/');
     }
   }, [navigate]);
 

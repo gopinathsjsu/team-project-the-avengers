@@ -10,6 +10,7 @@ import Reservations from './components/Reservations';
 import Admin from './pages/Admin';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/admin/AdminRoute';
 import './App.css';
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
           <Route path='/payment' element={<ProtectedRoute><Payment /></ProtectedRoute>} />
           <Route path='/booking-details' element={<ProtectedRoute><BookingDetails /></ProtectedRoute>} />
           <Route path='/reservations' element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
-          <Route path='/admin' element={<Admin />} />
+          <Route path='/admin' element={<AdminRoute><Admin /></AdminRoute>} />
         </Routes>
       </Router>
     </>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import Modal from 'react-modal';
 import './AmenityCard.css';
 
@@ -19,7 +20,9 @@ const AmenityCard = ({id, description, price}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { token } = isAdmin();
     const info = {
+      token: token,
       amenity_id: id,
       amenity_description: description,
       amenity_price: newPrice
