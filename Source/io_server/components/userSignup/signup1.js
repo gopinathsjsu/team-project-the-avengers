@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
+const accountCreatedEmail = require('./../emailer/accountCreatedEmail');
+
 const signup1 = async function(req,res){    
     const password = req.body.password;    
     const encryptedPassword = await bcrypt.hash(password, saltRounds)
@@ -32,7 +34,16 @@ const signup1 = async function(req,res){
             res.send({          
             "code":200,          
             "success":"user registered sucessfully"            
-            });        
+            });
+            
+            accountCreatedEmail({
+                req: req,
+                res: res,
+               firstname:  req.body.firstName,
+               lastname: req.body.lastName,
+               email: req.body.email.toLowerCase()
+            });
+            
         }    
     });  
 }
