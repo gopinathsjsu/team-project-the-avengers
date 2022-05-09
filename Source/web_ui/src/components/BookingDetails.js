@@ -14,6 +14,7 @@ function BookingDetails() {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [amenitiesInfo, setAmenitiesInfo] = useState({});
   const [total, setTotal] = useState(0);
+  const [newUserPoints, setNewUserPoints] = useState(0);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -34,6 +35,7 @@ function BookingDetails() {
       setSelectedAmenities(data.selectedAmenities);
       setAmenitiesInfo(data.amenitiesInfo);
       setTotal(data.total);
+      setNewUserPoints(data.newUserPoints);
     } else {
       navigate('/search');
     }
@@ -52,7 +54,8 @@ function BookingDetails() {
       end_date: checkOut,
       amenities: selectedAmenities,
       no_of_guests: guests,
-      price: total
+      price: total,
+      new_user_points: newUserPoints
     };
 
     const headers = {
@@ -117,7 +120,11 @@ function BookingDetails() {
         </div>
         <div className='form-input'>
           <div className='total-container'>
-            <label>Total:</label>&nbsp;${total}
+            <label>Total:</label>&nbsp;${total}&nbsp;&nbsp;&nbsp;&nbsp;
+            {newUserPoints
+              ? <div className='points-applied'>(Reward points were applied)</div>
+              : <> </>
+            }
           </div>
         </div>
         <div className='center'>

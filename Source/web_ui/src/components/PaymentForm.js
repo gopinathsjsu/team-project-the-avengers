@@ -12,7 +12,7 @@ function PaymentForm() {
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [amenitiesInfo, setAmenitiesInfo] = useState({});
   const [total, setTotal] = useState(0);
-  const [pointsApplied, setPointsApplied] = useState(false);
+  const [newUserPoints, setNewUserPoints] = useState(0);
 
   const loc = useLocation();
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function PaymentForm() {
       setSelectedAmenities(data.selectedAmenities);
       setAmenitiesInfo(data.amenitiesInfo);
       setTotal(data.total);
-      setPointsApplied(data.pointsApplied);
+      setNewUserPoints(data.newUserPoints);
     } else {
       navigate('/search');
     }
@@ -48,7 +48,8 @@ function PaymentForm() {
       guests: guests,
       selectedAmenities: selectedAmenities,
       amenitiesInfo: amenitiesInfo,
-      total: total
+      total: total,
+      newUserPoints: newUserPoints
     };
 
     navigate('/booking-details', {state: data});
@@ -61,7 +62,7 @@ function PaymentForm() {
         <div className='form-input'>
           <div className='total-container'>
             <label>Total:</label>&nbsp;${total}&nbsp;&nbsp;&nbsp;&nbsp;
-            {pointsApplied
+            {newUserPoints
               ? <div className='points-applied'>(Reward points were applied)</div>
               : <> </>
             }
