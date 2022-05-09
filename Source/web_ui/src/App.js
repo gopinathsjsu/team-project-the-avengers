@@ -27,7 +27,7 @@ function App() {
           <Route path='/payment' element={<ProtectedRoute><Payment /></ProtectedRoute>} />
           <Route path='/booking-details' element={<ProtectedRoute><BookingDetails /></ProtectedRoute>} />
           <Route path='/reservations' element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
-          <Route path='/admin' element={<AdminRoute><Admin /></AdminRoute>} />
+          <Route path='/admin-dashboard' element={<AdminRoute><Admin /></AdminRoute>} />
         </Routes>
       </Router>
     </>

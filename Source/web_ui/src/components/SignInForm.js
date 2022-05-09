@@ -33,7 +33,7 @@ function SignInForm() {
       }
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
       if (userInfo.userRole === 'admin') {
-        navigate('/admin');
+        navigate('/admin-dashboard');
       } else {
         navigate('/reservations');
       }
