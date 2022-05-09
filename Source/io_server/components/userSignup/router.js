@@ -14,7 +14,7 @@ router.post('./verifyToken', (req,res)=>{
     verifyToken(req,res);
 });
 
-router.post('./requiresAdmin', (req,res)=>{
+router.post('./admin_auth', (req,res)=>{
     requiresAdmin(req,res);
 });
 
