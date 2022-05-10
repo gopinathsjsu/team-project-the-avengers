@@ -18,7 +18,6 @@ const isAuth = require("./../userSignup/auth");
 
 const admin = require('./../admin-visva/admin_auth');
 
-const { admin_auth1 } = require('./../admin-visva/admin_auth1');
 var signup = require('./../userSignup/router');
 const { get_Rooms } = require('./../../202 Node js/getRooms');
 const { get_Hotels } = require('./../../202 Node js/getHotels');
