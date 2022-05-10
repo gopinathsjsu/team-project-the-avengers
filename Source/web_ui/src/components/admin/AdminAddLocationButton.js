@@ -29,7 +29,6 @@ const AdminAddLocationButton = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (location.trim().length !== 0) {
-      setErrorMessage('');
       const { token } = isAdmin();
       const info = {
         token: token,
@@ -46,7 +45,7 @@ const AdminAddLocationButton = () => {
         closeModal();
         window.location.reload();
       }).catch(error => {
-        setErrorMessage('Something went wrong. Please try again later.');
+        setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
         // console.log(error);
       })
     } else {
@@ -76,7 +75,7 @@ const AdminAddLocationButton = () => {
           ariaHideApp={false}
         >
           <div className='modal-form'>
-            <form onSubmit={handleSubmit}  onChange={resetErrorMessage}>
+            <form onSubmit={handleSubmit} onChange={resetErrorMessage}>
               <h2>Add New Location</h2>
                 <div className='add-hotel-modal-form-input'>
                   <label>Location</label>

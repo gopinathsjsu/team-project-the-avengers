@@ -61,7 +61,7 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         closeModal();
         window.location.reload();
       }).catch(error => {
-        setErrorMessage('Something went wrong. Please try again later.');
+        setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
         // console.log(error);
       })
     } else {
@@ -80,7 +80,7 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
     await axios.post('/deleteLocation', info).then(response => {
       window.location.reload();
     }).catch(error => {
-      alert('Something went wrong. Please try again later.');
+      alert(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
       // console.log(error);
     })
   }

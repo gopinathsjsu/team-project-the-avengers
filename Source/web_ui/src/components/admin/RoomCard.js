@@ -34,7 +34,7 @@ const RoomCard = ({roomType, member, guest}) => {
       closeModal();
       window.location.reload();
     }).catch(error => {
-      setErrorMessage('Something went wrong. Please try again later.');
+      setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
       // console.log(error);
     })
   }
@@ -71,7 +71,7 @@ const RoomCard = ({roomType, member, guest}) => {
             <h2>Edit Room Price</h2>
             <div className='form-input'>
               <label>Room Type</label>
-              {roomType}
+              {roomType.replace('_', ' ')}
             </div>
             <div className='edit-room-modal-form-input'>
               <label>Member Price</label>

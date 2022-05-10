@@ -3,15 +3,54 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 20px;
+  margin-bottom: 1rem;
+  padding: 10px 20px;
   font-family: 'Helvetica';
   background-color: white;
 }
 
+.reservation-card-heading {
+  display: flex;
+  background: lightgrey;
+  margin-top: 1rem;
+  padding: 5px 20px;
+}
+
+.reservation-card-heading-info {
+  display: flex;
+  width: 80%;
+}
+
+.reservation-card-heading .reservation-info{
+  width: 33%;
+}
+
+.reservation-card-heading-button-column {
+  width: 20%;
+}
+
+.reservation-info-container {
+  display: flex;
+  width: 80%;
+}
+
+.reservation-card-column-container {
+  display: block;
+  width: 33%;
+}
+
 .reservation-info {
-  width: 15%;
+  display: flex;
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.reservation-card-label {
+  font-weight: bold;
+}
+
+.amenities-column {
+  display: block;
 }
 
 .cancel-reservation-button {
@@ -19,8 +58,9 @@
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 20%;
-  padding: 10px;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0px;
   background: #d11a2a;
   border: none;
   color: white;
@@ -28,6 +68,22 @@
   cursor: pointer;
 }
 
-.reservation-room-number, .reservation-price {
-  width: 10%;
+.edit-reservation-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0px;
+  background: #24a0ed;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-cancel-reservation-button-container {
+  display: block;
+  width: 20%;
 }

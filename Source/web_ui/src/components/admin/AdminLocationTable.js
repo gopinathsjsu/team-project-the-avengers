@@ -7,15 +7,17 @@ import './AdminPage.css';
 function AdminLocationTable() {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchLocationTable() {
       const { token } = isAdmin();
       await axios.post('/getRooms', {token: token}).then(response => {
-        console.log(response);
+        // console.log(response);
         setLocations(response.data);
       }).catch(error => {
-        console.log(error);
+        setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
+        // console.log(error);
       })
       setLoading(false);
     }
@@ -25,7 +27,7 @@ function AdminLocationTable() {
   
   return (
     <>
-      {!loading ? (
+      {!loading && !errorMessage ? (
         <div className='location-table'>
           <h1>Number of Rooms</h1>
           <div className='header'>

@@ -35,7 +35,7 @@ function Reservations() {
           <h1>Your Reservations</h1>
           {reservations.length > 0 ? (
             <div>
-              <div className='header'>
+              {/* <div className='header'>
                 <div className='room-number-column-header'>Room #</div>
                 <div className='column-header'>Room Type</div>
                 <div className='column-header'>Location</div>
@@ -43,7 +43,7 @@ function Reservations() {
                 <div className='column-header'>Check-out Date</div>
                 <div className='price-column-header'>Price</div>
                 <div className='button-column'></div>
-              </div>
+              </div> */}
               {reservations.map((reservation) => (
                 <ReservationCard
                   key={reservation.id}
@@ -54,6 +54,8 @@ function Reservations() {
                   checkIn={reservation.start_date.split("T")[0]}
                   checkOut={reservation.end_date.split("T")[0]}
                   price={reservation.price}
+                  amenities={reservation.Amenities}
+                  guests={reservation.guests}
                 />
               ))}
             </div>

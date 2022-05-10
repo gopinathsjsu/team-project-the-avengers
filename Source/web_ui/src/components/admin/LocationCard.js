@@ -38,7 +38,7 @@ const LocationCard = ({location, kingSuite, queenSuite, juniorSuite, queenDeluxe
       closeModal();
       window.location.reload();
     }).catch(error => {
-      setErrorMessage('Something went wrong. Please try again later.');
+      setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
       // console.log(error);
     })
   }
