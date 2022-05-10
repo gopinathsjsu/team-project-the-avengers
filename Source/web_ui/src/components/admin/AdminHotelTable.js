@@ -8,6 +8,7 @@ import './AdminPage.css';
 function AdminHotelTable() {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchHotelTable() {
@@ -16,7 +17,8 @@ function AdminHotelTable() {
         // console.log(response);
         setHotels(response.data);
       }).catch(error => {
-        console.log(error);
+        setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
+        // console.log(error);
       })
       setLoading(false);
     }
@@ -26,7 +28,7 @@ function AdminHotelTable() {
   
   return (
     <>
-      {!loading ? (
+      {!loading && !errorMessage ? (
         <div className='hotel-table'>
           <div className='hotel-table-heading'>
             <h1>Hotel</h1>
@@ -55,7 +57,7 @@ function AdminHotelTable() {
           ))}
         </div>
       ) : (
-        <> </>
+        <div>{errorMessage}</div>
       )}
     </>
   )

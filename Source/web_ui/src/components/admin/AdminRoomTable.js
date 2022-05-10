@@ -7,15 +7,17 @@ import './AdminPage.css';
 function AdminRoomTable() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     async function fetchRoomTable() {
       const { token } = isAdmin();
       await axios.post('/getPriceTable', {token: token}).then(response => {
-        console.log(response);
+        // console.log(response);
         setRooms(response.data);
       }).catch(error => {
-        console.log(error);
+        setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
+        // console.log(error);
       })
       setLoading(false);
     }
@@ -25,7 +27,7 @@ function AdminRoomTable() {
   
   return (
     <>
-      {!loading ? (
+      {!loading && !errorMessage ? (
         <div className='room-table'>
           <h1>Room Price</h1>
           <div className='header'>
