@@ -16,7 +16,7 @@ const hotelPromo = require("./../hotelPromo/router");
 global.dbPool = require('./../dbConfig/dbConnection');
 const isAuth = require("./../userSignup/auth");
 
-const admin = require('./../admin-visva/router');
+const admin = require('./../admin-visva/admin_auth');
 
 const { admin_auth1 } = require('./../admin-visva/admin_auth1');
 var signup = require('./../userSignup/router');
@@ -45,34 +45,36 @@ const res = require('express/lib/response');
 
 // app.use('/', express.static(path.join(__dirname, '..', '..', '..', 'web_ui', 'build'))); // -Faizali
 app.use(express.static(path.join(__dirname, '..', '..', '..', 'web_ui', 'build')));  // -Amy
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join(__dirname, '..', '..', '..', 'web_ui', 'build', 'index.html'));
-// });
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '..', '..', '..', 'web_ui', 'build', 'index.html'));
+});
 //#### ROUTES DEFINED STARTS ####
 
 app.use('/userSignup', userSignup);
 app.use('/signup', userSignup);
-app.use('/admin', admin);
+// app.use('/admin', admin);
 app.use('/hotelPromo', hotelPromo);
 
 //app.use('/admin', admin);
 //app.post('/admin', isAuth, admin_auth1);
 app.post('/search', query);
 app.post('/price', isAuth,price_calculate);
-app.post('/getRooms', get_Rooms);
-app.post('/getHotel', get_Hotels);
-app.post('/changeRoomno',changeRoomno);
 app.post('/createBooking', isAuth, createBooking);
-app.post('/changeHotel',changeHotel);
-app.post('/insertLocation',insertLocation);
 app.post('/getLocation',getLocation);
-app.post('/deleteLocation',deleteLocation);
 app.post('/viewBookings', isAuth, viewBookings);
 app.post('/deleteBookings',isAuth,deleteBookings);
-app.post('/getPriceTable',getPriceTable);
-app.post('/changePriceTable',changePriceTable);
-app.post('/getAmenities',getAmenities);
-app.post('/changeAmenities',changeAmenities);
+
+// admin routes
+app.post('/getHotel', isAuth, admin, get_Hotels);
+app.post('/changeHotel', isAuth, admin, changeHotel);
+app.post('/insertLocation', isAuth, admin, insertLocation);
+app.post('/deleteLocation', isAuth, admin, deleteLocation);
+app.post('/getRooms', isAuth, admin, get_Rooms);
+app.post('/changeRoomno', isAuth, admin, changeRoomno);
+app.post('/getPriceTable', isAuth, admin, getPriceTable);
+app.post('/changePriceTable', isAuth, admin, changePriceTable);
+app.post('/getAmenities', isAuth, admin, getAmenities);
+app.post('/changeAmenities', isAuth, admin, changeAmenities);
 //#### ROUTES DEFINED ENDS ####
 
 app.listen(serverConfig.ioServer.port, ()=>{
