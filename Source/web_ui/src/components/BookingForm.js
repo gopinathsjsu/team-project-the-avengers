@@ -10,7 +10,7 @@ function BookingForm() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [roomID, setRoomID] = useState(0);
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState(0);
   const [amenities, setAmenities] = useState({
     dailyBreakfast: '',
     fitnessRoom: '',
@@ -140,7 +140,7 @@ function BookingForm() {
         <form onSubmit={handleSubmit}>
           <div className='form-input'>
             <label htmlFor='guests_number'>Number of Guests</label>
-            <input id='guests_number' type='number' min='1' onChange={(e) => setGuests(e.target.value)} required></input>
+            <input id='guests_number' type='number' min='0' onChange={(e) => setGuests(e.target.value)} required></input>
           </div>
           <div className='form-input'>
             <label>Amenities</label>
@@ -149,8 +149,8 @@ function BookingForm() {
               <label className='amenity-label' htmlFor='daily-breakfast'>Daily Continental Breakfast</label>
             </div>
             <div className='amenity-option'>
-              <input id='fitness-room' name='fitnessRoom' type='checkbox' className='amenity-checkbox' value='Access to fitness room' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' htmlFor='fitness-room'>Access to fitness room</label>
+              <input id='fitness-room' name='fitnessRoom' type='checkbox' className='amenity-checkbox' value='Access to Fitness Room' onChange={handleCheckboxChange}></input>
+              <label className='amenity-label' htmlFor='fitness-room'>Access to Fitness Room</label>
             </div>
             <div className='amenity-option'>
               <input id='swimming-pool-jacuzzi' name='swimmingPoolJacuzzi' type='checkbox' className='amenity-checkbox' value='Access to Swimming Pool/Jacuzzi' onChange={handleCheckboxChange}></input>
@@ -161,8 +161,8 @@ function BookingForm() {
               <label className='amenity-label' htmlFor='daily-parking'>Daily Parking</label>
             </div>
             <div className='amenity-option'>
-              <input id='all-meals' name='allMeals' type='checkbox' className='amenity-checkbox' value='All meals included' onChange={handleCheckboxChange}></input>
-              <label className='amenity-label' htmlFor='all-meals'>All meals included</label>
+              <input id='all-meals' name='allMeals' type='checkbox' className='amenity-checkbox' value='All Meals Included' onChange={handleCheckboxChange}></input>
+              <label className='amenity-label' htmlFor='all-meals'>All Meals Included</label>
             </div>
           </div>
           <div className='error-message'>{errorMessage}</div>
