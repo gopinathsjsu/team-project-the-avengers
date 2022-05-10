@@ -5,14 +5,13 @@
   margin-right: auto;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 20px;
+  padding: 10px 20px;
   font-family: 'Helvetica';
   background-color: white;
-  border-radius: 5px;
 }
 
 .hotel-info {
-  width: 15%;
+  width: 14%;
 }
 
 .edit-hotel-button {
@@ -20,13 +19,42 @@
   box-sizing: border-box;
   font-size: 1rem;
   font-family: 'Helvetica';
-  width: 10%;
-  padding: 10px;
+  width: 100%;
+  padding: 5px;
   background: #24a0ed;
   border: none;
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.delete-hotel-button {
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Helvetica';
+  width: 100%;
+  padding: 5px;
+  background: #d11a2a;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-delete-container {
+  display: block;
+  width: 16%;
+}
+
+.edit-delete-container .edit-hotel-button {
+  width: 48%;
+  float: left;
+}
+
+.edit-delete-container .delete-hotel-button {
+  width: 48%;
+  float: right;
 }
 
 .edit-hotel-modal-form-input {

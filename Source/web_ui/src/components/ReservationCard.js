@@ -20,8 +20,7 @@ const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut,
       // console.log(response);
       window.location.reload();
     }).catch(error => {
-      // console.log(error);
-      alert('Sorry, something went wrong. Please try again later.');
+      alert(error.response.data.status?error.response.data.status: 'Sorry, something went wrong. Please try again later.');
     })
   }
 

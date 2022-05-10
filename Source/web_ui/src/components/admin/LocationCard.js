@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import Modal from 'react-modal';
 import './LocationCard.css';
 
@@ -22,12 +23,14 @@ const LocationCard = ({location, kingSuite, queenSuite, juniorSuite, queenDeluxe
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { token } = isAdmin();
     const info = {
-        location: location,
-        King_Suite: kingSuiteRooms,
-        Queen_Suite: queenSuiteRooms,
-        Junior_Suite: juniorSuiteRooms,
-        Queen_Deluxe: queenDeluxeRooms
+      token: token,
+      location: location,
+      King_Suite: kingSuiteRooms,
+      Queen_Suite: queenSuiteRooms,
+      Junior_Suite: juniorSuiteRooms,
+      Queen_Deluxe: queenDeluxeRooms
     }
 
     axios.post('/changeRoomno', info).then(response => {

@@ -105,7 +105,7 @@ function BookingForm() {
         selectedAmenities: selectedAmenities,
         amenitiesInfo: amenities,
         total: response.data.price,
-        pointsApplied: response.data.user_points
+        newUserPoints: response.data.new_user_points
       };
       setErrorMessage('');
       navigate('/payment', {state: data});

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import Modal from 'react-modal';
 import './HotelCard.css';
 
@@ -21,23 +22,65 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
     setIsOpen(false);
   }
 
+  function resetErrorMessage() {
+    setErrorMessage('');
+  }
+
+  /* from and to date has to both be provided or not provided at all */
+  const validDates = (from, to) => {
+    if (!from && !to) {
+      return true;
+    } else if (!from || !to) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const info = {
-      location: location,
-      multiplier: m,
-      weekend_rate: wr,
-      season_rate: sr,
-      from_date: fd,
-      to_date: td
-    };
+    if (validDates(fd, td)) {
+      const { token } = isAdmin();
+      const info = {
+        token: token,
+        location: location,
+        multiplier: m,
+        weekend_rate: wr,
+        season_rate: sr,
+        from_date: fd,
+        to_date: td
+      };
 
-    axios.post('/changeHotel', info).then(response => {
-      setErrorMessage('');
-      closeModal();
+      if (!fd && !td) {
+        info.from_date = null;
+        info.to_date = null;
+      }
+
+      axios.post('/changeHotel', info).then(response => {
+        setErrorMessage('');
+        closeModal();
+        window.location.reload();
+      }).catch(error => {
+        setErrorMessage('Something went wrong. Please try again later.');
+        // console.log(error);
+      })
+    } else {
+      setErrorMessage('Invalid from and to date combination.');
+    }
+  }
+
+  const deleteHotel = async(e) => {
+    e.preventDefault();
+    const { token } = isAdmin();
+    const info = {
+      token: token,
+      location: location
+    }
+
+    await axios.post('/deleteLocation', info).then(response => {
       window.location.reload();
     }).catch(error => {
-      setErrorMessage('Something went wrong. Please try again later.');
+      alert('Something went wrong. Please try again later.');
       // console.log(error);
     })
   }
@@ -63,7 +106,10 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         <div className='hotel-info'>{seasonRate}</div>
         <div className='hotel-info'>{fromDate}</div>
         <div className='hotel-info'>{toDate}</div>
-        <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+        <div className='edit-delete-container'>
+          <button className='edit-hotel-button' onClick={openModal}>Edit</button>
+          <button className='delete-hotel-button' onClick={deleteHotel}>Delete</button>
+        </div>
       </div>
 
       <Modal
@@ -73,7 +119,7 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
         ariaHideApp={false}
       >
         <div className='modal-form'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={resetErrorMessage}>
             <h2>Edit Hotel Information</h2>
             <div className='form-input'>
               <label>Location</label>
@@ -81,23 +127,23 @@ const HotelCard = ({location, multiplier, weekendRate, seasonRate, fromDate, toD
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Multiplier</label>
-              <input type='number' step='0.01' min='0' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={multiplier} onChange={(e) => setM(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Weekend Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={weekendRate} onChange={(e) => setWR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>Season Rate</label>
-              <input type='number' step='0.01' min='0' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
+              <input type='number' step='0.01' min='0.5' defaultValue={seasonRate} onChange={(e) => setSR(e.target.value)} required></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>From Date</label>
-              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)} required></input>
+              <input type='date' defaultValue={fromDate} onChange={(e) => setFD(e.target.value)}></input>
             </div>
             <div className='edit-hotel-modal-form-input'>
               <label>To Date</label>
-              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)} required></input>
+              <input type='date' min={fd} defaultValue={toDate} onChange={(e) => setTD(e.target.value)}></input>
             </div>
             <div className='error-message'>{errorMessage}</div>
             <div className="cancel-save-container">

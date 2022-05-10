@@ -21,8 +21,8 @@ var no_of_guests=req.body.no_of_guests;
 var user_id=req.user;
 var new_user_points=req.body.new_user_points;
 var price=req.body.price;
-console.log(""+user_id)
-var am='';
+
+var am_arr = [];
 let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                   .then((res)=>{
                     var RES=res[0];
@@ -30,7 +30,7 @@ let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                     //write code for getting the amount of each kind of amenties.
                     for(var id=0;id<amenities_id.length;id++)
                     {
-                      am+=RES[amenities_id[id]-1].amenity_name;
+                      am_arr.push(RES[amenities_id[id]-1].amenity_name)
                     }
                     console.log(am);
 
@@ -38,6 +38,7 @@ let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                   .catch((err)=>{
                     console.log(err);
                   })
+var am = am_arr.join(', ');
 
 let result = await con.execute(` INSERT INTO main.Bookings (room_no,room_type,location,start_date,end_date,user_id,price,Amenities,guests) VALUES ( ${room_no}, '${room_type}', '${location}', '${start_date}', '${end_date}',  ${user_id}, ${price},'${am}' , ${no_of_guests})  `)
                   .then((res)=>{

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated } from './auth';
+import { isAuthenticated, isAdmin } from './auth';
 import './Navbar.css';
 
 function Navbar() {
@@ -27,6 +27,17 @@ function Navbar() {
             Avengers Hotel
           </Link>
           <ul className='nav-menu'>
+            {isAdmin() ? (
+              <>
+                <li className='nav-item'>
+                  <Link to='/admin-dashboard' className='nav-links'>
+                    Dashboard
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <> </>
+            )}
             <li className='nav-item'>
               <Link to='/' className='nav-links'>
                 Home

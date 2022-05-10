@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import { getTomorrowDate } from './utils/helpers';
 import './Search.css';
 
 function Search() {
@@ -27,7 +28,7 @@ function Search() {
     if (loc.state) {
       /* get data from the search form on home page, if any */
       const data = loc.state;
-      console.log(data);
+      // console.log(data);
       setLocation(data.location);
       setRoomType(data.roomType);
       setCheckIn(data.checkIn);
@@ -40,11 +41,11 @@ function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Dates: ' + checkIn + ' ' + checkOut);
+    // console.log('Dates: ' + checkIn + ' ' + checkOut);
     const start = moment(checkIn);
     const end = moment(checkOut);
     const days = end.diff(start, 'days');
-    console.log('Total number of days: ' + days);
+    // console.log('Total number of days: ' + days);
 
     /* validate check in and check out date */
     if (days < 1) {
@@ -97,7 +98,7 @@ function Search() {
               <option key={location} value={location}>{location}</option>
             ))}
           </select>
-          <input className='date-field' id='check-in' type='date' onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
+          <input className='date-field' id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
           <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
           <select className='room-field' onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
             <option value='' disabled>Select a Room Type</option>

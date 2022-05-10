@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { isAdmin } from '../auth';
 import LocationCard from './LocationCard';
 import './AdminPage.css';
 
@@ -9,7 +10,8 @@ function AdminLocationTable() {
 
   useEffect(() => {
     async function fetchLocationTable() {
-      await axios.post('/getRooms').then(response => {
+      const { token } = isAdmin();
+      await axios.post('/getRooms', {token: token}).then(response => {
         console.log(response);
         setLocations(response.data);
       }).catch(error => {
