@@ -10,15 +10,15 @@ app.use(express.json());
 
 
 var userSignup = require('./../userSignup/router');
-var admin = require('./../admin/router');
+//var admin = require('./../admin/router');
 const hotelPromo = require("./../hotelPromo/router");
 
 global.dbPool = require('./../dbConfig/dbConnection');
 const isAuth = require("./../userSignup/auth");
 
-app.post('/requiresAdmin', userSignup);
+const admin = require('./../admin-visva/router');
 
-
+const { admin_auth1 } = require('./../admin-visva/admin_auth1');
 var signup = require('./../userSignup/router');
 const { get_Rooms } = require('./../../202 Node js/getRooms');
 const { get_Hotels } = require('./../../202 Node js/getHotels');
@@ -55,7 +55,8 @@ app.use('/signup', userSignup);
 app.use('/admin', admin);
 app.use('/hotelPromo', hotelPromo);
 
-
+//app.use('/admin', admin);
+//app.post('/admin', isAuth, admin_auth1);
 app.post('/search', query);
 app.post('/price', isAuth,price_calculate);
 app.post('/getRooms', get_Rooms);
