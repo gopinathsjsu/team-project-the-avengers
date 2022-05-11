@@ -46,8 +46,8 @@ exports.price_calculate = async (req,res)=>
                     cost_mul=RES.multiplier;
                     weekend_rate=RES.weekend_rate;
                     season_rate=RES.season_rate;
-                    from_date=RES.from_date;
-                    to_date=RES.to_date;
+                    from_date=new Date(RES.from_date);
+                    to_date=new Date(RES.to_date);
                     
                     //console.log(res[0][0].keys);
                     /*for(var i in res[0][0])
@@ -71,23 +71,9 @@ exports.price_calculate = async (req,res)=>
                     price=price+RES.member+(RES.guest*no_of_guests);
                     price=price*cost_mul;
                     //write code here for weekend and season dates and number of days
-                    if(from_date!=null)
-                    {
-                         console.log("Festival season is here!!");
-                         var d1 =  start_date;
-                        var d2 = end_date;
-                        //var no_of_weekend=0;
-                        var no_of_days=0;
-                        while (d1 <= d2) {
-                            no_of_days++;
-                            var day = d1.getDay();
-                            console.log(day);
-                             // return immediately if weekend found
-                            d1.setDate(d1.getDate() + 1);
-                        }
-                        price=price*no_of_days*season_rate;
-                    }
-                    else
+                    from_date.setHours(from_date.getHours() - 8);
+                    to_date.setHours(to_date.getHours() - 8);
+                    if(from_date==null || (end_date<from_date && start_date>to_date))
                     {
                         var d1 =  start_date;
                         var d2 = end_date;
@@ -96,7 +82,7 @@ exports.price_calculate = async (req,res)=>
                         while (d1 <= d2) {
                             no_of_days++;
                             var day = d1.getDay();
-                            console.log(day);
+                            //console.log(day);
                             isWeekend = (day === 6) || (day === 0); 
                             if (isWeekend) { no_of_weekend++; } // return immediately if weekend found
                             d1.setDate(d1.getDate() + 1);
@@ -105,6 +91,35 @@ exports.price_calculate = async (req,res)=>
                         console.log("number of weekends"+no_of_weekend);
 
                     }
+                    else
+                    {
+                         console.log("Festival season is here!!");
+                        var d1 =  start_date;
+                        var d2 = end_date;
+                        
+                        //var no_of_weekend=0;
+                        var normal_days=0;
+                        var festive_days=0;
+                        console.log(d1);
+                        console.log(from_date);
+                        while (d1 <= d2) {
+                            no_of_days++;
+                            //var day = d1.getDay();
+                            //console.log(day);
+                             if(d1>=from_date && d1<=to_date)
+                             {
+                              festive_days++;
+                             }
+                             else
+                             {
+                               normal_days++;
+                             }
+                            d1.setDate(d1.getDate() + 1);
+                        }
+                        price=(price*normal_days)+ (price*festive_days*season_rate);
+                        console.log("normal days:"+normal_days+"festibe days:"+festive_days);
+                    }
+                    
 
                   })
                   .catch((err)=>{
@@ -144,11 +159,12 @@ if(user_points>100)
 {
   price=price-(price%10);
   new_user_points=user_points-100;
+  is_up=true;
 } 
 con.close();
 price+=amemities;
 console.log("PRICE IS"+price); 
-res.json({'price'  : price ,'new_user_points':new_user_points});   
+res.json({'price'  : price ,'new_user_points':new_user_points,'is_user_points':is_up});   
    
 }
 
