@@ -5,12 +5,12 @@ import { isAuthenticated } from './auth';
 import './BookingForm.css';
 
 function EditReservationForm() {
-  const [id, setId] = useState(0);
+  const [id, setId] = useState('');
   const [location, setLocation] = useState('');
   const [roomType, setRoomType] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
-  const [roomID, setRoomID] = useState(0);
+  const [roomNumber, setRoomNumber] = useState(0);
   const [oldPrice, setOldPrice] = useState(0);
   const [initialGuests, setInitialGuests] = useState(0);
   const [guests, setGuests] = useState(0);
@@ -34,38 +34,9 @@ function EditReservationForm() {
   const loc = useLocation();
   const navigate = useNavigate();
 
-  const splitAmenitiesList = (amenitiesList) => {
-    const arr = amenitiesList.split(', ');
-    var name = '';
-    var value = '';
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] === 'Daily Continental Breakfast') {
-        name = 'dailyBreakfast';
-        value = 'Daily Continental Breakfast';
-      } else if (arr[i] === 'Access to Fitness Room') {
-        name = 'fitnessRoom';
-        value = 'Access to Fitness Room';
-      } else if (arr[i] === 'Access to Swimming Pool/Jacuzzi') {
-        name = 'swimmingPoolJacuzzi';
-        value = 'Access to Swimming Pool/Jacuzzi';
-      } else if (arr[i] === 'Daily Parking') {
-        name = 'dailyParking';
-        value = 'Daily Parking';
-      } else if (arr[i] === 'All Meals Included') {
-        name = 'allMeals';
-        value = 'All Meals Included';
-      }
-
-      setInitialAmenities(prevState => ({
-        ...prevState,
-        [name]: value
-      }));
-    }
-  };
-
   useEffect(() => {
     if (loc.state) {
-      /* get data entered on search page */
+      /* get data from reservations page */
       const data = loc.state;
       console.log(data);
       setId(data.id);
@@ -73,10 +44,41 @@ function EditReservationForm() {
       setRoomType(data.roomType);
       setCheckIn(data.checkIn);
       setCheckOut(data.checkOut);
-      setRoomID(data.roomID);
+      setRoomNumber(data.roomNumber);
       setOldPrice(data.price);
       setInitialGuests(data.guests);
-      splitAmenitiesList(data.amenities);
+      setGuests(data.guests);
+      const arr = data.amenities.split(', ');
+      if (arr.includes('Daily Continental Breakfast')) {
+        setInitialAmenities(prevState => ({
+          ...prevState,
+          dailyBreakfast: 'Daily Continental Breakfast'
+        }));
+      }
+      if (arr.includes('Access to Fitness Room')) {
+        setInitialAmenities(prevState => ({
+          ...prevState,
+          fitnessRoom: 'Access to Fitness Room'
+        }));
+      }
+      if (arr.includes('Access to Swimming Pool/Jacuzzi')) {
+        setInitialAmenities(prevState => ({
+          ...prevState,
+          swimmingPoolJacuzzi: 'Access to Swimming Pool/Jacuzzi'
+        }));
+      }
+      if (arr.includes('Daily Parking')) {
+        setInitialAmenities(prevState => ({
+          ...prevState,
+          dailyParking: 'Daily Parking'
+        }));
+      }
+      if (arr.includes('All Meals Included')) {
+        setInitialAmenities(prevState => ({
+          ...prevState,
+          allMeals: 'All Meals Included'
+        }));
+      }
       setLoading(false);
     } else {
       navigate('/reservations');
@@ -100,66 +102,93 @@ function EditReservationForm() {
   }; 
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
-    // const selectedAmenities = [];   /* an array of integers that represent the selected amenities as their ID in db */
-    // if (amenities.dailyBreakfast) {
-    //   selectedAmenities.push(2);
-    // }
-    // if (amenities.fitnessRoom) {
-    //   selectedAmenities.push(3);
-    // }
-    // if (amenities.swimmingPoolJacuzzi) {
-    //   selectedAmenities.push(4);
-    // }
-    // if (amenities.dailyParking) {
-    //   selectedAmenities.push(5);
-    // }
-    // if (amenities.allMeals) {
-    //   selectedAmenities.push(6);
-    // }
-    // // if (selectedAmenities.length === 0) {
-    // //   selectedAmenities.push(1);
-    // // }
+    const selectedAmenities = [];   /* an array of integers that represent the added amenities as their ID in db */
+    if (amenities.dailyBreakfast) {
+      selectedAmenities.push(1);
+    }
+    if (amenities.fitnessRoom) {
+      selectedAmenities.push(2);
+    }
+    if (amenities.swimmingPoolJacuzzi) {
+      selectedAmenities.push(3);
+    }
+    if (amenities.dailyParking) {
+      selectedAmenities.push(4);
+    }
+    if (amenities.allMeals) {
+      selectedAmenities.push(5);
+    }
 
-    // const newGuests = guests - initialGuests;
+    var newGuests = guests - initialGuests;
 
-    // const { token } = isAuthenticated();
+    const { token } = isAuthenticated();
     
-    // const info = {
-    //   token: token,
-    //   start_date: checkIn,
-    //   end_date: checkOut,
-    //   location: location,
-    //   room_type: roomType,
-    //   no_of_guests: newGuests,
-    //   amenities: selectedAmenities
-    // };
+    const info = {
+      token: token,
+      id: id,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      location: location,
+      roomType: roomType,
+      roomNumber: roomNumber,
+      oldPrice: oldPrice,
+      addedGuests: newGuests,
+      addedAmenities: selectedAmenities
+    };
 
-    // const headers = {
-    //   'x-access-token': token
-    // };
+    const headers = {
+      'x-access-token': token
+    };
 
-    // axios.post('/price', info, headers).then(response => {
-    //   console.log(response);
-    //   const data = {
-    //     location: location,
-    //     checkIn: checkIn,
-    //     checkOut: checkOut,
-    //     roomType: roomType,
-    //     roomID: roomID,
-    //     guests: guests,
-    //     selectedAmenities: selectedAmenities,
-    //     amenitiesInfo: amenities,
-    //     total: response.data.price,
-    //     newUserPoints: response.data.new_user_points
-    //   };
-    //   setErrorMessage('');
-    //   navigate('/payment', {state: data});
-    // }).catch(error => {
-    //   setErrorMessage('Something went wrong. Please try again later.');
-    //   // console.log(error);
-    // })
+    const allSelectedAmenities = [];    /* including old ammenities */
+    const allSelectedAmenityNames = [];
+    if (amenities.dailyBreakfast || initialAmenities.dailyBreakfast) {
+      allSelectedAmenities.push(1);
+      allSelectedAmenityNames.push('Daily Continental Breakfast');
+    }
+    if (amenities.fitnessRoom || initialAmenities.fitnessRoom) {
+      allSelectedAmenities.push(2);
+      allSelectedAmenityNames.push('Access to Fitness Room');
+    }
+    if (amenities.swimmingPoolJacuzzi || initialAmenities.swimmingPoolJacuzzi) {
+      allSelectedAmenities.push(3);
+      allSelectedAmenityNames.push('Access to Swimming Pool/Jacuzzi');
+    }
+    if (amenities.dailyParking || initialAmenities.dailyParking) {
+      allSelectedAmenities.push(4);
+      allSelectedAmenityNames.push('Daily Parking');
+    }
+    if (amenities.allMeals || initialAmenities.allMeals) {
+      allSelectedAmenities.push(5);
+      allSelectedAmenityNames.push('All Meals Included');
+    }
+    if (allSelectedAmenities.length === 0) {
+      allSelectedAmenities.push(0);
+      allSelectedAmenityNames.push('No Amenities');
+    }
+
+    axios.post('/editReservation', info, headers).then(response => {
+      console.log(response);
+      const data = {
+        id: id,
+        location: location,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        roomType: roomType,
+        roomNumber: roomNumber,
+        guests: guests,
+        selectedAmenities: allSelectedAmenities,
+        selectedAmenityNames: allSelectedAmenityNames,
+        total: response.data.newPrice,
+      };
+      setErrorMessage('');
+      navigate('/reservations/edit/confirmation', {state: data});
+    }).catch(error => {
+      setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
+      // console.log(error);
+    })
   }
 
   return (

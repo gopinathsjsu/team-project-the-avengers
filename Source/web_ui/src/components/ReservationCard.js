@@ -47,15 +47,15 @@ const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut,
     <>
       <div className='reservation-card-heading'>
         <div className='reservation-card-heading-info'>
-          <div class='reservation-info'>
+          <div className='reservation-info'>
             <div className='reservation-card-label'>Location:</div>&nbsp;
             <div>{location}</div>
           </div>
-          <div class='reservation-info'>
+          <div className='reservation-info'>
             <div className='reservation-card-label'>Check-In Date:</div>&nbsp;
             <div>{checkIn}</div>
           </div>
-          <div class='reservation-info'>
+          <div className='reservation-info'>
             <div className='reservation-card-label'>Check-Out Date:</div>&nbsp;
             <div>{checkOut}</div>
           </div>
@@ -67,34 +67,34 @@ const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut,
           <div className='reservation-card-column-container'>
             <div className='reservation-info'>
               <div className='reservation-card-label'>Room Type:</div>&nbsp;
-              <div>{roomType}</div>
+              <div>{roomType.replace('_', ' ')}</div>
             </div>
-            <div class='reservation-info'>
+            <div className='reservation-info'>
               <div className='reservation-card-label'>Room Number:</div>&nbsp;
               <div>{roomNumber}</div>
             </div>
-            <div class='reservation-info'>
+            <div className='reservation-info'>
               <div className='reservation-card-label'>Number of Guests:</div>&nbsp;
               <div>{guests}</div>
             </div>
           </div>
           <div className='reservation-card-column-container'>
-            <div class='reservation-info amenities-column'>
+            <div className='reservation-info amenities-column'>
               <div className='reservation-card-label'>Selected Amenities:</div>
               {amenities.split(', ')?.map((amenity) => (
-                <div>{amenity}</div>
+                <div key={amenity}>{amenity}</div>
               ))}
             </div>
           </div>
           <div className='reservation-card-column-container'>
-            <div class='reservation-info'>
+            <div className='reservation-info'>
               <div className='reservation-card-label'>Total:</div>&nbsp;
               <div>${price}</div>
             </div>
           </div>
         </div>
         <div className='edit-cancel-reservation-button-container'>
-          {/* <button className='edit-reservation-button' onClick={editReservation}>Edit</button> */}
+          <button className='edit-reservation-button' onClick={editReservation}>Edit</button>
           <button className='cancel-reservation-button' onClick={cancelReservation}>Cancel Reservation</button>
         </div>
       </div>
