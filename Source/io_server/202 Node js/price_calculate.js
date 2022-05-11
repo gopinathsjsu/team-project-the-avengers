@@ -139,7 +139,7 @@ exports.price_calculate = async (req,res)=>
 
       
 var is_up=false;
-var new_user_points=0;
+var new_user_points=user_points;
 if(user_points>100)
 {
   price=price-(price%10);
