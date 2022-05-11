@@ -15,6 +15,7 @@ function BookingDetails() {
   const [amenitiesInfo, setAmenitiesInfo] = useState({});
   const [total, setTotal] = useState(0);
   const [newUserPoints, setNewUserPoints] = useState(0);
+  const [userPointsApplied, setUserPointsApplied] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -36,6 +37,7 @@ function BookingDetails() {
       setAmenitiesInfo(data.amenitiesInfo);
       setTotal(data.total);
       setNewUserPoints(data.newUserPoints);
+      setUserPointsApplied(data.userPointsApplied);
     } else {
       navigate('/search');
     }
@@ -121,7 +123,7 @@ function BookingDetails() {
         <div className='form-input'>
           <div className='total-container'>
             <label>Total:</label>&nbsp;${total}&nbsp;&nbsp;&nbsp;&nbsp;
-            {newUserPoints
+            {userPointsApplied
               ? <div className='points-applied'>(Reward points were applied)</div>
               : <> </>
             }

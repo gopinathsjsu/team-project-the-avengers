@@ -38,7 +38,7 @@ function EditReservationForm() {
     if (loc.state) {
       /* get data from reservations page */
       const data = loc.state;
-      console.log(data);
+      // console.log(data);
       setId(data.id);
       setLocation(data.location);
       setRoomType(data.roomType);
@@ -88,7 +88,7 @@ function EditReservationForm() {
   const handleCheckboxChange = (e) => {
     const { name, value } = e.target;
     if (e.target.checked) {
-      console.log(value)
+      // console.log(value)
       setAmenities(prevState => ({
         ...prevState,
         [name]: value
@@ -170,7 +170,7 @@ function EditReservationForm() {
     }
 
     axios.post('/editReservation', info, headers).then(response => {
-      console.log(response);
+      // console.log(response);
       const data = {
         id: id,
         location: location,

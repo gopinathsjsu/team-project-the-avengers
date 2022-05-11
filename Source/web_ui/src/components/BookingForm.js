@@ -41,7 +41,7 @@ function BookingForm() {
   const handleCheckboxChange = (e) => {
     const { name, value } = e.target;
     if (e.target.checked) {
-      console.log(value)
+      // console.log(value)
       setAmenities(prevState => ({
         ...prevState,
         [name]: value
@@ -105,7 +105,8 @@ function BookingForm() {
         selectedAmenities: selectedAmenities,
         amenitiesInfo: amenities,
         total: response.data.price,
-        newUserPoints: response.data.new_user_points
+        newUserPoints: response.data.new_user_points,
+        userPointsApplied: response.data.is_user_points
       };
       setErrorMessage('');
       navigate('/payment', {state: data});
