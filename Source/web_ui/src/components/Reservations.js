@@ -49,7 +49,7 @@ function Reservations() {
                   key={reservation.id}
                   id={reservation.id}
                   roomNumber={reservation.room_no}
-                  roomType={reservation.room_type.replace('_', ' ')}
+                  roomType={reservation.room_type}
                   location={reservation.location}
                   checkIn={reservation.start_date.split("T")[0]}
                   checkOut={reservation.end_date.split("T")[0]}

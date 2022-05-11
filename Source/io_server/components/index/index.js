@@ -36,7 +36,8 @@ const { getAmenities} = require('./../../202 Node js/getAmenities');
 const { changeAmenities} = require('./../../202 Node js/changeAmenities');
 var {query} = require("./../../202 Node js/select_q");
 const res = require('express/lib/response');
-
+const { editReservation } = require('./../../202 Node js/editReservation')
+const { updateReservation } = require('./../../202 Node js/updateReservation')
 
 // app.get('/', (req, res)=>{
 //     res.send('Index');
@@ -62,6 +63,8 @@ app.post('/createBooking', isAuth, createBooking);
 app.post('/getLocation',getLocation);
 app.post('/viewBookings', isAuth, viewBookings);
 app.post('/deleteBookings',isAuth,deleteBookings);
+app.post('/editReservation', isAuth, editReservation);
+app.post('/updateReservation', isAuth, updateReservation);
 
 // admin routes
 app.post('/getHotel', isAuth, admin, get_Hotels);
