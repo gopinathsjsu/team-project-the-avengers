@@ -14,6 +14,7 @@ function EditReservationConfirmation() {
   const [guests, setGuests] = useState(1);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
   const [selectedAmenityNames, setSelectedAmenityNames] = useState([]);
+  const [oldPrice, setOldPrice] = useState(0);
   const [total, setTotal] = useState(0);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -35,6 +36,7 @@ function EditReservationConfirmation() {
       setGuests(data.guests);
       setSelectedAmenities(data.selectedAmenities);
       setSelectedAmenityNames(data.selectedAmenityNames);
+      setOldPrice(data.oldPrice);
       setTotal(data.total);
     } else {
       navigate('/reservations');
@@ -50,6 +52,7 @@ function EditReservationConfirmation() {
       id: id,
       amenities: selectedAmenityNames.join(', '),
       guests: guests,
+      oldPrice: oldPrice,
       price: total
     };
 

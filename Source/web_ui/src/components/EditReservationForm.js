@@ -181,12 +181,13 @@ function EditReservationForm() {
         guests: guests,
         selectedAmenities: allSelectedAmenities,
         selectedAmenityNames: allSelectedAmenityNames,
+        oldPrice: oldPrice,
         total: response.data.newPrice,
       };
       setErrorMessage('');
       navigate('/reservations/edit/confirmation', {state: data});
     }).catch(error => {
-      setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again leter.');
+      setErrorMessage(error.response.data.message?error.response.data.message: 'Something went wrong. Please try again later.');
       // console.log(error);
     })
   }
