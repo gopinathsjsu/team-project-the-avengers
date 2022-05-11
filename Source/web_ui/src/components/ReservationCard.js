@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { isAuthenticated } from './auth';
+import { isAfterToday } from './utils/helpers';
 import './ReservationCard.css';
 
 const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut, price, amenities, guests}) => {
@@ -28,19 +29,23 @@ const ReservationCard = ({id, roomNumber, roomType, location, checkIn, checkOut,
   }
 
   const editReservation = () => {
-    const data = {
-      id: id,
-      location: location,
-      checkIn: checkIn,
-      checkOut: checkOut,
-      roomType: roomType,
-      roomNumber: roomNumber,
-      guests: guests,
-      amenities: amenities,
-      price: price
-    };
+    if (isAfterToday(checkIn)) {
+      const data = {
+        id: id,
+        location: location,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        roomType: roomType,
+        roomNumber: roomNumber,
+        guests: guests,
+        amenities: amenities,
+        price: price
+      };
 
-    navigate('/reservations/edit', {state: data})
+      navigate('/reservations/edit', {state: data});
+    } else {
+      alert('Reservations can not be changed on the day of or after check-in date.');
+    }
   }
 
   return (
