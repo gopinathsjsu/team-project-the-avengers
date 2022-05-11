@@ -1,0 +1,7 @@
+2 stored procedures, 1 trigger and 1 event is used (main_routines.sql):
+
+Stored procedure is used to calculate user points where user points are price/10. 
+These points are updated in user_table when user makes a reservation and trigger is used to make this update.
+
+Stored procedure is used to keep history of bookings - we are moving bookings that are older than current date to bookings archive table. 
+An event is setup to run every night to check for any bookings older than current date to move them to bookings archive table.
