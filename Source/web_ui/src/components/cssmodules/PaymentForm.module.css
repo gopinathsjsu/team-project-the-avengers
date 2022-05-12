@@ -1,0 +1,13 @@
+.paymentFormContainerContainer{
+ margin: 0 32px;
+}
+
+.paymentFormContainer {
+    margin: 32px auto;
+    padding: 20px;
+    font-family: 'Helvetica';
+    background-color: white;
+    border-radius: 5px;
+    max-width: 600px;
+    min-width: 320px;
+  }

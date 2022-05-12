@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './PaymentForm.css';
 
+// FM CSS STARTS
+import styles from './cssmodules/PaymentForm.module.css';
+// FM CSS ENDS
+
 function PaymentForm() {
   const [location, setLocation] = useState('');
   const [roomType, setRoomType] = useState('');
@@ -60,7 +64,8 @@ function PaymentForm() {
 
   return (
     <>
-      <div className='payment-form-container'>
+    <div className={styles.paymentFormContainerContainer}>
+      <div className={styles.paymentFormContainer}>
         <h1>Payment Information</h1>
         <div className='form-input'>
           <div className='total-container'>
@@ -107,6 +112,7 @@ function PaymentForm() {
           <button className='orange-button' type='submit'>Next</button>
         </form>
       </div>
+    </div>
     </>
   )
 }
