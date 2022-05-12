@@ -2,12 +2,24 @@
     padding: 100px 16px;
 }
 
-.card{
+.cardOdd{
     margin: auto;
     max-width: 1000px;
     min-width: 400px;
     display:grid;
     grid-template-columns: auto max-content;
+    height: 400px;
+    box-shadow: 0 4px 8px rgb(139 139 139);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.cardEven{
+    margin: auto;
+    max-width: 1000px;
+    min-width: 400px;
+    display:grid;
+    grid-template-columns: max-content auto;
     height: 400px;
     box-shadow: 0 4px 8px rgb(139 139 139);
     border-radius: 16px;
