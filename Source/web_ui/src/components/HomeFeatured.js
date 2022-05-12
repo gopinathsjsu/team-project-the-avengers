@@ -36,6 +36,22 @@ function HomeFeatured() {
                 </div>
             </div>
         </div>
+        <div className={styles.cardContainer}>
+            <div className={styles.cardOdd}>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel New Houston</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            An amazing fusion of tech and hospitality.  You have to spend some time here!
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/Houston.jpg' className={styles.cardImage} />
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
