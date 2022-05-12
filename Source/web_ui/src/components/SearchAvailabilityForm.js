@@ -5,6 +5,10 @@ import moment from 'moment';
 import { getTomorrowDate } from './utils/helpers';
 import './SearchAvailabilityForm.css';
 
+// //FM CSS START
+// import styles from './cssmodules/Home.module.css';
+// //FM CSS END
+
 function SearchAvailabilityForm() {
   const [locations, setLocations] = useState([]);
   const [location, setLocation] = useState('');
