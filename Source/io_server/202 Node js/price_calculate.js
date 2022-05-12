@@ -141,7 +141,7 @@ exports.price_calculate = async (req,res)=>
                     console.log(err);
                   })
   
-    let result3 = await con.execute(` SELECT user_points FROM main.user_table where user_id='${user_id}' `)
+    let result3 = await con.execute(` SELECT user_points FROM main.user_table where user_id=${user_id} `)
                   .then((res)=>{
                     var RES=res[0][0];
                     //console.log(RES[0])

@@ -12,7 +12,7 @@ exports.getUserPoints = async (req,res)=>
   });
   var user_id=req.user;
   let ans={};
-  let result = await con.execute(` SELECT user_points FROM main.user_table where user_id ='${user_id}' `)
+  let result = await con.execute(` SELECT user_points FROM main.user_table where user_id =${user_id} `)
                   .then((res)=>{
                     //console.log(res[0][0]);
                     var RES=res[0][0];

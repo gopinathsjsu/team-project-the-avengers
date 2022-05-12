@@ -12,7 +12,7 @@ exports.viewPastBookings = async (req,res)=>
   });
   var user_id=req.user;
   let ans={};
-  let result = await con.execute(` SELECT * FROM main.Bookings_archive where user_id ='${user_id}' order by start_date`)
+  let result = await con.execute(` SELECT * FROM main.Bookings_archive where user_id =${user_id} order by start_date`)
                   .then((res)=>{
                     //console.log(res[0][0]);
                     var RES=res[0];

@@ -40,7 +40,7 @@ let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                   })
 var am = am_arr.join(', ');
 
-let result1 = await con.execute(` UPDATE main.user_table SET user_points=${new_user_points} where user_id='${user_id}'   `)
+let result1 = await con.execute(` UPDATE main.user_table SET user_points=${new_user_points} where user_id=${user_id}   `)
                   .then((res)=>{
                     return "success";
                     //console.log(res[0][0]);
