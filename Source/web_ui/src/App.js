@@ -6,7 +6,7 @@ import Find from './pages/Find';
 import Booking from './pages/Booking';
 import Payment from './pages/Payment';
 import BookingDetails from './components/BookingDetails';
-import Reservations from './components/Reservations';
+import Reservations from './pages/Reservations';
 import Admin from './pages/Admin';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';

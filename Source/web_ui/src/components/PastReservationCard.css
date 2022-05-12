@@ -1,0 +1,26 @@
+.past-reservation-card {
+  display: flex;
+  /* align-items: center; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  padding: 10px 20px;
+  font-family: 'Helvetica';
+  background-color: white;
+}
+
+.past-reservation-card-heading {
+  display: flex;
+  background: lightgrey;
+  margin-top: 1rem;
+  padding: 5px 20px;
+}
+
+.past-reservation-card-heading .reservation-info {
+  width: 33%;
+}
+
+.past-reservation-card-column-container {
+  display: block;
+  width: 33%;
+}
