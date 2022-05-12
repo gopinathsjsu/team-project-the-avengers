@@ -5,6 +5,10 @@ import moment from 'moment';
 import { getTomorrowDate } from './utils/helpers';
 import './Search.css';
 
+// FM CSS STARTS
+import styles from "./cssmodules/Search.module.css";
+//
+
 function Search() {
   const [locations, setLocations] = useState([]);
   const [location, setLocation] = useState('');
@@ -90,30 +94,30 @@ function Search() {
 
   return (
     <>
-      <div className='search-bar'>
-        <form onSubmit={handleSubmit}>
-          <select className='location-field' onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
+      <div className={styles.searchBar}>
+        <form className={styles.searchForm} onSubmit={handleSubmit}>
+          <select className={styles.inputField} onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
             <option value='' disabled>Select a Location</option>
             {locations?.map((location) => (
               <option key={location} value={location}>{location}</option>
             ))}
           </select>
-          <input className='date-field' id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
-          <input className='date-field' id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
-          <select className='room-field' onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
+          <input className={styles.inputField} id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
+          <input className={styles.inputField} id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
+          <select className={styles.inputField} onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
             <option value='' disabled>Select a Room Type</option>
             <option value='King_Suite'>King Suite</option>
             <option value='Queen_Suite'>Queen Suite</option>
             <option value='Junior_Suite'>Junior Suite</option>
             <option value='Queen_Deluxe'>Queen Deluxe</option>
           </select>
-          <button className='search-button' type='submit'>Find Hotels</button>
+          <button className={styles.searchButton} type='submit'>Find Hotels</button>
         </form>
       </div>
-      <div className='result-container'>
+      <div className={styles.resultContainer}>
         <div>{message}</div>
         {result ? (
-          <button className='orange-button continue-button' onClick={handleClick}>Continue to Booking page</button>
+          <button className={styles.continueButton} onClick={handleClick}>Continue to Booking page</button>
         ) : (
           <> </>
         )}
