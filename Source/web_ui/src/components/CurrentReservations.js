@@ -7,6 +7,7 @@ import './Reservations.css';
 function CurrentReservations() {
   const { token } = isAuthenticated();
   const [reservations, setReservations] = useState([]);
+  const [userPoints, setUserPoints] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -14,6 +15,17 @@ function CurrentReservations() {
     const headers = {
       'x-access-token': token
     }
+
+    async function getUserPoints() {
+      await axios.post('/getUserPoints', {token: token}, headers).then(response => {
+        setUserPoints(response.data.user_points);
+        // console.log(response);
+      }).catch(error => {
+        setErrorMessage('Unauthorized Access');
+        console.log(error);
+      })
+    }
+
     async function fetchReservations() {
       await axios.post('/viewBookings', {token: token}, headers).then(response => {
         setReservations(response.data);
@@ -25,6 +37,7 @@ function CurrentReservations() {
       setIsLoading(false);
     }
 
+    getUserPoints();
     fetchReservations();
   }, [token]);
 
@@ -32,6 +45,7 @@ function CurrentReservations() {
     <>
       {!isLoading && !errorMessage ? (
         <div className='reservations-container'>
+          <div className='rewards-points-container'>Rewards Points: {userPoints}</div>
           <h1>Current Reservations</h1>
           {reservations.length > 0 ? (
             <div>
