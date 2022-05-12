@@ -120,11 +120,13 @@
 /* Room table */
 
 .room-table-column-header-1 {
-  width: 25%;
+  width: 35%;
+  /* width: 25%; */
 }
 
 .room-table-column-header-2 {
-  width: 35%;
+  width: 50%;
+  /* width: 35%; */
 }
 
 .room-table-button-column {

@@ -56,7 +56,7 @@ const RoomCard = ({roomType, member, guest}) => {
       <div className='room-card'>
         <div className='room-info-2'>{roomType.replace('_', ' ')}</div>
         <div className='room-info-1'>{member}</div>
-        <div className='room-info-1'>{guest}</div>
+        {/* <div className='room-info-1'>{guest}</div> */}
         <button className='edit-room-button' onClick={openModal}>Edit</button>
       </div>
 
@@ -77,10 +77,10 @@ const RoomCard = ({roomType, member, guest}) => {
               <label>Member Price</label>
               <input type='number' min='1' step='0.01' defaultValue={member} onChange={(e) => setMemberPrice(e.target.value)} required></input>
             </div>
-            <div className='edit-room-modal-form-input'>
+            {/* <div className='edit-room-modal-form-input'>
               <label>Guest Price</label>
               <input type='number' min='1' step='0.01' defaultValue={guest} onChange={(e) => setGuestPrice(e.target.value)} required></input>
-            </div>
+            </div> */}
             <div className='error-message'>{errorMessage}</div>
             <div className="cancel-save-container">
               <button className='gray-button' onClick={closeModal}>Cancel</button>
