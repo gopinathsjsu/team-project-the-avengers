@@ -12,7 +12,7 @@ exports.get_Rooms = async (req,res)=>
   });
   //var location=req.body.location;
   let ans={};
-  let result = await con.execute(` SELECT member FROM main.location  `)
+  let result = await con.execute(` SELECT * FROM main.location  `)
                   .then((res)=>{
                     //console.log(res[0][0]);
                     var RES=res[0];

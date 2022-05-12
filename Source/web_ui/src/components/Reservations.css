@@ -29,3 +29,12 @@
 .room-number-column-header, .price-column-header {
   width: 10%;
 }
+
+.rewards-points-container {
+  font-family: 'Helvetica';
+  align-items: center;
+  float: right;
+  margin-right: 20px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
