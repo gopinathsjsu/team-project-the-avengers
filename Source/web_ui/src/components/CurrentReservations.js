@@ -4,7 +4,7 @@ import ReservationCard from './ReservationCard';
 import { isAuthenticated } from './auth';
 import './Reservations.css';
 
-function Reservations() {
+function CurrentReservations() {
   const { token } = isAuthenticated();
   const [reservations, setReservations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +32,7 @@ function Reservations() {
     <>
       {!isLoading && !errorMessage ? (
         <div className='reservations-container'>
-          <h1>Your Reservations</h1>
+          <h1>Current Reservations</h1>
           {reservations.length > 0 ? (
             <div>
               {/* <div className='header'>
@@ -75,4 +75,4 @@ function Reservations() {
   )
 }
 
-export default Reservations
+export default CurrentReservations
