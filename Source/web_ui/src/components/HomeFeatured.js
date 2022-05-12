@@ -116,6 +116,22 @@ function HomeFeatured() {
                 </div>
             </div>
         </div>
+        <div className={styles.cardContainer}>
+            <div className={styles.cardEven}>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/Seattle.jpg' className={styles.cardImage} />
+                </div>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel Seattle</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            It is the perfect blend of business and nature.  You can hike a nearby forest, skii in snow capped mountains or go there for a business trip.  You will never runs out of options.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
