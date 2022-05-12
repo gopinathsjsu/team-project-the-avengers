@@ -84,7 +84,22 @@ function HomeFeatured() {
                 </div>
             </div>
         </div>
-        
+        <div className={styles.cardContainer}>
+            <div className={styles.cardEven}>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/SanFrancisco.jpg' className={styles.cardImage} />
+                </div>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel San Francisco</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            One of the best coastal cities and home to the Golden Gate Bridge.  Nothing hits bettter than blue waters and beautiful houses.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
