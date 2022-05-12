@@ -39,7 +39,7 @@ let result2 = await con.execute(` SELECT * FROM main.Amenities  `)
                     console.log(err);
                   })
 var am = am_arr.join(', ');
-
+new_user_points= new_user_points+(price/10);
 let result1 = await con.execute(` UPDATE main.user_table SET user_points=${new_user_points} where user_id=${user_id}   `)
                   .then((res)=>{
                     return "success";
