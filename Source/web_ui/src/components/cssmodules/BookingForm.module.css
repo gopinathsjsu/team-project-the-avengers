@@ -1,0 +1,13 @@
+.bookingFormContainerContainer{
+ margin: 0 32px;
+}
+
+.bookingFormContainer {
+    margin: 32px auto;
+    padding: 20px;
+    font-family: 'Helvetica';
+    background-color: white;
+    border-radius: 5px;
+    max-width: 600px;
+    min-width: 280px;
+  }

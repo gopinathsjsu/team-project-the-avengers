@@ -4,6 +4,10 @@ import axios from 'axios';
 import { isAuthenticated } from './auth';
 import './BookingForm.css';
 
+// FM CSS STARTS
+import styles from './cssmodules/BookingForm.module.css';
+// FM CSS ENDS
+
 function BookingForm() {
   const [location, setLocation] = useState('');
   const [roomType, setRoomType] = useState('');
@@ -118,7 +122,8 @@ function BookingForm() {
 
   return (
     <>
-      <div className='booking-form-container'>
+    <div className={styles.bookingFormContainerContainer}>
+      <div className={styles.bookingFormContainer}>
         <h1>Booking</h1>
         <div className='form-input'>
           <label>Location</label>
@@ -169,6 +174,7 @@ function BookingForm() {
           <div className='error-message'>{errorMessage}</div>
           <button className='orange-button' type='submit'>Next</button>
         </form>
+      </div>
       </div>
     </>
   )
