@@ -5,9 +5,9 @@ import moment from 'moment';
 import { getTomorrowDate } from './utils/helpers';
 import './SearchAvailabilityForm.css';
 
-// //FM CSS START
-// import styles from './cssmodules/Home.module.css';
-// //FM CSS END
+//FM CSS START
+import styles from './cssmodules/Home.module.css';
+//FM CSS END
 
 function SearchAvailabilityForm() {
   const [locations, setLocations] = useState([]);
@@ -79,7 +79,7 @@ function SearchAvailabilityForm() {
 
   return (
     <>
-      <div className='search-form-container'>
+      <div className={styles.searchFormContainer}>
         <form onSubmit={handleSubmit}>
           <div className='form-input'>
             <label htmlFor='destination'>Destination</label>
