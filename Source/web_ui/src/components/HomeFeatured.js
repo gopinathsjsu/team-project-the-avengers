@@ -100,6 +100,22 @@ function HomeFeatured() {
                 </div>
             </div>
         </div>
+        <div className={styles.cardContainer}>
+            <div className={styles.cardOdd}>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel San Jose</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            If you have a starup, you need to be here!  The best minds in tech gather here.  It's truly the heart of the Silicon Valley.
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/SanJose.jpg' className={styles.cardImage} />
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
