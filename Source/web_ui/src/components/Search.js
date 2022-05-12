@@ -17,6 +17,7 @@ function Search() {
   const [roomType, setRoomType] = useState('');
   const [result, setResult] = useState(0);
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(true);
   
   const loc = useLocation();
   const navigate = useNavigate();
@@ -39,9 +40,12 @@ function Search() {
       setCheckOut(data.checkOut);
       setResult(data.result);
       setMessage(data.message);
+      setTimeout(() => {setLoading(false)}, 1000);
       navigate(loc.pathname, {});   /* clear state */
+    } else {
+      setLoading(false);
     }
-  }, [loc, navigate]);
+  }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,34 +98,40 @@ function Search() {
 
   return (
     <>
-      <div className={styles.searchBar}>
-        <form className={styles.searchForm} onSubmit={handleSubmit}>
-          <select className={styles.inputField} onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
-            <option value='' disabled>Select a Location</option>
-            {locations?.map((location) => (
-              <option key={location} value={location}>{location}</option>
-            ))}
-          </select>
-          <input className={styles.inputField} id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
-          <input className={styles.inputField} id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
-          <select className={styles.inputField} onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
-            <option value='' disabled>Select a Room Type</option>
-            <option value='King_Suite'>King Suite</option>
-            <option value='Queen_Suite'>Queen Suite</option>
-            <option value='Junior_Suite'>Junior Suite</option>
-            <option value='Queen_Deluxe'>Queen Deluxe</option>
-          </select>
-          <button className={styles.searchButton} type='submit'>Find Hotels</button>
-        </form>
-      </div>
-      <div className={styles.resultContainer}>
-        <div>{message}</div>
-        {result ? (
-          <button className={styles.continueButton} onClick={handleClick}>Continue to Booking page</button>
-        ) : (
-          <> </>
-        )}
-      </div>
+      {!loading ? (
+        <>
+          <div className={styles.searchBar}>
+            <form className={styles.searchForm} onSubmit={handleSubmit}>
+              <select className={styles.inputField} onChange={(e) => setLocation(e.target.value)} defaultValue={location} required>
+                <option value='' disabled>Select a Location</option>
+                {locations?.map((location) => (
+                  <option key={location} value={location}>{location}</option>
+                ))}
+              </select>
+              <input className={styles.inputField} id='check-in' type='date' min={getTomorrowDate()} onChange={(e) => setCheckIn(e.target.value)} defaultValue={checkIn} required></input>
+              <input className={styles.inputField} id='check-out' type='date' min={checkIn} onChange={(e) => setCheckOut(e.target.value)} defaultValue={checkOut} required></input>
+              <select className={styles.inputField} onChange={(e) => setRoomType(e.target.value)} defaultValue={roomType} required>
+                <option value='' disabled>Select a Room Type</option>
+                <option value='King_Suite'>King Suite</option>
+                <option value='Queen_Suite'>Queen Suite</option>
+                <option value='Junior_Suite'>Junior Suite</option>
+                <option value='Queen_Deluxe'>Queen Deluxe</option>
+              </select>
+              <button className={styles.searchButton} type='submit'>Find Hotels</button>
+            </form>
+          </div>
+          <div className={styles.resultContainer}>
+            <div>{message}</div>
+            {result ? (
+              <button className={styles.continueButton} onClick={handleClick}>Continue to Booking page</button>
+            ) : (
+              <> </>
+            )}
+          </div>
+        </>
+      ) : (
+        <> </>
+      )}
     </>
   )
 }
