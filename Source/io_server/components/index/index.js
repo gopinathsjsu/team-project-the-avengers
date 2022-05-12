@@ -38,7 +38,8 @@ var {query} = require("./../../202 Node js/select_q");
 const res = require('express/lib/response');
 const { editReservation } = require('./../../202 Node js/editReservation')
 const { updateReservation } = require('./../../202 Node js/updateReservation')
-
+const { getUserPoints } = require('./../../202 Node js/getUserPoints')
+const { viewPastBookings } = require('./../../202 Node js/viewPastBookings')
 // app.get('/', (req, res)=>{
 //     res.send('Index');
 // });
@@ -65,7 +66,8 @@ app.post('/viewBookings', isAuth, viewBookings);
 app.post('/deleteBookings',isAuth,deleteBookings);
 app.post('/editReservation', isAuth, editReservation);
 app.post('/updateReservation', isAuth, updateReservation);
-
+app.post('/getUserPoints', isAuth, getUserPoints);
+app.post('/viewPastBookings', isAuth, viewPastBookings);
 // admin routes
 app.post('/getHotel', isAuth, admin, get_Hotels);
 app.post('/changeHotel', isAuth, admin, changeHotel);
@@ -77,6 +79,7 @@ app.post('/getPriceTable', isAuth, admin, getPriceTable);
 app.post('/changePriceTable', isAuth, admin, changePriceTable);
 app.post('/getAmenities', isAuth, admin, getAmenities);
 app.post('/changeAmenities', isAuth, admin, changeAmenities);
+
 //#### ROUTES DEFINED ENDS ####
 
 app.listen(serverConfig.ioServer.port, ()=>{
