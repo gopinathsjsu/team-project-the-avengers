@@ -21,8 +21,9 @@ exports.updateReservation = async (req, res) => {
     })
 
   // update user points
-  const additionalPoints = (price - oldPrice)/10;
-  await con.execute(`UPDATE main.user_table SET user_points = user_points + ${additionalPoints} WHERE user_id = ${userId}`)
+  const updatedReservationPoints = price/10;
+  const oldReservationPoints = oldPrice/10;
+  await con.execute(`UPDATE main.user_table SET user_points = user_points - ${oldReservationPoints} + ${updatedReservationPoints} WHERE user_id = ${userId}`)
     .then(() => {
       return res.status(200).send({message: 'Success'});
     })
