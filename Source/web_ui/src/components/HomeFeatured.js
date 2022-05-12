@@ -52,6 +52,39 @@ function HomeFeatured() {
                 </div>
             </div>
         </div>
+        <div className={styles.cardContainer}>
+            <div className={styles.cardEven}>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/Philadelphia.jpg' className={styles.cardImage} />
+                </div>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel Philadelphia</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            Take a walk in the lanes of history while enjoying the unique weather here.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className={styles.cardContainer}>
+            <div className={styles.cardOdd}>
+                <div className={styles.cardColumnText}>
+                    <div>
+                        <div className={styles.cardTextHeader}>Avengers Hotel San Diego</div>
+                        <br />
+                        <div className={styles.cardTextContent}>
+                            Enjoy amazing beaches and California vibes.  Here you have the best beaches in Cali.
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.cardColumnImage}>
+                    <img src='/LocationImages/SanDiego.jpg' className={styles.cardImage} />
+                </div>
+            </div>
+        </div>
+        
     </div>
   )
 }
