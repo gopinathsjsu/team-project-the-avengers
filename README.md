@@ -1,17 +1,17 @@
 # team-project-the-avengers
 team-project-the-avengers created by GitHub Classroom
 
-### Diagrams
-## Use Case Diagram
+## Diagrams
+### Use Case Diagram
 ![](documents/UseCaseDiagram.png)
 
-## Architecture Diagram
+### Architecture Diagram
 ![](documents/ArchitectureDiagram.jpeg)
 
-## Class Diagram
+### Class Diagram
 ![](documents/ClassDiagram.jpeg)
 
-### Feature Set
+## Feature Set
 Users are able to:
 - Enroll as a new customer
 - Manage rewards points
@@ -28,10 +28,13 @@ Admins are able to:
 - Edit prices of each type of rooms
 - Edit amenities prices
 
-### Requirements
+## Burndown Chart
+![](documents/BurndownChart.png)
+
+## Requirements
 - Node
 
-### Steps to run locally
+## Steps to run locally
 1. Navigate to web_ui directory:
 ```
 cd Source/web_ui
