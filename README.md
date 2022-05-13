@@ -9,7 +9,7 @@
 1. Adarsh:
 2. Amy: Frontend and Backend(edit reservations)
 3. Faizali:
-4. Visva:
+4. Visva: Database and Backend for login and signup(includes authentication, password hashing and salting). Stored procedure and an event for Bookings archive to view past reservations.
 
 ## XP Core Values Followed
 ### Simplicity
@@ -24,6 +24,9 @@ Our team followed the simplicity aspect of the 5 XP core values. While coding th
 
 ### Class Diagram
 ![](documents/ClassDiagram.jpeg)
+
+### Database Diagram
+![](database/ER Diagram.png)
 
 ## Feature Set
 Users are able to:
