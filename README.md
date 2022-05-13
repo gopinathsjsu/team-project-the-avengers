@@ -6,7 +6,7 @@
 4. Visva Suthar
 
 ## Individual Contribution
-1. Adarsh:
+1. Adarsh: Backend(User side: price_calculate, search room, create Booking, Delete Booking, view Booking; Admin side: All), Deployment on AWS with Load balancer
 2. Amy: Frontend and Backend(edit reservations)
 3. Faizali:
 4. Visva: Database and Backend for login and signup(includes authentication, password hashing and salting). Stored procedure and an event for Bookings archive to view past reservations.
