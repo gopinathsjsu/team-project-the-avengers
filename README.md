@@ -1,5 +1,19 @@
 # team-project-the-avengers
-team-project-the-avengers created by GitHub Classroom
+## Team Members
+1. Adarsh Samuel Raj Johnson
+2. Amy Phan
+3. Faizali Mulla
+4. Visva Suthar
+
+## Individual Contribution
+1. Adarsh:
+2. Amy: Frontend and Backend(edit reservations)
+3. Faizali:
+4. Visva:
+
+## XP Core Values Followed
+### Simplicity
+Our team followed the simplicity aspect of the 5 XP core values. While coding the backend and frontend, we tried to make the code as simple as possible so that if a problem arises in the future, we would know where it is coming from. We avoided writing complicated code that we would not be able to understand if we do come back to it.
 
 ## Diagrams
 ### Use Case Diagram
