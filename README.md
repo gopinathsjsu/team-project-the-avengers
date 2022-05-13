@@ -2,13 +2,31 @@
 team-project-the-avengers created by GitHub Classroom
 
 ### Diagrams
-## 
-![](douments/use%20case%20diagram.png)
-### Design Decisions
+## Use Case Diagram
+![](douments/UseCaseDiagram.png)
+
+## Architecture Diagram
+![](documents/ArchitectureDiagram.jpeg)
+
+## Class Diagram
+![](documents/ClassDiagram.jpeg)
 
 ### Feature Set
+Users are able to:
+- Enroll as a new customer
+- Manage rewards points
+- Search for hotels
+- Book a room for stay up to 1 week
+- Edit reservations
+- Cancel reservations
 
-### Contributions
+Admins are able to:
+- Add a new location
+- Edit a location information
+- Delete a location
+- Edit number of rooms for each location
+- Edit prices of each type of rooms
+- Edit amenities prices
 
 ### Requirements
 - Node
