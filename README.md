@@ -13,7 +13,7 @@
 
 ## XP Core Values Followed
 ### Simplicity
-Our team followed the simplicity aspect of the 5 XP core values. While coding the backend and frontend, we tried to make the code as simple as possible so that if a problem arises in the future, we would know where it is coming from. We avoided writing complicated code that we would not be able to understand if we do come back to it.
+Our team followed the simplicity aspect of the 5 XP core values. While coding the backend and frontend, we tried to make the code as simple as possible so that if a problem arises in the future, we would know where it is coming from. We avoided writing complicated code so that we would be able to understand it if we do come back to it.
 
 ## Diagrams
 ### Use Case Diagram
@@ -55,6 +55,7 @@ Admins are able to:
 1. [Project Board](https://github.com/gopinathsjsu/team-project-the-avengers/projects/1)
 2. [Google Sprint Task Sheet](https://docs.google.com/spreadsheets/d/1ktBflqVzDz_5cRBFZ5Sd3cVieNNSWRt4P_i0aiHPuZ8/edit?usp=sharing)
 3. [Weekly Scrum Journal](https://docs.google.com/document/d/1RgNuEph_02ubCXYaJeNSgyrvKBAsHNncF4aVHJgj-sc/edit?usp=sharing)
+4. [UI Wireframes](https://github.com/gopinathsjsu/team-project-the-avengers/tree/main/UI%20Wireframes)
 
 ## Requirements
 - Node
