@@ -3,7 +3,7 @@ team-project-the-avengers created by GitHub Classroom
 
 ### Diagrams
 ## Use Case Diagram
-![](douments/UseCaseDiagram.png)
+![](documents/UseCaseDiagram.png)
 
 ## Architecture Diagram
 ![](documents/ArchitectureDiagram.jpeg)
