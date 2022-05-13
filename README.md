@@ -48,6 +48,15 @@ Admins are able to:
 - Set weekend rates
 - Set festive period and their corresponding rates
 
+## Technologies used
+- NodeJS
+- ReactJS
+- MySQL
+- AWS
+
+## Design decisions
+We looked at MongoDB for database for our tech stack and since none of us were familiar with MongoDB, we decided to work with MySQL.
+
 ## Burndown Chart
 ![](documents/BurndownChart.png)
 
