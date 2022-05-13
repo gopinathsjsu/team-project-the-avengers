@@ -27,6 +27,8 @@ Admins are able to:
 - Edit number of rooms for each location
 - Edit prices of each type of rooms
 - Edit amenities prices
+- Set weekend rates
+- Set festive period and their corresponding rates
 
 ## Burndown Chart
 ![](documents/BurndownChart.png)
