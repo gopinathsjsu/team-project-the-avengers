@@ -54,6 +54,7 @@ Admins are able to:
 ## Links
 1. [Project Board](https://github.com/gopinathsjsu/team-project-the-avengers/projects/1)
 2. [Google Sprint Task Sheet](https://docs.google.com/spreadsheets/d/1ktBflqVzDz_5cRBFZ5Sd3cVieNNSWRt4P_i0aiHPuZ8/edit?usp=sharing)
+3. [Weekly Scrum Journal](https://docs.google.com/document/d/1RgNuEph_02ubCXYaJeNSgyrvKBAsHNncF4aVHJgj-sc/edit?usp=sharing)
 
 ## Requirements
 - Node
