@@ -51,7 +51,7 @@ Admins are able to:
 ## Technologies used
 - Backend: Node.js and Express
 - Frontend: React
-- Database: RDS for MySQL
+- Database: Amazon RDS for MySQL
 - Deployment: AWS EC2
 
 ## Design decisions
