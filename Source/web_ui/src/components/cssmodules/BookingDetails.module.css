@@ -1,0 +1,13 @@
+.bookingDetailsContainerContainer{
+ margin: 0 32px;
+}
+
+.bookingDetailsContainer {
+    margin: 32px auto;
+    padding: 20px;
+    font-family: 'Helvetica';
+    background-color: white;
+    border-radius: 5px;
+    max-width: 800px;
+    min-width: 450px;
+  }

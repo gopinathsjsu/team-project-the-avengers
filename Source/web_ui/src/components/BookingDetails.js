@@ -4,6 +4,10 @@ import axios from 'axios';
 import { isAuthenticated } from './auth';
 import './BookingDetails.css';
 
+// FM CSS STARTS
+import styles from './cssmodules/BookingDetails.module.css';
+// FM CSS ENDS
+
 function BookingDetails() {
   const [location, setLocation] = useState('');
   const [roomType, setRoomType] = useState('');
@@ -80,8 +84,8 @@ function BookingDetails() {
   }
 
   return (
-    <div>
-      <div className='booking-details-container'>
+    <div className={styles.bookingDetailsContainerContainer}>
+      <div className={styles.bookingDetailsContainer}>
         {success
           ? <div className='success-message'>Booking Confirmed</div>
           : <> </>
