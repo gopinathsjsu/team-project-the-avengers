@@ -5,7 +5,7 @@
 3. Faizali Mulla
 4. Visva Suthar
 
-## Individual Contribution
+## Individual Contributions
 1. Adarsh: Backend(User side: price_calculate, search room, create Booking, Delete Booking, view Booking; Admin side: All), Deployment on AWS with Load balancer
 2. Amy: Frontend(all the pages) and Backend(edit reservations functionality)
 3. Faizali:
@@ -49,10 +49,10 @@ Admins are able to:
 - Set festive period and their corresponding rates
 
 ## Technologies used
-- NodeJS
-- ReactJS
-- MySQL
-- AWS
+- Backend: Node.js and Express
+- Frontend: React
+- Database: RDS for MySQL
+- Deployment: AWS EC2
 
 ## Design decisions
 We looked at MongoDB for database for our tech stack and since none of us were familiar with MongoDB, we decided to work with MySQL.
