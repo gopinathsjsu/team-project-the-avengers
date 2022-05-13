@@ -7,7 +7,7 @@
 
 ## Individual Contribution
 1. Adarsh: Backend(User side: price_calculate, search room, create Booking, Delete Booking, view Booking; Admin side: All), Deployment on AWS with Load balancer
-2. Amy: Frontend and Backend(edit reservations)
+2. Amy: Frontend(all the pages) and Backend(edit reservations functionality)
 3. Faizali:
 4. Visva: Database and Backend for login and signup(includes authentication, password hashing and salting). Stored procedure and an event for Bookings archive to view past reservations.
 
@@ -32,6 +32,7 @@ Our team followed the simplicity aspect of the 5 XP core values. While coding th
 Users are able to:
 - Enroll as a new customer
 - Manage rewards points
+- View all current/past reservations
 - Search for hotels
 - Book a room for stay up to 1 week
 - Edit reservations
@@ -42,7 +43,7 @@ Admins are able to:
 - Edit a location information
 - Delete a location
 - Edit number of rooms for each location
-- Edit prices of each type of rooms
+- Edit prices for each type of rooms
 - Edit amenities prices
 - Set weekend rates
 - Set festive period and their corresponding rates
