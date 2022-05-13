@@ -26,7 +26,7 @@ Our team followed the simplicity aspect of the 5 XP core values. While coding th
 ![](documents/ClassDiagram.jpeg)
 
 ### Database Diagram
-![](database/ER Diagram.png)
+![](database/ERDiagram.png)
 
 ## Feature Set
 Users are able to:
