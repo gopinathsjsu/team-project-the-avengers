@@ -1,6 +1,15 @@
 # team-project-the-avengers
 team-project-the-avengers created by GitHub Classroom
 
+### Diagrams
+## 
+![](douments/use%20case%20diagram.png)
+### Design Decisions
+
+### Feature Set
+
+### Contributions
+
 ### Requirements
 - Node
 
@@ -36,11 +45,3 @@ npm start
 ```
 
 7. Open the application on a web browser: http://localhost:3000/
-
-### Diagrams
-
-### Design Decisions
-
-### Feature Set
-
-### Contributions
